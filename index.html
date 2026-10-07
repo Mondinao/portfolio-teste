@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow"> <!-- TEST VERSION: remove this line when the site is final -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gustavo Mondini's Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#10201f;--ink:#eef0e6;--muted:#9fb3ad;--accent:#f2b134;--card:#1a302e;--line:#2c4744}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef0e6;--ink:#10201f;--muted:#4d625c;--accent:#b5640a;--card:#dfe3d4;--line:#c3cab8}}
+:root[data-theme="light"]{--bg:#eef0e6;--ink:#10201f;--muted:#4d625c;--accent:#b5640a;--card:#dfe3d4;--line:#c3cab8}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 Figtree,system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+header{padding:72px 0 40px}
+header h1{font-size:clamp(2.4rem,7vw,5.2rem);font-weight:800;letter-spacing:-.02em;max-width:14ch}
+header p{margin:20px 0 0;font-size:clamp(1.1rem,2.4vw,1.5rem);color:var(--muted);max-width:30ch}
+
+.projects h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:28px}
+.rail{overflow:hidden;padding:12px 0 40px}
+.track{display:flex;gap:20px;width:max-content;animation:scroll 40s linear infinite}
+.track:hover,.track:focus-within{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(calc(-50% - 10px))}}
+.card{position:relative;flex:0 0 auto;width:320px;aspect-ratio:4/3;border-radius:10px;overflow:hidden;display:block;background:var(--card);text-decoration:none}
+.card .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.card .name{position:absolute;inset:0;display:flex;align-items:flex-end;padding:20px;font:800 1.5rem/1.1 "Bricolage Grotesque",sans-serif;color:#fff;background:linear-gradient(to top,rgba(5,15,14,.88),rgba(5,15,14,.1) 65%);opacity:0;transition:opacity .25s}
+.card .name small{display:block;margin-top:8px;font:500 .9rem/1.4 Figtree,sans-serif;color:#d9e2dc}
+.card.locked{cursor:default}
+.card:hover .name,.card:focus-visible .name{opacity:1}
+.card:hover .cover{transform:scale(1.05)}
+
+.partners{padding:8px 0 80px}
+.partners h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:20px}
+.logos{list-style:none;margin:0;padding:0 0 6px;display:flex;gap:16px;overflow-x:auto}
+.logos li{flex:1 1 0;min-width:150px}
+.logo{display:block;text-decoration:none}
+.chip{display:flex;align-items:center;justify-content:center;height:64px;padding:10px 16px;border-radius:8px;background:#eef0e6;color:#10201f;font:800 1rem/1.1 "Bricolage Grotesque",sans-serif;text-align:center;transition:transform .25s}
+.chip img{max-width:100%;max-height:44px;object-fit:contain}
+.logo:hover .chip,.logo:focus-visible .chip{transform:translateY(-3px)}
+.logo.locked{cursor:default}
+.logo.locked:hover .chip{transform:none}
+.for{display:block;margin-top:6px;font-size:.8rem;color:var(--muted);text-align:center}
+/* Project page */
+.back{display:inline-block;margin:40px 0 28px;color:var(--muted)}
+.project h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800}
+.facts{display:flex;flex-wrap:wrap;gap:12px 40px;margin:24px 0 36px;padding:18px 0;border-block:1px solid var(--line)}
+.facts dt{font-size:.85rem;color:var(--muted)}
+.facts dd{margin:2px 0 0;font-weight:500}
+.project p{max-width:65ch}
+.top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.top .facts{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin:8px 0 24px}
+@media (max-width:800px){.top{grid-template-columns:1fr;gap:24px}}
+.steam{display:inline-block;padding:10px 18px;border:2px solid var(--accent);border-radius:8px;text-decoration:none;font-weight:500}
+.videos:empty{display:none}
+.bottom{margin:48px 0 80px}
+.topbtn{margin:40px 0 28px}
+.steam:hover{background:var(--accent);color:var(--bg)}
+.video video{width:100%;height:100%;object-fit:cover;display:block}
+.contrib{margin:40px 0 8px}
+.contrib ul,.contrib .lead{max-width:65ch}
+.contrib h2{font-size:1.6rem;margin-bottom:12px}
+.contrib h3{font-size:1.15rem;margin:28px 0 8px;color:var(--accent)}
+.contrib .lead{font-size:1.15rem;color:var(--muted)}
+.contrib ul{margin:0;padding-left:1.2em}
+.contrib li{margin:8px 0}
+.car{position:relative;margin:28px 0 24px;aspect-ratio:16/9;max-width:760px;border-radius:10px;overflow:hidden;background:var(--card);transition:transform .35s}
+.car:hover{transform:scale(1.04);position:relative;z-index:2}
+.slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .8s}
+.slide.on{opacity:1}
+.slide img,.slide .ph{width:100%;height:100%;display:block}
+.slide img{object-fit:cover}
+.slide .zoom{display:block;width:100%;height:100%;cursor:zoom-in}
+.slide.fit{background:#fff}
+.slide.fit .zoom{position:absolute;top:0;left:0;right:0;bottom:76px;width:auto;height:auto}
+.slide.fit img{object-fit:contain;background:#fff}
+.slide.fit .cap{min-height:76px;display:flex;align-items:center;padding:14px 22px;background:#10201f}
+.slide .ph{display:grid;place-items:center;color:rgba(255,255,255,.7);font-size:.9rem}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:48px 22px 18px;font:800 clamp(1.15rem,2.8vw,1.7rem)/1.1 "Bricolage Grotesque",sans-serif;color:#fff;background:linear-gradient(to top,rgba(5,15,14,.88),rgba(5,15,14,0))}
+.dots{position:absolute;top:12px;right:12px;display:flex;gap:8px;z-index:3}
+.dots button{width:11px;height:11px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.5);cursor:pointer}
+.dots button.on{background:var(--accent)}
+@media (prefers-reduced-motion:reduce){.slide,.car{transition:none}}
+.featured{max-width:860px;margin:0 0 36px}
+.media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:24px 0 36px;align-items:start}
+.media .car{margin:0;max-width:none}
+.vcap{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin:10px 0 0;font-size:.9rem}
+.vtitle{font:800 1.05rem/1.2 "Bricolage Grotesque",sans-serif}
+.vcap a{color:var(--muted)}
+@media (max-width:700px){.media{grid-template-columns:1fr}}
+.alt{margin:8px 0 0;font-size:.9rem}
+.alt a{color:var(--muted)}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px;margin:40px 0 80px}
+.video{aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:var(--card);display:grid;place-items:center;color:var(--muted);border:1px dashed var(--line)}
+.video iframe{width:100%;height:100%;border:0}
+footer{padding:40px 0 60px;color:var(--muted);font-size:.9rem}
+
+@media (prefers-reduced-motion:reduce){.track{animation:none;overflow-x:auto;width:auto;padding:0 24px}.card .cover{transition:none}}
+@media (max-width:600px){.card{width:240px}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ============ EDIT HERE: your projects ============
+   cover: path/link to the cover image (e.g. "img/game1.jpg"). Empty = placeholder color.
+   videos: YouTube IDs (the part after "v=" in the link). Empty = placeholder. */
+const PROJECTS = [
+  {slug:"sportia", title:"Sportia", studio:"Hermit Crab Studio", partnerLabel:"Partnership", partner:"Ubisoft",
+   cover:"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3897390/f53437221ec8d2a020b4f8a07966010967c326dd/header.jpg", color:"#c9503c",
+   locked:true}, // not released yet: no page, no link. Full content is kept privately until launch.
+  {slug:"sky-dust", title:"Sky Dust", studio:"Orbit Studio", partnerLabel:"Publisher", partner:"Twin Sails Interactive",
+   cover:"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3066300/cb30b99727684343e5efe874830487a0ad0bfb28/header.jpg", color:"#3d7ea6",
+   role:"Producer, Level Designer, Game Designer & VFX Artist", period:"2024", release:"To be announced", genre:"Cyberpunk Metroidvania", platform:"PC (Windows)", engine:"Unity",
+   trailer:"KNlGr2Wrqqk",
+   steam:"https://store.steampowered.com/app/3066300/Sky_Dust/",
+   contribution:[
+     {title:"Production", points:[
+       "Planned the sequence of tasks to keep the team from running into blockers.",
+       "Managed the Kanban board, organizing and tracking all tasks.",
+       "Designed the asset request process for the artists."]},
+     {title:"Game Design", points:[
+       "Wrote the project's first GDD and its first pitch, which were sent to publishers during pre-production.",
+       "Designed the linear structure of the game's quests.",
+       "Created the climb mechanic, which allows vertical navigation on level walls, an uncommon approach for a Metroidvania."]},
+     {title:"Level Design", points:[
+       "Designed the layout and room placement of the FTUE, the game's first mission.",
+       "Starting from Figma sketches, built the blockout with basic assets and greyboxes, requesting new assets when needed.",
+       "Once a level was complete in gameplay terms, handled set dressing: final assets, lighting and post-processing.",
+       "Created shaders and ambient effects with Shader Graph and VFX Graph, always balancing visuals against the render pipeline's performance."],
+      images:[{src:"img/sky-dust/level-first-sketch.png",title:"Level First Sketch",fit:true}],
+      // videos: paste each unlisted YouTube video ID between the quotes of "id"
+      videos:[{title:"Level Implementation", id:"S08_ri7_N-Y"},{title:"Level Final Implementation", id:"D8Cy8HHaUcQ"},{title:"Full Scene Development Process", id:"zGpRzd3GYqM"}],
+      featured:[{title:"Alternative Level Showoff", id:"TZPV4XtaICw"}]},
+     {title:"VFX & Shaders", points:[
+       "Built shaders and effects with VFX Graph and Shader Graph, including holograms, monitors projecting virtual textures, shock and lightning effects, projectile effects and the particles needed for gameplay.",
+       "Created a character shader that reacts to lighting through normal maps.",
+       "Created outline shaders on enemies to communicate damage to the player."],
+      images:[
+        {src:"img/sky-dust/electric-vfx.gif",title:"Electric VFX"},
+        {src:"img/sky-dust/electric-vfx-2.gif",title:"Electric VFX 2"},
+        {src:"img/sky-dust/electric-config.gif",title:"Electric Config"},
+        {src:"img/sky-dust/glitch-hologram-shader-graph.gif",title:"Glitch Hologram Shader Graph"},
+        {src:"img/sky-dust/dither-shader-graph.gif",title:"Dither Shader Graph"},
+        {src:"img/sky-dust/character-outline-shader-graph.gif",title:"Character Outline Shader Graph"}],
+      videos:[{title:"VFX Showoff", id:"-ugcFYBaYmI"}]}
+   ],
+   text:"A cyberpunk Metroidvania set in a ruined São Paulo after the destruction of the Moon. As a mercenary taking dangerous contracts, players explore interconnected districts, unlock new abilities and fight in fast, skill-based combat with parries, stealth executions and boss encounters.",
+   clips:[], videos:[]},
+  {slug:"ebenezer", title:"Ebenezer and the Invisible World", studio:"Orbit Studio", partnerLabel:"Publisher", partner:"Play on Worlds",
+   cover:"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2351120/header.jpg", color:"#6a994e",
+   role:"Level Designer, Game Designer & VFX Artist", period:"", release:"Nov 3, 2023", genre:"2D Metroidvania", platform:"PC (Windows), PS4, PS5, Xbox Series, Nintendo Switch", engine:"Unity",
+   trailer:"EbxqOXRCpqA",
+   steam:"https://store.steampowered.com/app/2351120/Ebenezer_and_the_Invisible_World/",
+   contribution:[
+     {title:"Game Design", points:[
+       "Designed the game's economy using math, Google Sheets and charts: the cost of items, equipment and consumables in the shops, and where they are placed in the game.",
+       "Used the economy model to predict where the player is in the game based on the purchasing power I wanted them to have.",
+       "Balanced the crafting system: ingredient availability, enemy drop rates, and how crafting progresses and evolves throughout the game.",
+       "Balanced enemy damage, speed, attack delay and moveset, and their distribution across the biomes to improve progression.",
+       "Designed the mirror mechanic: instead of fighting enemies, the player faces the environment inside a mirror world. The exit mirror grants special rewards and works as a fast travel, since it leads to a different place on the map than the entrance.",
+       "Defined the order of many rooms to improve the game's flow, and took part in designing the map and the biomes.",
+       "Designed several quests for acquiring the ghosts, the player's skills.",
+       "Wrote the game's narrative and dialogue."]},
+     {title:"Level Design", points:[
+       "Built all 24 mirror rooms and their challenges: platforming, traps and lever puzzles leading to the mirror on the other side.",
+       "Created many rooms, starting from Figma sketches, moving to a 2D blockout with primitive shapes, then to final assets, post-processing, particles and lighting.",
+       "Designed puzzles and set up the levels' cameras with Cinemachine.",
+       "Defined the placement of rest and save rooms, a staple of the Metroidvania genre.",
+       "Implemented collectibles, resources, shopkeepers and many points of interest across the whole game."]},
+     {title:"VFX", points:[
+       "Learned Unity's VFX plugin through its documentation and configured its parameters to create special effects, such as environment effects and the ghostly barriers that block the path in boss rooms."]}
+   ],
+   text:"A hand-drawn 2D Metroidvania that reimagines Dickens' A Christmas Carol in a Victorian-fantasy London. Ebenezer Scrooge teams up with ghosts whose abilities open new ways to traverse the map and fight the Unrepentant Ghosts.",
+   clips:[], videos:[]},
+  {slug:"haunted-house", title:"Haunted House", studio:"Orbit Studio", partnerLabel:"Publisher", partner:"Atari",
+   cover:"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1942330/header.jpg", color:"#8e5ea2",
+   role:"Level Designer, Game Designer & VFX Artist", period:"", release:"Oct 12, 2023", genre:"Roguelite stealth-adventure", platform:"PC (Windows), PS4, PS5, Xbox Series, Nintendo Switch", engine:"Unity",
+   trailer:"D07QbuCZ4T4",
+   steam:"https://store.steampowered.com/app/1942330/Haunted_House/",
+   contribution:[
+     {title:"Game Design", points:[
+       "Created the chase mechanic for the boss rooms. Each boss has three behavior and patrol variations built as behavior trees and swapped as the player moves around the room, so the bosses feel organic and reactive instead of following one predefined behavior.",
+       "Developed the concept of freeing allies in special rooms where the player faces sub-bosses.",
+       "Defined the economy of the base-building system.",
+       "Defined the economy and cost of the consumable items.",
+       "Developed the Trap Rooms: instead of fighting enemies, the player avoids traps to reach a final totem and complete the room. This breaks the survival-horror dynamic of this Metroidvania with a platforming feel.",
+       "Wrote texts, dialogue and character biographies, and helped build the game's lore."]},
+     {title:"Level Design", points:[
+       "Designed rooms in the engine from diagrams drawn on paper, using primitive shapes to define colliders and objects.",
+       "Handled set dressing with Unity's native 2D lighting and multiple post-processing effects to create the haunted house's terrifying atmosphere.",
+       "Developed and implemented enemies and their patrols using Splines with Bézier curves.",
+       "Developed and implemented the bosses in the boss scenes.",
+       "Built the basement boss rooms, where the player fights sub-bosses to free allies who become new playable characters.",
+       "Set up the game's cameras with Cinemachine.",
+       "Defined the progression of the player's permanent buffs together with the team."]},
+     {title:"Biggest Level Design Challenge", points:[
+       "Every room is randomly placed within each biome, so a room's internal layout, its enemies and their patrols had to make sense no matter where the player entered or exited."]},
+     {title:"VFX", points:[
+       "Learned a VFX plugin to create particles, ghostly barriers, crystal destruction and some of the post-processing used in the levels."]}
+   ],
+   text:"A roguelite stealth-adventure that reimagines the classic Atari game. Lyn Graves sneaks through a procedurally generated mansion to recover urn shards guarded by bosses, and every run reshuffles the layout and enemy placement.",
+   clips:[], videos:[]}
+];
+
+/* ============ EDIT HERE: partner logos (shown on the home page) ============
+   logo: file inside img/partners/ (PNG or SVG with transparent background).
+   bg: optional chip background color (needed for white logos). If the file is missing, the company name is shown as text. */
+const PARTNERS = [
+  {name:"Ubisoft", logo:"img/partners/ubisoft.png", project:"sportia", bg:"#1a1a1a"},
+  {name:"Atari", logo:"img/partners/atari.png", project:"haunted-house"},
+  {name:"Play on Worlds", logo:"img/partners/play-on-worlds.png", project:"ebenezer"},
+  {name:"Twin Sails Interactive", logo:"img/partners/twin-sails-interactive.png", project:"sky-dust"}
+];
+
+const app = document.getElementById("app");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function cardHTML(p){
+  // The colored gradient shows if the image is missing or fails to load.
+  const img = p.cover ? `<img class="cover" src="${esc(p.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : "";
+  const label = `<div class="name"><span>${esc(p.title)}<small>Studio ${esc(p.studio)}<br>${esc(p.partnerLabel)} ${esc(p.partner)}${p.locked ? "<br>Details coming soon" : ""}</small></span></div>`;
+  const bg = `background:linear-gradient(160deg, ${p.color}, #0c1716)`;
+  return p.locked
+    ? `<div class="card locked" role="img" aria-label="${esc(p.title)} (details coming soon)" style="${bg}">${img}${label}</div>`
+    : `<a class="card" href="#/${p.slug}" aria-label="${esc(p.title)}" style="${bg}">${img}${label}</a>`;
+}
+
+function partnerHTML(pt){
+  const proj = PROJECTS.find(x => x.slug === pt.project) || {};
+  const chip = `<span class="chip"${pt.bg ? ` style="background:${esc(pt.bg)}"` : ""}><img src="${esc(pt.logo)}" alt="${esc(pt.name)}" loading="lazy" onerror="this.replaceWith(document.createTextNode(this.alt))"></span>
+    <span class="for">${esc(proj.title || "")}${proj.locked ? ", coming soon" : ""}</span>`;
+  return proj.locked
+    ? `<li><div class="logo locked" aria-label="${esc(pt.name)}: ${esc(proj.title)} (coming soon)">${chip}</div></li>`
+    : `<li><a class="logo" href="#/${esc(pt.project)}" aria-label="${esc(pt.name)}: ${esc(proj.title || "")}">${chip}</a></li>`;
+}
+
+function home(){
+  const set = PROJECTS.map(cardHTML).join("");
+  const cards = set + set; // repeated so the carousel fills wide screens
+  app.innerHTML = `
+  <header>
+    <h1>Gustavo Mondini's Portfolio</h1>
+    <p>Game Designer – Level Design Specialist &amp; Producer.</p>
+  </header>
+  <section class="projects" aria-labelledby="mp">
+    <h2 id="mp">Main Projects</h2>
+  </section>
+  <div class="rail"><div class="track">${cards}${cards}</div></div>
+  <section class="partners" aria-labelledby="pt">
+    <h2 id="pt">Partnerships</h2>
+    <ul class="logos">${PARTNERS.map(partnerHTML).join("")}</ul>
+  </section>`;
+  // duplicates exist only for the looping animation; hidden from screen readers
+  app.querySelectorAll(".track .card").forEach((c,i)=>{ if(i>=PROJECTS.length){c.setAttribute("aria-hidden","true");c.tabIndex=-1;} });
+}
+
+function project(p){
+  const clips = (p.clips||[]).map(u => `<div class="video"><video src="${esc(u)}" controls muted loop playsinline preload="none"></video></div>`);
+  const yt = (p.videos||[]).map(id => id
+    ? `<div><div class="video"><iframe src="https://www.youtube.com/embed/${esc(id)}" title="${esc(p.title)} video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="alt"><a href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener">Watch on YouTube</a></p></div>`
+    : `<div class="video">Video coming soon</div>`);
+  const fact = (k,v) => v ? `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>` : "";
+  const carousel = g => (g.images && g.images.length) ? `<div class="car" role="group" aria-roledescription="carousel" aria-label="${esc(g.title)} images">${
+      g.images.map((im,k) => `<figure class="slide${im.fit ? " fit" : ""}">${im.src
+        ? `<a class="zoom" href="${esc(im.src)}" target="_blank" rel="noopener" aria-label="Open ${esc(im.title)} in full size"><img src="${esc(im.src)}" alt="${esc(im.title)}" loading="lazy"></a>`
+        : `<div class="ph" style="background:linear-gradient(${135+k*40}deg, ${p.color}, #0c1716)">Image placeholder</div>`}<figcaption class="cap">${esc(im.title)}</figcaption></figure>`).join("")
+    }${g.images.length > 1 ? `<div class="dots">${g.images.map((_,k) => `<button type="button" aria-label="Show image ${k+1}"></button>`).join("")}</div>` : ""}</div>` : "";
+  // A category can have one video (video:"ID") or several (videos:[{title:"...", id:"ID"}]). An empty id shows "Video coming soon".
+  const oneVideo = (title, id) => `<div class="cell">` + (id === ""
+    ? `<div class="video cat-video">Video coming soon</div>`
+    : `<div class="video cat-video"><iframe src="https://www.youtube.com/embed/${esc(id)}" title="${esc(p.title)} ${esc(title || "video")}" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div>`)
+    + `<p class="vcap">${title ? `<span class="vtitle">${esc(title)}</span>` : ""}${id ? `<a href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener">Watch on YouTube</a>` : ""}</p></div>`;
+  const catVideo = g => (g.videos || (g.video === undefined ? [] : [{title:g.videoTitle, id:g.video}])).map(v => oneVideo(v.title, v.id)).join("");
+  // Media layout: the image carousel sits beside the first video, the other videos fill a 2-column grid below.
+  const media = g => { const car = carousel(g), vids = catVideo(g);
+    return vids ? `<div class="media">${car ? `<div class="cell">${car}</div>` : ""}${vids}</div>` : car; };
+  // featured: larger videos shown full width below the media grid
+  const featured = g => (g.featured||[]).map(v => `<div class="featured">${oneVideo(v.title, v.id)}</div>`).join("");
+  const contrib = (p.contribution||[]).map(g => `<h3>${esc(g.title)}</h3><ul>${g.points.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>${media(g)}${featured(g)}`).join("");
+  app.innerHTML = `<div class="project">
+    <p class="topbtn"><a class="steam" href="#/">← Back to Home Page</a></p>
+    <h1>${esc(p.title)}</h1>
+    <div class="top">
+      <div class="info">
+        <dl class="facts">
+          ${fact("My role",p.role)}${fact("Worked on it",p.period)}${fact("Studio",p.studio)}${fact(p.partnerLabel,p.partner)}${fact("Genre",p.genre)}${fact("Release",p.release)}${fact("Platform",p.platform)}${fact("Engine",p.engine)}
+        </dl>
+        <p>${esc(p.text)}</p>
+        <p><a class="steam" href="${esc(p.steam)}" target="_blank" rel="noopener">View on Steam</a></p>
+      </div>
+      ${p.trailer === undefined ? "" : oneVideo("Trailer", p.trailer)}
+    </div>
+    ${contrib ? `<section class="contrib"><h2>My contribution</h2>${p.lead?`<p class="lead">${esc(p.lead)}</p>`:""}${contrib}</section>` : ""}
+    <div class="videos">${yt.concat(clips).join("")}</div>
+    <p class="bottom"><a class="steam" href="#/">← Back to Home Page</a></p></div>`;
+  initCarousels();
+}
+
+// Image carousels: fade to the next image every 3 s; hover/focus enlarges and pauses.
+let cleanups = [];
+function initCarousels(){
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  app.querySelectorAll(".car").forEach(car => {
+    const slides = [...car.querySelectorAll(".slide")], dots = [...car.querySelectorAll(".dots button")];
+    let i = 0, t = null, paused = false;
+    const show = n => { i = (n + slides.length) % slides.length;
+      slides.forEach((s,k) => { s.classList.toggle("on", k===i); s.setAttribute("aria-hidden", k===i ? "false" : "true"); });
+      dots.forEach((d,k) => { d.classList.toggle("on", k===i); d.setAttribute("aria-current", k===i ? "true" : "false"); }); };
+    const stop = () => clearTimeout(t);
+    const start = () => { stop(); if (reduce || paused || slides.length < 2) return; t = setTimeout(() => { show(i+1); start(); }, 3000); };
+    const hold = () => { paused = true; stop(); }, release = () => { paused = false; start(); };
+    car.addEventListener("mouseenter", hold); car.addEventListener("mouseleave", release);
+    car.addEventListener("focusin", hold); car.addEventListener("focusout", release);
+    dots.forEach((d,k) => d.addEventListener("click", () => { show(k); start(); }));
+    show(0); start(); cleanups.push(stop);
+  });
+}
+
+function route(){
+  cleanups.forEach(f => f()); cleanups = [];
+  const slug = location.hash.replace("#/","");
+  const p = PROJECTS.find(x => x.slug === slug);
+  if (p && p.locked) { history.replaceState(null,"","#/"); return route(); }
+  const content = p ? project(p) : home();
+  window.scrollTo(0,0);
+  document.title = p ? `${p.title} – Gustavo Mondini` : "Gustavo Mondini's Portfolio";
+  app.classList.add("wrap");
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
