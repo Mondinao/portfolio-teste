@@ -90,6 +90,8 @@ header p{margin:20px 0 0;font-size:clamp(1.1rem,2.4vw,1.5rem);color:var(--muted)
 .dots button.on{background:var(--accent)}
 @media (prefers-reduced-motion:reduce){.slide,.car{transition:none}}
 .featured{max-width:860px;margin:0 0 36px}
+.car.full{max-width:none}
+.note{margin:6px 0 0;font-size:.9rem;color:var(--muted);max-width:65ch}
 .media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:24px 0 36px;align-items:start}
 .media .car{margin:0;max-width:none}
 .vcap{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin:10px 0 0;font-size:.9rem}
@@ -204,7 +206,16 @@ const PROJECTS = [
        "Developed and implemented the bosses in the boss scenes.",
        "Built the basement boss rooms, where the player fights sub-bosses to free allies who become new playable characters.",
        "Set up the game's cameras with Cinemachine.",
-       "Defined the progression of the player's permanent buffs together with the team."]},
+       "Defined the progression of the player's permanent buffs together with the team."],
+      blocks:[
+        {video:{title:"Gustavo Mondini Gamescom Latam Interview - Haunted House Level Design", id:"X0aOevzP2AY",
+                note:"Note: This interview was given to a well-regarded news outlet in Brazil. Subtitles can be enabled in the YouTube settings."}},
+        {images:[{src:"img/haunted-house/witch-boss-room-diagram.png",title:"Witch Boss Room Diagram",fit:true},
+                 {src:"img/haunted-house/vampire-boss-room-diagram.png",title:"Vampire Boss Room Diagram",fit:true},
+                 {src:"img/haunted-house/ghost-boss-room-diagram.png",title:"Ghost Boss Room Diagram",fit:true}]},
+        {video:{title:"Witch Room Final", id:"3h3Ke1Jnrnk"}}]},
+     {title:"Trap Rooms", points:[],
+      blocks:[{videos:[{title:"Mechanic Tutorial Trap Scene", id:"eG2rEhBWrwg"},{title:"Trap Scenes Compilation", id:"XPyDYnbmJ3I"}]}]},
      {title:"Biggest Level Design Challenge", points:[
        "Every room is randomly placed within each biome, so a room's internal layout, its enemies and their patrols had to make sense no matter where the player entered or exited."]},
      {title:"VFX", points:[
@@ -272,23 +283,28 @@ function project(p){
     ? `<div><div class="video"><iframe src="https://www.youtube.com/embed/${esc(id)}" title="${esc(p.title)} video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="alt"><a href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener">Watch on YouTube</a></p></div>`
     : `<div class="video">Video coming soon</div>`);
   const fact = (k,v) => v ? `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>` : "";
-  const carousel = g => (g.images && g.images.length) ? `<div class="car" role="group" aria-roledescription="carousel" aria-label="${esc(g.title)} images">${
-      g.images.map((im,k) => `<figure class="slide${im.fit ? " fit" : ""}">${im.src
+  const carouselOf = (images, label, full) => (images && images.length) ? `<div class="car${full ? " full" : ""}" role="group" aria-roledescription="carousel" aria-label="${esc(label)} images">${
+      images.map((im,k) => `<figure class="slide${im.fit ? " fit" : ""}">${im.src
         ? `<a class="zoom" href="${esc(im.src)}" target="_blank" rel="noopener" aria-label="Open ${esc(im.title)} in full size"><img src="${esc(im.src)}" alt="${esc(im.title)}" loading="lazy"></a>`
         : `<div class="ph" style="background:linear-gradient(${135+k*40}deg, ${p.color}, #0b0b0d)">Image placeholder</div>`}<figcaption class="cap">${esc(im.title)}</figcaption></figure>`).join("")
-    }${g.images.length > 1 ? `<div class="dots">${g.images.map((_,k) => `<button type="button" aria-label="Show image ${k+1}"></button>`).join("")}</div>` : ""}</div>` : "";
+    }${images.length > 1 ? `<div class="dots">${images.map((_,k) => `<button type="button" aria-label="Show image ${k+1}"></button>`).join("")}</div>` : ""}</div>` : "";
+  const carousel = g => carouselOf(g.images, g.title);
   // A category can have one video (video:"ID") or several (videos:[{title:"...", id:"ID"}]). An empty id shows "Video coming soon".
-  const oneVideo = (title, id) => `<div class="cell">` + (id === ""
+  const oneVideo = (title, id, note) => `<div class="cell">` + (id === ""
     ? `<div class="video cat-video">Video coming soon</div>`
     : `<div class="video cat-video"><iframe src="https://www.youtube.com/embed/${esc(id)}" title="${esc(p.title)} ${esc(title || "video")}" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div>`)
-    + `<p class="vcap">${title ? `<span class="vtitle">${esc(title)}</span>` : ""}${id ? `<a href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener">Watch on YouTube</a>` : ""}</p></div>`;
+    + `<p class="vcap">${title ? `<span class="vtitle">${esc(title)}</span>` : ""}${id ? `<a href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener">Watch on YouTube</a>` : ""}</p>${note ? `<p class="note"><em>${esc(note)}</em></p>` : ""}</div>`;
   const catVideo = g => (g.videos || (g.video === undefined ? [] : [{title:g.videoTitle, id:g.video}])).map(v => oneVideo(v.title, v.id)).join("");
   // Media layout: the image carousel sits beside the first video, the other videos fill a 2-column grid below.
   const media = g => { const car = carousel(g), vids = catVideo(g);
     return vids ? `<div class="media">${car ? `<div class="cell">${car}</div>` : ""}${vids}</div>` : car; };
   // featured: larger videos shown full width below the media grid
   const featured = g => (g.featured||[]).map(v => `<div class="featured">${oneVideo(v.title, v.id)}</div>`).join("");
-  const contrib = (p.contribution||[]).map(g => `<h3>${esc(g.title)}</h3><ul>${g.points.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>${media(g)}${featured(g)}`).join("");
+  // blocks: render media in the exact order given. {video:{title,id,note}} = full-size video, {images:[...]} = full-width carousel, {videos:[...]} = videos side by side.
+  const blocks = g => (g.blocks||[]).map(b => b.video ? `<div class="featured">${oneVideo(b.video.title, b.video.id, b.video.note)}</div>`
+    : b.images ? carouselOf(b.images, g.title, true)
+    : b.videos ? `<div class="media">${b.videos.map(v => oneVideo(v.title, v.id, v.note)).join("")}</div>` : "").join("");
+  const contrib = (p.contribution||[]).map(g => `<h3>${esc(g.title)}</h3>${g.points && g.points.length ? `<ul>${g.points.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}${g.blocks ? blocks(g) : media(g) + featured(g)}`).join("");
   app.innerHTML = `<div class="project">
     <p class="topbtn"><a class="steam" href="#/">← Back to Home Page</a></p>
     <h1>${esc(p.title)}</h1>
