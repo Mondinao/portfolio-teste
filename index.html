@@ -38,17 +38,40 @@ header p{margin:20px 0 0;font-size:clamp(1.1rem,2.4vw,1.5rem);color:var(--muted)
 .card:hover .name,.card:focus-visible .name{opacity:1}
 .card:hover .cover{transform:scale(1.05)}
 
-.partners{padding:8px 0 80px}
+.plist{list-style:none;margin:0;padding:0 0 6px;display:flex;gap:12px;overflow-x:auto}
+.plist li{flex:1 1 0;min-width:200px}
+.pbtn{position:relative;display:flex;flex-direction:column;gap:8px;height:100%;padding:8px 8px 10px;border:2px solid var(--line);border-radius:10px;background:var(--card);text-decoration:none;transition:border-color .2s,transform .2s,background .2s}
+a.pbtn:hover,a.pbtn:focus-visible{border-color:var(--accent);transform:translateY(-2px);background:#211f23}
+.pbtn.locked{cursor:default}
+.pbtn .chip{height:44px;padding:6px 10px;border-radius:6px}
+.pbtn .chip img{max-height:28px}
+.ptext{display:flex;flex-direction:column;gap:2px;min-width:0;padding:0 26px 0 4px}
+.pname{font:800 1rem/1.15 "Bricolage Grotesque",sans-serif;color:var(--ink)}
+.prole{font-size:.78rem;line-height:1.3;color:var(--muted)}
+.pbtn .go{position:absolute;right:10px;bottom:10px;width:18px;height:18px;color:var(--accent)}
+.about{padding:8px 0 100px}
+.about h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:24px}
+.aboutgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:56px;align-items:start}
+.abouttext p{margin:0 0 1em;max-width:62ch}
+.abouttext .lead{font-size:1.2rem;color:var(--ink)}
+.morebtn{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:4px 0;color:var(--accent);font:inherit;font-weight:500;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.morebtn[hidden]{display:none}
+.morebtn:hover{color:var(--ink)}
+.more{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .4s ease,opacity .4s ease}
+.more.open{grid-template-rows:1fr;opacity:1}
+.moreinner{overflow:hidden;min-height:0}
+.moreinner p:focus{outline:none}
+@media (prefers-reduced-motion:reduce){.more{transition:none}}
+.aboutfacts{margin:24px 0 0;padding:18px 0 0;border-top:2px solid var(--accent);display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px 24px}
+.aboutfacts dt{font-size:.85rem;color:var(--muted)}
+.aboutfacts dd{margin:2px 0 0;font-weight:500}
+.aboutphoto{position:relative;margin:0;justify-self:center;width:100%;max-width:380px;aspect-ratio:1/1;border:2px solid var(--accent);border-radius:22px;overflow:hidden;background:radial-gradient(circle at 50% 28%,#4a2e3f 0%,#241a22 55%,#17141a 100%);box-shadow:12px 12px 0 rgba(246,169,207,.16);align-self:start}
+.aboutphoto img{position:absolute;left:0;bottom:0;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+@media (max-width:800px){.aboutgrid{grid-template-columns:1fr;gap:32px}.aboutphoto{order:-1;max-width:300px}}
+.partners{padding:8px 0 48px}
 .partners h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:20px}
-.logos{list-style:none;margin:0;padding:0 0 6px;display:flex;gap:16px;overflow-x:auto}
-.logos li{flex:1 1 0;min-width:150px}
-.logo{display:block;text-decoration:none}
 .chip{display:flex;align-items:center;justify-content:center;height:64px;padding:10px 16px;border-radius:8px;background:#f7e8ef;color:#0e0e10;font:800 1rem/1.1 "Bricolage Grotesque",sans-serif;text-align:center;transition:transform .25s}
 .chip img{max-width:100%;max-height:44px;object-fit:contain}
-.logo:hover .chip,.logo:focus-visible .chip{transform:translateY(-3px)}
-.logo.locked{cursor:default}
-.logo.locked:hover .chip{transform:none}
-.for{display:block;margin-top:6px;font-size:.8rem;color:var(--muted);text-align:center}
 /* Project page */
 .back{display:inline-block;margin:40px 0 28px;color:var(--muted)}
 .project h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800}
@@ -85,9 +108,11 @@ header p{margin:20px 0 0;font-size:clamp(1.1rem,2.4vw,1.5rem);color:var(--muted)
 .slide.fit .cap{min-height:76px;display:flex;align-items:center;padding:14px 22px;background:#0e0e10}
 .slide .ph{display:grid;place-items:center;color:rgba(255,255,255,.7);font-size:.9rem}
 .cap{position:absolute;left:0;right:0;bottom:0;padding:48px 22px 18px;font:800 clamp(1.15rem,2.8vw,1.7rem)/1.1 "Bricolage Grotesque",sans-serif;color:#fff;background:linear-gradient(to top,rgba(8,8,10,.88),rgba(8,8,10,0))}
-.dots{position:absolute;top:12px;right:12px;display:flex;gap:8px;z-index:3}
-.dots button{width:11px;height:11px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.5);cursor:pointer}
-.dots button.on{background:var(--accent)}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:46px;height:46px;padding:0;border-radius:50%;border:2px solid var(--accent);background:rgba(14,14,16,.78);color:var(--accent);display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s}
+.arrow:hover,.arrow:focus-visible{background:var(--accent);color:var(--bg)}
+.arrow.prev{left:12px}
+.arrow.next{right:12px}
+.count{position:absolute;top:12px;right:12px;z-index:3;padding:3px 11px;border-radius:999px;background:rgba(14,14,16,.78);color:var(--ink);font-size:.85rem}
 @media (prefers-reduced-motion:reduce){.slide,.car{transition:none}}
 .featured{max-width:860px;margin:0 0 36px}
 .car.full{max-width:none}
@@ -235,6 +260,20 @@ const PARTNERS = [
   {name:"Twin Sails Interactive", logo:"img/partners/twin-sails-interactive.png", project:"sky-dust"}
 ];
 
+/* ============ EDIT HERE: About Me ============ */
+const ABOUT = {
+  intro: "I'm Gustavo Mondini, a Brazilian game designer with a Bachelor's degree in Game Design from Anhembi Morumbi University, class of 2025.",
+  more: [
+    "Before games, I was studying environmental engineering and working in digital marketing to pay for my studies. When the 2020 lockdown forced me to pause my degree, I finally had time to reflect, and one thing stood out: games had been with me through every sad and happy moment of my life.",
+    "After a cathartic moment in which a game brought me to tears, I realized I wanted to do the same for other people through my own art. In 2021 I decided to leave everything behind to become a game designer, enrolled at university and started taking part in game jams."
+  ],
+  facts: [
+    ["Nationality", "Brazilian"],
+    ["Education", "B.A. in Game Design, Anhembi Morumbi University (2025)"],
+    ["Focus", "Level Design, Game Design and Production"]
+  ]
+};
+
 const app = document.getElementById("app");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
@@ -248,13 +287,15 @@ function cardHTML(p){
     : `<a class="card" href="#/${p.slug}" aria-label="${esc(p.title)}" style="${bg}">${img}${label}</a>`;
 }
 
-function partnerHTML(pt){
-  const proj = PROJECTS.find(x => x.slug === pt.project) || {};
-  const chip = `<span class="chip"${pt.bg ? ` style="background:${esc(pt.bg)}"` : ""}><img src="${esc(pt.logo)}" alt="${esc(pt.name)}" loading="lazy" onerror="this.replaceWith(document.createTextNode(this.alt))"></span>
-    <span class="for">${esc(proj.title || "")}${proj.locked ? ", coming soon" : ""}</span>`;
-  return proj.locked
-    ? `<li><div class="logo locked" aria-label="${esc(pt.name)}: ${esc(proj.title)} (coming soon)">${chip}</div></li>`
-    : `<li><a class="logo" href="#/${esc(pt.project)}" aria-label="${esc(pt.name)}: ${esc(proj.title || "")}">${chip}</a></li>`;
+function projectButton(p){
+  // One button per project: partner/publisher logo on the left, project name and relationship on the right.
+  const pt = PARTNERS.find(x => x.project === p.slug) || {name:p.partner, logo:""};
+  const chip = `<span class="chip"${pt.bg ? ` style="background:${esc(pt.bg)}"` : ""}><img src="${esc(pt.logo)}" alt="${esc(pt.name)}" loading="lazy" onerror="this.replaceWith(document.createTextNode(this.alt))"></span>`;
+  const text = `<span class="ptext"><span class="pname">${esc(p.title)}</span><span class="prole">${esc(p.partnerLabel)}: ${esc(p.partner)}${p.locked ? " · Details coming soon" : ""}</span></span>`;
+  const arrow = `<svg class="go" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  return p.locked
+    ? `<li><div class="pbtn locked" aria-label="${esc(p.title)} (details coming soon)">${chip}${text}</div></li>`
+    : `<li><a class="pbtn" href="#/${esc(p.slug)}" aria-label="${esc(p.title)}">${chip}${text}${arrow}</a></li>`;
 }
 
 function home(){
@@ -271,8 +312,35 @@ function home(){
   <div class="rail"><div class="track">${cards}${cards}</div></div>
   <section class="partners" aria-labelledby="pt">
     <h2 id="pt">Partnerships</h2>
-    <ul class="logos">${PARTNERS.map(partnerHTML).join("")}</ul>
+    <ul class="plist">${PROJECTS.map(projectButton).join("")}</ul>
+  </section>
+  <section class="about" id="about" aria-labelledby="ab">
+    <h2 id="ab">About Me</h2>
+    <div class="aboutgrid">
+      <div class="abouttext">
+        <p class="lead">${esc(ABOUT.intro)}</p>
+        <button type="button" class="morebtn" id="readmore" aria-expanded="false" aria-controls="aboutmore">Read More <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="more" id="aboutmore" inert><div class="moreinner">
+          ${ABOUT.more.map(t => `<p>${esc(t)}</p>`).join("")}
+          <button type="button" class="morebtn" id="closemore">Close <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 15l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div></div>
+        <dl class="aboutfacts">${ABOUT.facts.map(([k,v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+      </div>
+      <figure class="aboutphoto"><img src="img/brand/gustavo.webp" alt="Gustavo Mondini smiling and giving a thumbs up at Gamescom Latam" width="800" height="800" loading="lazy"></figure>
+    </div>
   </section>`;
+  // About Me: "Read More" opens the rest of the text as a drop down, "Close" folds it back
+  const more = document.getElementById("aboutmore"), openBtn = document.getElementById("readmore"), closeBtn = document.getElementById("closemore");
+  if (more && openBtn && closeBtn) {
+    const toggle = on => {
+      more.classList.toggle("open", on);
+      if (on) more.removeAttribute("inert"); else more.setAttribute("inert", "");
+      openBtn.setAttribute("aria-expanded", String(on)); openBtn.hidden = on;
+      if (on) { const p = more.querySelector("p"); p.tabIndex = -1; p.focus({preventScroll:true}); } else openBtn.focus({preventScroll:true});
+    };
+    openBtn.addEventListener("click", () => toggle(true));
+    closeBtn.addEventListener("click", () => toggle(false));
+  }
   // duplicates exist only for the looping animation; hidden from screen readers
   app.querySelectorAll(".track .card").forEach((c,i)=>{ if(i>=PROJECTS.length){c.setAttribute("aria-hidden","true");c.tabIndex=-1;} });
 }
@@ -287,7 +355,7 @@ function project(p){
       images.map((im,k) => `<figure class="slide${im.fit ? " fit" : ""}">${im.src
         ? `<a class="zoom" href="${esc(im.src)}" target="_blank" rel="noopener" aria-label="Open ${esc(im.title)} in full size"><img src="${esc(im.src)}" alt="${esc(im.title)}" loading="lazy"></a>`
         : `<div class="ph" style="background:linear-gradient(${135+k*40}deg, ${p.color}, #0b0b0d)">Image placeholder</div>`}<figcaption class="cap">${esc(im.title)}</figcaption></figure>`).join("")
-    }${images.length > 1 ? `<div class="dots">${images.map((_,k) => `<button type="button" aria-label="Show image ${k+1}"></button>`).join("")}</div>` : ""}</div>` : "";
+    }${images.length > 1 ? `<button type="button" class="arrow prev" aria-label="Previous image"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="arrow next" aria-label="Next image"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="count" aria-hidden="true"></span>` : ""}</div>` : "";
   const carousel = g => carouselOf(g.images, g.title);
   // A category can have one video (video:"ID") or several (videos:[{title:"...", id:"ID"}]). An empty id shows "Video coming soon".
   const oneVideo = (title, id, note) => `<div class="cell">` + (id === ""
@@ -329,17 +397,19 @@ let cleanups = [];
 function initCarousels(){
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   app.querySelectorAll(".car").forEach(car => {
-    const slides = [...car.querySelectorAll(".slide")], dots = [...car.querySelectorAll(".dots button")];
+    const slides = [...car.querySelectorAll(".slide")];
+    const prev = car.querySelector(".arrow.prev"), next = car.querySelector(".arrow.next"), count = car.querySelector(".count");
     let i = 0, t = null, paused = false;
     const show = n => { i = (n + slides.length) % slides.length;
       slides.forEach((s,k) => { s.classList.toggle("on", k===i); s.setAttribute("aria-hidden", k===i ? "false" : "true"); });
-      dots.forEach((d,k) => { d.classList.toggle("on", k===i); d.setAttribute("aria-current", k===i ? "true" : "false"); }); };
+      if (count) count.textContent = (i+1) + " / " + slides.length; };
     const stop = () => clearTimeout(t);
     const start = () => { stop(); if (reduce || paused || slides.length < 2) return; t = setTimeout(() => { show(i+1); start(); }, 3000); };
     const hold = () => { paused = true; stop(); }, release = () => { paused = false; start(); };
     car.addEventListener("mouseenter", hold); car.addEventListener("mouseleave", release);
     car.addEventListener("focusin", hold); car.addEventListener("focusout", release);
-    dots.forEach((d,k) => d.addEventListener("click", () => { show(k); start(); }));
+    if (prev) prev.addEventListener("click", () => { show(i-1); start(); });
+    if (next) next.addEventListener("click", () => { show(i+1); start(); });
     show(0); start(); cleanups.push(stop);
   });
 }
