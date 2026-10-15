@@ -26,10 +26,12 @@ header h1{font-size:clamp(2.4rem,7vw,5.2rem);font-weight:800;letter-spacing:-.02
 header p{margin:20px 0 0;font-size:clamp(1.1rem,2.4vw,1.5rem);color:var(--muted);max-width:30ch}
 
 .projects h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:28px}
-.rail{overflow:hidden;padding:12px 0 40px}
-.track{display:flex;gap:20px;width:max-content;animation:scroll 40s linear infinite}
-.track:hover,.track:focus-within{animation-play-state:paused}
-@keyframes scroll{to{transform:translateX(calc(-50% - 10px))}}
+.railwrap{position:relative}
+.rail{overflow-x:auto;overflow-y:hidden;padding:12px 0 40px;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{display:none}
+.track{display:flex;gap:20px;width:max-content}
+.railwrap .arrow{top:132px}
+@media (max-width:600px){.railwrap .arrow{top:102px;width:40px;height:40px}}
 .card{position:relative;flex:0 0 auto;width:320px;aspect-ratio:4/3;border-radius:10px;overflow:hidden;display:block;background:var(--card);text-decoration:none}
 .card .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .card .name{position:absolute;inset:0;display:flex;align-items:flex-end;padding:20px;font:800 1.5rem/1.1 "Bricolage Grotesque",sans-serif;color:#fff;background:linear-gradient(to top,rgba(8,8,10,.88),rgba(8,8,10,.1) 65%);opacity:0;transition:opacity .25s}
@@ -130,7 +132,7 @@ a.pbtn:hover,a.pbtn:focus-visible{border-color:var(--accent);transform:translate
 .video iframe{width:100%;height:100%;border:0}
 footer{padding:40px 0 60px;color:var(--muted);font-size:.9rem}
 
-@media (prefers-reduced-motion:reduce){.track{animation:none;overflow-x:auto;width:auto;padding:0 24px}.card .cover{transition:none}}
+@media (prefers-reduced-motion:reduce){.card .cover{transition:none}}
 @media (max-width:600px){.card{width:240px}}
 </style>
 </head>
@@ -298,9 +300,41 @@ function projectButton(p){
     : `<li><a class="pbtn" href="#/${esc(p.slug)}" aria-label="${esc(p.title)}">${chip}${text}${arrow}</a></li>`;
 }
 
+// Projects carousel: auto-scrolls in a loop; swipe on touch screens, arrows on desktop. Autoplay pauses on hover, touch and keyboard focus.
+function initRail(){
+  const wrap = app.querySelector(".railwrap"), rail = app.querySelector(".rail"), track = app.querySelector(".track");
+  if (!wrap || !rail || !track) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const SETS = 6, SPEED = 0.06;                       // px per ms (about 60 px per second)
+  const period = () => track.scrollWidth / SETS;      // width of one full set of cards
+  const step = () => { const c = rail.querySelector(".card"); return c ? c.getBoundingClientRect().width + 20 : 340; };
+  let pos = period(), last = 0, raf = 0, hold = 0, hovering = false, touching = false, focused = false;
+  rail.scrollLeft = pos;
+  const keepInRange = () => { const p = period(); if (rail.scrollLeft >= 3*p) rail.scrollLeft -= p; else if (rail.scrollLeft < p) rail.scrollLeft += p; };
+  const tick = t => {
+    const dt = Math.min(t - last, 50); last = t;
+    if (reduce || hovering || touching || focused || t < hold) { pos = rail.scrollLeft; if (t >= hold) keepInRange(); }
+    else { pos += dt * SPEED; if (pos >= 3*period()) pos -= period(); rail.scrollLeft = pos; }
+    raf = requestAnimationFrame(tick);
+  };
+  const go = dir => { hold = performance.now() + 3000; rail.scrollBy({left: dir * step(), behavior: reduce ? "auto" : "smooth"}); };
+  wrap.querySelector(".arrow.prev").addEventListener("click", () => go(-1));
+  wrap.querySelector(".arrow.next").addEventListener("click", () => go(1));
+  // only a real mouse pointer pauses the autoplay (taps on touch screens must not leave it paused)
+  wrap.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") hovering = true; });
+  wrap.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") hovering = false; });
+  rail.addEventListener("touchstart", () => touching = true, {passive:true});
+  const endTouch = () => { touching = false; hold = performance.now() + 2500; };
+  rail.addEventListener("touchend", endTouch, {passive:true});
+  rail.addEventListener("touchcancel", endTouch, {passive:true});
+  wrap.addEventListener("focusin", e => { focused = e.target.matches(":focus-visible"); });
+  wrap.addEventListener("focusout", () => focused = false);
+  raf = requestAnimationFrame(t => { last = t; tick(t); });
+  cleanups.push(() => cancelAnimationFrame(raf));
+}
+
 function home(){
   const set = PROJECTS.map(cardHTML).join("");
-  const cards = set + set; // repeated so the carousel fills wide screens
   app.innerHTML = `
   <header>
     <h1>Gustavo Mondini's Portfolio</h1>
@@ -309,7 +343,11 @@ function home(){
   <section class="projects" aria-labelledby="mp">
     <h2 id="mp">Main Projects</h2>
   </section>
-  <div class="rail"><div class="track">${cards}${cards}</div></div>
+  <div class="railwrap" role="group" aria-roledescription="carousel" aria-label="Main projects">
+    <button type="button" class="arrow prev" aria-label="Previous projects"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="rail"><div class="track">${set.repeat(6)}</div></div>
+    <button type="button" class="arrow next" aria-label="Next projects"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
   <section class="partners" aria-labelledby="pt">
     <h2 id="pt">Partnerships</h2>
     <ul class="plist">${PROJECTS.map(projectButton).join("")}</ul>
@@ -343,6 +381,7 @@ function home(){
   }
   // duplicates exist only for the looping animation; hidden from screen readers
   app.querySelectorAll(".track .card").forEach((c,i)=>{ if(i>=PROJECTS.length){c.setAttribute("aria-hidden","true");c.tabIndex=-1;} });
+  initRail();
 }
 
 function project(p){
