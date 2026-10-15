@@ -27,6 +27,7 @@ header p{margin:20px 0 0;font-size:clamp(1.1rem,2.4vw,1.5rem);color:var(--muted)
 
 .projects h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:28px}
 .railwrap{position:relative}
+.railwrap:last-child{margin-bottom:60px}
 .rail{overflow-x:auto;overflow-y:hidden;padding:12px 0 40px;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .rail::-webkit-scrollbar{display:none}
 .track{display:flex;gap:20px;width:max-content}
@@ -70,6 +71,22 @@ a.pbtn:hover,a.pbtn:focus-visible{border-color:var(--accent);transform:translate
 .aboutphoto{position:relative;margin:0;justify-self:center;width:100%;max-width:380px;aspect-ratio:1/1;border:2px solid var(--accent);border-radius:22px;overflow:hidden;background:radial-gradient(circle at 50% 28%,#4a2e3f 0%,#241a22 55%,#17141a 100%);box-shadow:12px 12px 0 rgba(246,169,207,.16);align-self:start}
 .aboutphoto img{position:absolute;left:0;bottom:0;width:100%;height:100%;object-fit:contain;object-position:center bottom}
 @media (max-width:800px){.aboutgrid{grid-template-columns:1fr;gap:32px}.aboutphoto{order:-1;max-width:300px}}
+.card.nocover .name{opacity:1}
+.acad{padding:44px 0 8px;border-top:1px solid var(--line)}
+.project > h1 + .acad{border-top:0;padding-top:8px}
+.acad h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:24px}
+.acadtop{display:grid;grid-template-columns:minmax(0,315px) minmax(0,1fr);gap:36px;align-items:start}
+.coverlink{position:relative;display:block;line-height:0;border:2px solid var(--accent);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:10px 10px 0 rgba(246,169,207,.16);transition:transform .25s}
+a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
+.coverlink img{width:100%;height:auto;display:block}
+.cl{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 10px;background:linear-gradient(to top,rgba(8,8,10,.92),rgba(8,8,10,0));color:#fff;font:700 .95rem/1.2 Figtree,sans-serif}
+.acadinfo .aboutfacts{margin:0 0 18px;padding:0 0 0 18px;border-top:0;border-left:2px solid var(--accent);display:block}
+.ovh{font-size:1.15rem;color:var(--accent);margin:20px 0 8px}
+.contrib .para{max-width:65ch;margin:0 0 1em}
+.blist{max-width:65ch;margin:0 0 1.2em;padding-left:1.2em}
+.blist li{margin:10px 0}
+.soon{color:var(--muted)}
+@media (max-width:800px){.acadtop{grid-template-columns:1fr;gap:24px}.coverlink{max-width:315px}}
 .partners{padding:8px 0 48px}
 .partners h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:20px}
 .chip{display:flex;align-items:center;justify-content:center;height:64px;padding:10px 16px;border-radius:8px;background:#f7e8ef;color:#0e0e10;font:800 1rem/1.1 "Bricolage Grotesque",sans-serif;text-align:center;transition:transform .25s}
@@ -252,6 +269,50 @@ const PROJECTS = [
    clips:[], videos:[]}
 ];
 
+/* ============ EDIT HERE: "Other Projects" categories (each opens its own page) ============
+   cover: optional image for the roleta card (empty = colored card with the title).
+   sections: the projects shown on the category page. */
+const OTHER = [
+  {slug:"academic-games", title:"Academic Games", sub:"Games developed during my degree", color:"#b4577f", sections:[
+    {title:"Dormente", cover:"img/academic/dormente-cover.png", coverW:315, coverH:214,
+     link:"https://mondinao.itch.io/dormente-demo", linkLabel:"Play the demo on itch.io",
+     roles:"Game Designer, Level Designer, VFX & Tech Artist and Narrative Designer",
+     overview:{
+       intro:"The game is a turn-based RPG and dungeon crawler, heavily inspired by SMT, Pokémon, and Persona.",
+       more:["As the proposal for the thesis problem, we decided to emphasize the nuance between attributes and resources by 'shuffling' them. We transformed attributes such as strength, defense, magic, and maximum number of turns into consumable and collectible resources. In this way, we converted passive elements into active ones for an RPG, aiming to revitalize the genre and address a common critique of more traditional turn-based games."]},
+     groups:[
+       {title:"Game Design", blocks:[
+         {text:"As a game designer, I developed and balanced the abilities. Together with the team, we developed the concept of resource subversion, how the checkpoint systems would work, and the progression system. One of my most important tasks in this game was designing the Skill Tree for the main character, in collaboration with my Level Design colleague."},
+         {images:[{src:"",title:"Skill Tree Spreadsheet",fit:true}]},
+         {text:"The spreadsheet represents each unlocked skill, its currency cost and its damage/healing values and effects. As the team is from Brazil, our main language to communicate is Brazilian Portuguese, which is why the spreadsheet is in Portuguese."}]},
+       {title:"Level Design", blocks:[
+         {text:"Following my usual method, for the level design of Dormente, I tried to design the scenes in Figma from a top-down view and used shapes, colors, arrows, and indicators to plan the levels."},
+         {images:[{src:"",title:"Level Diagram 1",fit:true},{src:"",title:"Level Diagram 2",fit:true},{src:"",title:"Level Diagram 3",fit:true}]},
+         {text:"The dungeon has 3 floors or 'Blocks,' with a significant increase in difficulty between them. To design the game's tutorial, I use markers directly on the diagram."},
+         {mosaic:{images:[{src:"",title:"Blockout in Blender"},{src:"",title:"Basic Set Dressing"}], videos:[{title:"Level Progress", id:""}]}},
+         {text:"After finishing the diagrams, I sent them to the artists to design the assets and create a general blockout in Blender so we could test the proportions and layout of the scene."},
+         {text:"After the general tests, we began basic set dressing for the first university milestone in June 2024."},
+         {text:"Since the diagram already included information on enemy patrols, I took the opportunity to incorporate them using a simple 'Patrol Points' system developed by our lead programmer, making the level structure functional."},
+         {text:"To complete the project, we still need to finish implementing the second floor and perform the full set dressing for all floors. Since these tasks have some artistic and other area demands, I took the opportunity to continue with my other tasks related to VFX, which are detailed next."}]},
+       {title:"VFX & Tech Art", blocks:[
+         {text:"I developed various shaders and particle effects for the game. I can list the following: emissive particle shaders, torch flame particle effects, sword flame, healing abilities, defensive skills, spark effects for attacks, breakable objects, chest-opening VFX, and others. The video provides a visualization of what I have done so far, and to showcase some of my techniques, I'll explain the portal effect in the section below."},
+         {text:"The \"Stonejourner\" portal consists of 4 main elements:"},
+         {list:[
+           "The particle system is a loop with emissive particles (using a material created in the shader graph to handle HDR and a texture map). In the particle system, I use a negative radial velocity over lifetime, simulating the effect of the particles being drawn into the portal. I use Size over Lifetime to make them appear and disappear more naturally.",
+           "The \"phantasmagoric\" spirals orbiting the portal are created using a shader that distorts the UVs of a texture with the \"Twirl\" node, multiplying the time by a Vector 2 of velocity for its offset. It's a classic yet efficient formula. The shader also incorporates colors to allow customization and other appearance control parameters.",
+           "The \"Stellar Space\" shader is a bit more complex but generally consists of a noise pattern exposed in a triplanar manner and overlaid with a Fresnel effect. It incorporates HDR color information to simulate stars and create a glittering appearance. This shader is applied to a quad at the center of the portal, adding to the overall effects."]},
+         {video:{title:"Dormente VFX Showcase", id:"1qKQnDoL_OI"}}]}
+     ]},
+    {title:"Kitty's Rescue", soon:true},
+    {title:"Whispers from Candelaria", soon:true},
+    {title:"Simple Tasks", soon:true},
+    {title:"Bluebell Project", soon:true}
+  ]},
+  {slug:"ugc", title:"UGC", sub:"User-generated content", color:"#5a6fb3", sections:[]},
+  {slug:"game-jams", title:"Game Jams", sub:"Games made in game jams", color:"#7d5ba6", sections:[]},
+  {slug:"game-design-youtube", title:"Game Design YouTube", sub:"Game design on YouTube", color:"#c0674b", sections:[]}
+];
+
 /* ============ EDIT HERE: partner logos (shown on the home page) ============
    logo: file inside img/partners/ (PNG or SVG with transparent background).
    bg: optional chip background color (needed for white logos). If the file is missing, the company name is shown as text. */
@@ -282,11 +343,13 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
 function cardHTML(p){
   // The colored gradient shows if the image is missing or fails to load.
   const img = p.cover ? `<img class="cover" src="${esc(p.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : "";
-  const label = `<div class="name"><span>${esc(p.title)}<small>Studio ${esc(p.studio)}<br>${esc(p.partnerLabel)} ${esc(p.partner)}${p.locked ? "<br>Details coming soon" : ""}</small></span></div>`;
+  const small = p.sub ? esc(p.sub) : `Studio ${esc(p.studio)}<br>${esc(p.partnerLabel)} ${esc(p.partner)}${p.locked ? "<br>Details coming soon" : ""}`;
+  const label = `<div class="name"><span>${esc(p.title)}<small>${small}</small></span></div>`;
   const bg = `background:linear-gradient(160deg, ${p.color}, #0b0b0d)`;
+  const cls = "card" + (p.cover ? "" : " nocover");
   return p.locked
-    ? `<div class="card locked" role="img" aria-label="${esc(p.title)} (details coming soon)" style="${bg}">${img}${label}</div>`
-    : `<a class="card" href="#/${p.slug}" aria-label="${esc(p.title)}" style="${bg}">${img}${label}</a>`;
+    ? `<div class="${cls} locked" role="img" aria-label="${esc(p.title)} (details coming soon)" style="${bg}">${img}${label}</div>`
+    : `<a class="${cls}" href="#/${p.slug}" aria-label="${esc(p.title)}" style="${bg}">${img}${label}</a>`;
 }
 
 function projectButton(p){
@@ -300,41 +363,109 @@ function projectButton(p){
     : `<li><a class="pbtn" href="#/${esc(p.slug)}" aria-label="${esc(p.title)}">${chip}${text}${arrow}</a></li>`;
 }
 
-// Projects carousel: auto-scrolls in a loop; swipe on touch screens, arrows on desktop. Autoplay pauses on hover, touch and keyboard focus.
+const CHEV_L = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CHEV_R = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function railHTML(list, label){
+  const set = list.map(cardHTML).join("");
+  return `<div class="railwrap" role="group" aria-roledescription="carousel" aria-label="${esc(label)}">
+    <button type="button" class="arrow prev" aria-label="Previous">${CHEV_L}</button>
+    <div class="rail"><div class="track" data-n="${list.length}">${set.repeat(6)}</div></div>
+    <button type="button" class="arrow next" aria-label="Next">${CHEV_R}</button>
+  </div>`;
+}
+
+// Project carousels: auto-scroll in a loop; swipe on touch screens, arrows on desktop. Autoplay pauses on hover, touch and keyboard focus.
 function initRail(){
-  const wrap = app.querySelector(".railwrap"), rail = app.querySelector(".rail"), track = app.querySelector(".track");
-  if (!wrap || !rail || !track) return;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const SETS = 6, SPEED = 0.06;                       // px per ms (about 60 px per second)
-  const period = () => track.scrollWidth / SETS;      // width of one full set of cards
-  const step = () => { const c = rail.querySelector(".card"); return c ? c.getBoundingClientRect().width + 20 : 340; };
-  let pos = period(), last = 0, raf = 0, hold = 0, hovering = false, touching = false, focused = false;
-  rail.scrollLeft = pos;
-  const keepInRange = () => { const p = period(); if (rail.scrollLeft >= 3*p) rail.scrollLeft -= p; else if (rail.scrollLeft < p) rail.scrollLeft += p; };
-  const tick = t => {
-    const dt = Math.min(t - last, 50); last = t;
-    if (reduce || hovering || touching || focused || t < hold) { pos = rail.scrollLeft; if (t >= hold) keepInRange(); }
-    else { pos += dt * SPEED; if (pos >= 3*period()) pos -= period(); rail.scrollLeft = pos; }
-    raf = requestAnimationFrame(tick);
-  };
-  const go = dir => { hold = performance.now() + 3000; rail.scrollBy({left: dir * step(), behavior: reduce ? "auto" : "smooth"}); };
-  wrap.querySelector(".arrow.prev").addEventListener("click", () => go(-1));
-  wrap.querySelector(".arrow.next").addEventListener("click", () => go(1));
-  // only a real mouse pointer pauses the autoplay (taps on touch screens must not leave it paused)
-  wrap.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") hovering = true; });
-  wrap.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") hovering = false; });
-  rail.addEventListener("touchstart", () => touching = true, {passive:true});
-  const endTouch = () => { touching = false; hold = performance.now() + 2500; };
-  rail.addEventListener("touchend", endTouch, {passive:true});
-  rail.addEventListener("touchcancel", endTouch, {passive:true});
-  wrap.addEventListener("focusin", e => { focused = e.target.matches(":focus-visible"); });
-  wrap.addEventListener("focusout", () => focused = false);
-  raf = requestAnimationFrame(t => { last = t; tick(t); });
-  cleanups.push(() => cancelAnimationFrame(raf));
+  app.querySelectorAll(".railwrap").forEach(wrap => {
+    const rail = wrap.querySelector(".rail"), track = wrap.querySelector(".track");
+    const period = () => track.scrollWidth / SETS;    // width of one full set of cards
+    const step = () => { const c = rail.querySelector(".card"); return c ? c.getBoundingClientRect().width + 20 : 340; };
+    let pos = period(), last = 0, raf = 0, hold = 0, hovering = false, touching = false, focused = false;
+    rail.scrollLeft = pos;
+    const keepInRange = () => { const p = period(); if (rail.scrollLeft >= 3*p) rail.scrollLeft -= p; else if (rail.scrollLeft < p) rail.scrollLeft += p; };
+    const tick = t => {
+      const dt = Math.min(t - last, 50); last = t;
+      if (reduce || hovering || touching || focused || t < hold) { pos = rail.scrollLeft; if (t >= hold) keepInRange(); }
+      else { pos += dt * SPEED; if (pos >= 3*period()) pos -= period(); rail.scrollLeft = pos; }
+      raf = requestAnimationFrame(tick);
+    };
+    const go = dir => { hold = performance.now() + 3000; rail.scrollBy({left: dir * step(), behavior: reduce ? "auto" : "smooth"}); };
+    wrap.querySelector(".arrow.prev").addEventListener("click", () => go(-1));
+    wrap.querySelector(".arrow.next").addEventListener("click", () => go(1));
+    // only a real mouse pointer pauses the autoplay (taps on touch screens must not leave it paused)
+    wrap.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") hovering = true; });
+    wrap.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") hovering = false; });
+    rail.addEventListener("touchstart", () => touching = true, {passive:true});
+    const endTouch = () => { touching = false; hold = performance.now() + 2500; };
+    rail.addEventListener("touchend", endTouch, {passive:true});
+    rail.addEventListener("touchcancel", endTouch, {passive:true});
+    wrap.addEventListener("focusin", e => { focused = e.target.matches(":focus-visible"); });
+    wrap.addEventListener("focusout", () => focused = false);
+    raf = requestAnimationFrame(t => { last = t; tick(t); });
+    cleanups.push(() => cancelAnimationFrame(raf));
+  });
+}
+
+// "Read More" / "Close" drop down (used in About Me and in project overviews)
+const CHEV_DN = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CHEV_UP = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 15l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function moreHTML(id, paras){
+  if (!paras || !paras.length) return "";
+  return `<button type="button" class="morebtn" data-open="${id}" aria-expanded="false" aria-controls="${id}">Read More ${CHEV_DN}</button>
+    <div class="more" id="${id}" inert><div class="moreinner">${paras.map(t => `<p>${esc(t)}</p>`).join("")}<button type="button" class="morebtn" data-close="${id}">Close ${CHEV_UP}</button></div></div>`;
+}
+function initMore(){
+  app.querySelectorAll("[data-open]").forEach(openBtn => {
+    const id = openBtn.dataset.open, more = document.getElementById(id), closeBtn = app.querySelector(`[data-close="${id}"]`);
+    if (!more || !closeBtn) return;
+    const toggle = on => {
+      more.classList.toggle("open", on);
+      if (on) more.removeAttribute("inert"); else more.setAttribute("inert", "");
+      openBtn.setAttribute("aria-expanded", String(on)); openBtn.hidden = on;
+      if (on) { const p = more.querySelector("p"); p.tabIndex = -1; p.focus({preventScroll:true}); } else openBtn.focus({preventScroll:true});
+    };
+    openBtn.addEventListener("click", () => toggle(true));
+    closeBtn.addEventListener("click", () => toggle(false));
+  });
+}
+
+// Category page (e.g. Academic Games): one section per project
+const slugify = t => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+function sectionHTML(c, sec){
+  const id = "sec-" + c.slug + "-" + slugify(sec.title);
+  if (sec.soon) return `<section class="acad"><h2>${esc(sec.title)}</h2><p class="soon">Details coming soon.</p></section>`;
+  const kit = mediaKit({title: sec.title, color: c.color});
+  const img = `<img src="${esc(sec.cover)}" alt="${esc(sec.title)} cover art" width="${sec.coverW}" height="${sec.coverH}">`;
+  const cover = sec.cover ? (sec.link
+    ? `<a class="coverlink" href="${esc(sec.link)}" target="_blank" rel="noopener" aria-label="${esc(sec.linkLabel || "Open")}: ${esc(sec.title)}">${img}<span class="cl">${esc(sec.linkLabel || "Open")} ↗</span></a>`
+    : `<div class="coverlink">${img}</div>`) : "";
+  const overview = sec.overview ? `<h3 class="ovh">Overview</h3><p>${esc(sec.overview.intro)}</p>${moreHTML(id + "-more", sec.overview.more)}` : "";
+  return `<section class="acad">
+    <h2>${esc(sec.title)}</h2>
+    <div class="acadtop">
+      ${cover}
+      <div class="acadinfo">
+        ${sec.roles ? `<dl class="aboutfacts"><div><dt>My roles</dt><dd>${esc(sec.roles)}</dd></div></dl>` : ""}
+        ${sec.link ? `<p><a class="steam" href="${esc(sec.link)}" target="_blank" rel="noopener">${esc(sec.linkLabel || "Open")} ↗</a></p>` : ""}
+        ${overview}
+      </div>
+    </div>
+    <div class="contrib">${kit.groups(sec.groups)}</div>
+  </section>`;
+}
+function category(c){
+  const secs = (c.sections || []).map(sec => sectionHTML(c, sec)).join("");
+  app.innerHTML = `<div class="project">
+    <p class="topbtn"><a class="steam" href="#/">← Back to Home Page</a></p>
+    <h1>${esc(c.title)}</h1>
+    ${secs || `<p class="soon">Content coming soon.</p>`}
+    <p class="bottom"><a class="steam" href="#/">← Back to Home Page</a></p></div>`;
+  initCarousels(); initMore();
 }
 
 function home(){
-  const set = PROJECTS.map(cardHTML).join("");
   app.innerHTML = `
   <header>
     <h1>Gustavo Mondini's Portfolio</h1>
@@ -343,11 +474,7 @@ function home(){
   <section class="projects" aria-labelledby="mp">
     <h2 id="mp">Main Projects</h2>
   </section>
-  <div class="railwrap" role="group" aria-roledescription="carousel" aria-label="Main projects">
-    <button type="button" class="arrow prev" aria-label="Previous projects"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <div class="rail"><div class="track">${set.repeat(6)}</div></div>
-    <button type="button" class="arrow next" aria-label="Next projects"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-  </div>
+  ${railHTML(PROJECTS, "Main projects")}
   <section class="partners" aria-labelledby="pt">
     <h2 id="pt">Partnerships</h2>
     <ul class="plist">${PROJECTS.map(projectButton).join("")}</ul>
@@ -357,39 +484,22 @@ function home(){
     <div class="aboutgrid">
       <div class="abouttext">
         <p class="lead">${esc(ABOUT.intro)}</p>
-        <button type="button" class="morebtn" id="readmore" aria-expanded="false" aria-controls="aboutmore">Read More <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="more" id="aboutmore" inert><div class="moreinner">
-          ${ABOUT.more.map(t => `<p>${esc(t)}</p>`).join("")}
-          <button type="button" class="morebtn" id="closemore">Close <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 15l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div></div>
+        ${moreHTML("aboutmore", ABOUT.more)}
         <dl class="aboutfacts">${ABOUT.facts.map(([k,v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
       </div>
       <figure class="aboutphoto"><img src="img/brand/gustavo.webp" alt="Gustavo Mondini smiling and giving a thumbs up at Gamescom Latam" width="800" height="800" loading="lazy"></figure>
     </div>
-  </section>`;
-  // About Me: "Read More" opens the rest of the text as a drop down, "Close" folds it back
-  const more = document.getElementById("aboutmore"), openBtn = document.getElementById("readmore"), closeBtn = document.getElementById("closemore");
-  if (more && openBtn && closeBtn) {
-    const toggle = on => {
-      more.classList.toggle("open", on);
-      if (on) more.removeAttribute("inert"); else more.setAttribute("inert", "");
-      openBtn.setAttribute("aria-expanded", String(on)); openBtn.hidden = on;
-      if (on) { const p = more.querySelector("p"); p.tabIndex = -1; p.focus({preventScroll:true}); } else openBtn.focus({preventScroll:true});
-    };
-    openBtn.addEventListener("click", () => toggle(true));
-    closeBtn.addEventListener("click", () => toggle(false));
-  }
+  </section>
+  <section class="projects" aria-labelledby="op">
+    <h2 id="op">Other Projects</h2>
+  </section>
+  ${railHTML(OTHER, "Other projects")}`;
   // duplicates exist only for the looping animation; hidden from screen readers
-  app.querySelectorAll(".track .card").forEach((c,i)=>{ if(i>=PROJECTS.length){c.setAttribute("aria-hidden","true");c.tabIndex=-1;} });
-  initRail();
+  app.querySelectorAll(".track").forEach(t => { const n = +t.dataset.n; t.querySelectorAll(".card").forEach((c,i) => { if (i >= n) { c.setAttribute("aria-hidden","true"); c.tabIndex = -1; } }); });
+  initRail(); initMore();
 }
 
-function project(p){
-  const clips = (p.clips||[]).map(u => `<div class="video"><video src="${esc(u)}" controls muted loop playsinline preload="none"></video></div>`);
-  const yt = (p.videos||[]).map(id => id
-    ? `<div><div class="video"><iframe src="https://www.youtube.com/embed/${esc(id)}" title="${esc(p.title)} video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="alt"><a href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener">Watch on YouTube</a></p></div>`
-    : `<div class="video">Video coming soon</div>`);
-  const fact = (k,v) => v ? `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>` : "";
+function mediaKit(p){
   const carouselOf = (images, label, full) => (images && images.length) ? `<div class="car${full ? " full" : ""}" role="group" aria-roledescription="carousel" aria-label="${esc(label)} images">${
       images.map((im,k) => `<figure class="slide${im.fit ? " fit" : ""}">${im.src
         ? `<a class="zoom" href="${esc(im.src)}" target="_blank" rel="noopener" aria-label="Open ${esc(im.title)} in full size"><img src="${esc(im.src)}" alt="${esc(im.title)}" loading="lazy"></a>`
@@ -410,8 +520,21 @@ function project(p){
   // blocks: render media in the exact order given. {video:{title,id,note}} = full-size video, {images:[...]} = full-width carousel, {videos:[...]} = videos side by side.
   const blocks = g => (g.blocks||[]).map(b => b.video ? `<div class="featured">${oneVideo(b.video.title, b.video.id, b.video.note)}</div>`
     : b.images ? carouselOf(b.images, g.title, true)
-    : b.videos ? `<div class="media">${b.videos.map(v => oneVideo(v.title, v.id, v.note)).join("")}</div>` : "").join("");
-  const contrib = (p.contribution||[]).map(g => `<h3>${esc(g.title)}</h3>${g.points && g.points.length ? `<ul>${g.points.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}${g.blocks ? blocks(g) : media(g) + featured(g)}`).join("");
+    : b.videos ? `<div class="media">${b.videos.map(v => oneVideo(v.title, v.id, v.note)).join("")}</div>`
+    : b.mosaic ? `<div class="media">${b.mosaic.images ? `<div class="cell">${carouselOf(b.mosaic.images, g.title)}</div>` : ""}${(b.mosaic.videos||[]).map(v => oneVideo(v.title, v.id, v.note)).join("")}</div>`
+    : b.text ? `<p class="para">${esc(b.text)}</p>`
+    : b.list ? `<ul class="blist">${b.list.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "").join("");
+  const groups = list => (list||[]).map(g => `<h3>${esc(g.title)}</h3>${g.points && g.points.length ? `<ul>${g.points.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}${g.blocks ? blocks(g) : media(g) + featured(g)}`).join("");
+  return {oneVideo, groups};
+}
+
+function project(p){
+  const clips = (p.clips||[]).map(u => `<div class="video"><video src="${esc(u)}" controls muted loop playsinline preload="none"></video></div>`);
+  const yt = (p.videos||[]).map(id => id
+    ? `<div><div class="video"><iframe src="https://www.youtube.com/embed/${esc(id)}" title="${esc(p.title)} video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="alt"><a href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener">Watch on YouTube</a></p></div>`
+    : `<div class="video">Video coming soon</div>`);
+  const fact = (k,v) => v ? `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>` : "";
+  const kit = mediaKit(p), oneVideo = kit.oneVideo, contrib = kit.groups(p.contribution);
   app.innerHTML = `<div class="project">
     <p class="topbtn"><a class="steam" href="#/">← Back to Home Page</a></p>
     <h1>${esc(p.title)}</h1>
@@ -457,11 +580,12 @@ function route(){
   cleanups.forEach(f => f()); cleanups = [];
   const slug = location.hash.replace("#/","");
   const p = PROJECTS.find(x => x.slug === slug);
+  const o = OTHER.find(x => x.slug === slug);
   if (p && p.locked) { history.replaceState(null,"","#/"); return route(); }
-  document.body.classList.toggle("home", !p);
-  const content = p ? project(p) : home();
+  document.body.classList.toggle("home", !p && !o);
+  const content = p ? project(p) : o ? category(o) : home();
   window.scrollTo(0,0);
-  document.title = p ? `${p.title} – Gustavo Mondini` : "Gustavo Mondini's Portfolio";
+  document.title = p ? `${p.title} – Gustavo Mondini` : o ? `${o.title} – Gustavo Mondini` : "Gustavo Mondini's Portfolio";
   app.classList.add("wrap");
 }
 window.addEventListener("hashchange", route);
