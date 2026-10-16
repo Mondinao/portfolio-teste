@@ -136,7 +136,8 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .slide .zoom{display:block;width:100%;height:100%;cursor:zoom-in}
 .slide.fit{background:#fff}
 .slide.fit .zoom{position:absolute;top:0;left:0;right:0;bottom:76px;width:auto;height:auto}
-.slide.fit img{object-fit:contain;background:#fff}
+.slide.fit img{object-fit:contain;background:transparent}
+.slide video{position:absolute;top:0;left:0;right:0;bottom:76px;width:100%;height:calc(100% - 76px);object-fit:contain;display:block;cursor:pointer}
 .slide.fit .cap{min-height:76px;display:flex;align-items:center;padding:14px 22px;background:#0e0e10}
 .slide .ph{display:grid;place-items:center;color:rgba(255,255,255,.7);font-size:.9rem}
 .cap{position:absolute;left:0;right:0;bottom:0;padding:48px 22px 18px;font:800 clamp(1.15rem,2.8vw,1.7rem)/1.1 "Bricolage Grotesque",sans-serif;color:#fff;background:linear-gradient(to top,rgba(8,8,10,.88),rgba(8,8,10,0))}
@@ -293,8 +294,16 @@ const OTHER = [
      overview:{
        intro:"The game is a turn-based RPG and dungeon crawler, heavily inspired by SMT, Pokémon, and Persona.",
        more:["As the proposal for the thesis problem, we decided to emphasize the nuance between attributes and resources by 'shuffling' them. We transformed attributes such as strength, defense, magic, and maximum number of turns into consumable and collectible resources. In this way, we converted passive elements into active ones for an RPG, aiming to revitalize the genre and address a common critique of more traditional turn-based games."]},
-     // reel: replace each src ("img/academic/xxx.png") with your image; the title is the caption.
-     reel:[{src:"",title:"Dormente Image 1"},{src:"",title:"Dormente Image 2"},{src:"",title:"Dormente Image 3"},{src:"",title:"Dormente Image 4"}],
+     // reel: images {src,title,fit,bg} and silent auto-playing videos {video,poster,title}. The title is the caption.
+     reel:[
+       {src:"img/academic/dormente-level-diagram-1st-block.png",title:"Dormente Level Diagram: 1st Block",fit:true,bg:"#595959"},
+       {src:"img/academic/dormente-level-diagram-2nd-block.png",title:"Dormente Level Diagram: 2nd Block",fit:true,bg:"#595959"},
+       {src:"img/academic/dormente-level-diagram-3rd-block-boss.png",title:"Dormente Level Diagram: 3rd Block (Boss)",fit:true,bg:"#595959"},
+       {src:"img/academic/dormente-portal.png",title:"Dormente Portal",fit:true,bg:"#202020"},
+       {src:"img/academic/dormente-enemy-patrol-spline.png",title:"Dormente Enemies Patrol with Spline",fit:true,bg:"#191919"},
+       {video:"img/academic/dormente-patrol-example.mp4",poster:"img/academic/dormente-patrol-example-poster.jpg",title:"Patrol Example",bg:"#000"},
+       {src:"",title:"Stonejourner Shader Config"},
+       {video:"img/academic/dormente-stellar-space-shader.mp4",poster:"img/academic/dormente-stellar-space-shader-poster.jpg",title:"Stellar Space Shader Config",bg:"#000"}],
      youtube:{title:"Dormente VFX Showcase", id:"1qKQnDoL_OI"},
      summaries:{
        level:"I planned each scene in Figma from a top-down view, using shapes, colors, arrows and indicators, and marked the tutorial directly on the diagrams. The dungeon has 3 floors, or 'Blocks', with a significant increase in difficulty between them. After the artists made a blockout in Blender from my diagrams, I added the enemy patrols with a 'Patrol Points' system and took part in the first set dressing for the university milestone in June 2024.",
@@ -512,7 +521,9 @@ function home(){
 
 function mediaKit(p){
   const carouselOf = (images, label, full) => (images && images.length) ? `<div class="car${full ? " full" : ""}" role="group" aria-roledescription="carousel" aria-label="${esc(label)} images">${
-      images.map((im,k) => `<figure class="slide${im.fit ? " fit" : ""}">${im.src
+      images.map((im,k) => `<figure class="slide${im.fit || im.video ? " fit" : ""}"${im.bg ? ` style="background:${esc(im.bg)}"` : ""}>${im.video
+        ? `<video src="${esc(im.video)}"${im.poster ? ` poster="${esc(im.poster)}"` : ""} muted playsinline preload="metadata" aria-label="${esc(im.title)}"></video>`
+        : im.src
         ? `<a class="zoom" href="${esc(im.src)}" target="_blank" rel="noopener" aria-label="Open ${esc(im.title)} in full size"><img src="${esc(im.src)}" alt="${esc(im.title)}" loading="lazy"></a>`
         : `<div class="ph" style="background:linear-gradient(${135+k*40}deg, ${p.color}, #0b0b0d)">Image placeholder</div>`}<figcaption class="cap">${esc(im.title)}</figcaption></figure>`).join("")
     }${images.length > 1 ? `<button type="button" class="arrow prev" aria-label="Previous image"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="arrow next" aria-label="Next image"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="count" aria-hidden="true"></span>` : ""}</div>` : "";
@@ -571,18 +582,29 @@ function initCarousels(){
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   app.querySelectorAll(".car").forEach(car => {
     const slides = [...car.querySelectorAll(".slide")];
+    const vids = slides.map(sl => sl.querySelector("video"));
     const prev = car.querySelector(".arrow.prev"), next = car.querySelector(".arrow.next"), count = car.querySelector(".count");
-    let i = 0, t = null, paused = false;
+    let i = 0, t = null, paused = false, visible = true;
+    const play = v => { if (v && visible && !reduce) { const r = v.play(); if (r && r.catch) r.catch(() => {}); } };
     const show = n => { i = (n + slides.length) % slides.length;
       slides.forEach((s,k) => { s.classList.toggle("on", k===i); s.setAttribute("aria-hidden", k===i ? "false" : "true"); });
+      vids.forEach((v,k) => { if (!v) return; if (k === i) { v.currentTime = 0; play(v); } else v.pause(); });
       if (count) count.textContent = (i+1) + " / " + slides.length; };
     const stop = () => clearTimeout(t);
-    const start = () => { stop(); if (reduce || paused || slides.length < 2) return; t = setTimeout(() => { show(i+1); start(); }, 3000); };
+    // image slides advance after 3 s; a video slide advances when the video ends
+    const start = () => { stop(); if (reduce || paused || slides.length < 2 || vids[i]) return; t = setTimeout(() => { show(i+1); start(); }, 3000); };
     const hold = () => { paused = true; stop(); }, release = () => { paused = false; start(); };
+    vids.forEach((v,k) => { if (!v) return; v.muted = true; v.loop = false;
+      v.addEventListener("ended", () => { if (k !== i) return; if (paused || reduce) { v.currentTime = 0; play(v); } else { show(i+1); start(); } });
+      v.addEventListener("click", () => { if (v.paused) play(v); else v.pause(); }); });
     car.addEventListener("mouseenter", hold); car.addEventListener("mouseleave", release);
     car.addEventListener("focusin", hold); car.addEventListener("focusout", release);
     if (prev) prev.addEventListener("click", () => { show(i-1); start(); });
     if (next) next.addEventListener("click", () => { show(i+1); start(); });
+    if ("IntersectionObserver" in window) {            // videos only play while the reel is on screen
+      const io = new IntersectionObserver(es => { visible = es[0].isIntersecting; const v = vids[i]; if (v) { if (visible) play(v); else v.pause(); } }, {threshold: 0.35});
+      io.observe(car); cleanups.push(() => io.disconnect());
+    }
     show(0); start(); cleanups.push(stop);
   });
 }
