@@ -85,6 +85,19 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .contrib .para{max-width:65ch;margin:0 0 1em}
 .blist{max-width:65ch;margin:0 0 1.2em;padding-left:1.2em}
 .blist li{margin:10px 0}
+.acadcover{display:flex;flex-direction:column;gap:14px}
+.acadcover p{margin:0}
+.acadinfo .lead{margin:0 0 6px;font-size:1.2rem;color:var(--ink)}
+.acadmedia{margin:36px 0 8px}
+.rolegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 48px;margin:32px 0 8px}
+.role h3{font-size:1.15rem;color:var(--accent);margin:0 0 8px}
+.role p{margin:0}
+.audiolist{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.audiolist li{display:grid;gap:4px}
+.atitle{font-size:.85rem;color:var(--muted)}
+.audiolist audio{width:100%;height:38px}
+.soonbox{padding:8px 12px;border:1px dashed var(--line);border-radius:8px;color:var(--muted);font-size:.9rem}
+@media (max-width:800px){.rolegrid{grid-template-columns:1fr}}
 .soon{color:var(--muted)}
 @media (max-width:800px){.acadtop{grid-template-columns:1fr;gap:24px}.coverlink{max-width:315px}}
 .partners{padding:8px 0 48px}
@@ -280,29 +293,16 @@ const OTHER = [
      overview:{
        intro:"The game is a turn-based RPG and dungeon crawler, heavily inspired by SMT, Pokémon, and Persona.",
        more:["As the proposal for the thesis problem, we decided to emphasize the nuance between attributes and resources by 'shuffling' them. We transformed attributes such as strength, defense, magic, and maximum number of turns into consumable and collectible resources. In this way, we converted passive elements into active ones for an RPG, aiming to revitalize the genre and address a common critique of more traditional turn-based games."]},
-     groups:[
-       {title:"Game Design", blocks:[
-         {text:"As a game designer, I developed and balanced the abilities. Together with the team, we developed the concept of resource subversion, how the checkpoint systems would work, and the progression system. One of my most important tasks in this game was designing the Skill Tree for the main character, in collaboration with my Level Design colleague."},
-         {images:[{src:"",title:"Skill Tree Spreadsheet",fit:true}]},
-         {text:"The spreadsheet represents each unlocked skill, its currency cost and its damage/healing values and effects. As the team is from Brazil, our main language to communicate is Brazilian Portuguese, which is why the spreadsheet is in Portuguese."}]},
-       {title:"Level Design", blocks:[
-         {text:"Following my usual method, for the level design of Dormente, I tried to design the scenes in Figma from a top-down view and used shapes, colors, arrows, and indicators to plan the levels."},
-         {images:[{src:"",title:"Level Diagram 1",fit:true},{src:"",title:"Level Diagram 2",fit:true},{src:"",title:"Level Diagram 3",fit:true}]},
-         {text:"The dungeon has 3 floors or 'Blocks,' with a significant increase in difficulty between them. To design the game's tutorial, I use markers directly on the diagram."},
-         {mosaic:{images:[{src:"",title:"Blockout in Blender"},{src:"",title:"Basic Set Dressing"}], videos:[{title:"Level Progress", id:""}]}},
-         {text:"After finishing the diagrams, I sent them to the artists to design the assets and create a general blockout in Blender so we could test the proportions and layout of the scene."},
-         {text:"After the general tests, we began basic set dressing for the first university milestone in June 2024."},
-         {text:"Since the diagram already included information on enemy patrols, I took the opportunity to incorporate them using a simple 'Patrol Points' system developed by our lead programmer, making the level structure functional."},
-         {text:"To complete the project, we still need to finish implementing the second floor and perform the full set dressing for all floors. Since these tasks have some artistic and other area demands, I took the opportunity to continue with my other tasks related to VFX, which are detailed next."}]},
-       {title:"VFX & Tech Art", blocks:[
-         {text:"I developed various shaders and particle effects for the game. I can list the following: emissive particle shaders, torch flame particle effects, sword flame, healing abilities, defensive skills, spark effects for attacks, breakable objects, chest-opening VFX, and others. The video provides a visualization of what I have done so far, and to showcase some of my techniques, I'll explain the portal effect in the section below."},
-         {text:"The \"Stonejourner\" portal consists of 4 main elements:"},
-         {list:[
-           "The particle system is a loop with emissive particles (using a material created in the shader graph to handle HDR and a texture map). In the particle system, I use a negative radial velocity over lifetime, simulating the effect of the particles being drawn into the portal. I use Size over Lifetime to make them appear and disappear more naturally.",
-           "The \"phantasmagoric\" spirals orbiting the portal are created using a shader that distorts the UVs of a texture with the \"Twirl\" node, multiplying the time by a Vector 2 of velocity for its offset. It's a classic yet efficient formula. The shader also incorporates colors to allow customization and other appearance control parameters.",
-           "The \"Stellar Space\" shader is a bit more complex but generally consists of a noise pattern exposed in a triplanar manner and overlaid with a Fresnel effect. It incorporates HDR color information to simulate stars and create a glittering appearance. This shader is applied to a quad at the center of the portal, adding to the overall effects."]},
-         {video:{title:"Dormente VFX Showcase", id:"1qKQnDoL_OI"}}]}
-     ]},
+     // reel: replace each src ("img/academic/xxx.png") with your image; the title is the caption.
+     reel:[{src:"",title:"Dormente Image 1"},{src:"",title:"Dormente Image 2"},{src:"",title:"Dormente Image 3"},{src:"",title:"Dormente Image 4"}],
+     youtube:{title:"Dormente VFX Showcase", id:"1qKQnDoL_OI"},
+     summaries:{
+       level:"I planned each scene in Figma from a top-down view, using shapes, colors, arrows and indicators, and marked the tutorial directly on the diagrams. The dungeon has 3 floors, or 'Blocks', with a significant increase in difficulty between them. After the artists made a blockout in Blender from my diagrams, I added the enemy patrols with a 'Patrol Points' system and took part in the first set dressing for the university milestone in June 2024.",
+       game:"I developed and balanced the abilities and, together with the team, shaped the resource subversion concept, the checkpoint systems and the progression. One of my main tasks was designing the Skill Tree of the main character, in collaboration with my Level Design colleague.",
+       vfx:"I created the shaders and particle effects of the game: emissive particles, torch and sword flames, healing and defensive skills, attack sparks, breakable objects and chest-opening VFX, among others. I also built the 'Stonejourner' portal, which combines an emissive particle loop, a twirl-based spiral shader and a triplanar 'Stellar Space' shader.",
+       sound:"Alongside my main tasks, I also worked on the game's sound, from effects to music. For SFX, I search for sounds that closely match the desired result, then mix, adjust and balance them in Audacity and SoundTrap to make them game-ready.",
+       audio:[{title:"Audio sample 1",src:""},{title:"Audio sample 2",src:""},{title:"Audio sample 3",src:""}]
+     }},
     {title:"Kitty's Rescue", soon:true},
     {title:"Whispers from Candelaria", soon:true},
     {title:"Simple Tasks", soon:true},
@@ -433,6 +433,11 @@ function initMore(){
 
 // Category page (e.g. Academic Games): one section per project
 const slugify = t => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+function audioList(list){
+  if (!list || !list.length) return "";
+  return `<ul class="audiolist">${list.map(a => `<li><span class="atitle">${esc(a.title)}</span>${a.src
+    ? `<audio controls preload="none" src="${esc(a.src)}"></audio>` : `<span class="soonbox">Audio coming soon</span>`}</li>`).join("")}</ul>`;
+}
 function sectionHTML(c, sec){
   const id = "sec-" + c.slug + "-" + slugify(sec.title);
   if (sec.soon) return `<section class="acad"><h2>${esc(sec.title)}</h2><p class="soon">Details coming soon.</p></section>`;
@@ -441,18 +446,24 @@ function sectionHTML(c, sec){
   const cover = sec.cover ? (sec.link
     ? `<a class="coverlink" href="${esc(sec.link)}" target="_blank" rel="noopener" aria-label="${esc(sec.linkLabel || "Open")}: ${esc(sec.title)}">${img}<span class="cl">${esc(sec.linkLabel || "Open")} ↗</span></a>`
     : `<div class="coverlink">${img}</div>`) : "";
-  const overview = sec.overview ? `<h3 class="ovh">Overview</h3><p>${esc(sec.overview.intro)}</p>${moreHTML(id + "-more", sec.overview.more)}` : "";
+  const button = sec.link ? `<p><a class="steam" href="${esc(sec.link)}" target="_blank" rel="noopener">${esc(sec.linkLabel || "Open")} ↗</a></p>` : "";
+  const overview = sec.overview ? `<p class="lead">${esc(sec.overview.intro)}</p>${moreHTML(id + "-more", sec.overview.more)}` : "";
+  const reel = sec.reel && sec.reel.length ? `<div class="cell">${kit.carouselOf(sec.reel, sec.title)}</div>` : "";
+  const video = sec.youtube ? kit.oneVideo(sec.youtube.title, sec.youtube.id) : "";
+  const sm = sec.summaries || {};
+  const role = (t, text, extra) => text ? `<div class="role"><h3>${t}</h3><p>${esc(text)}</p>${extra || ""}</div>` : "";
+  const roles = [role("Level Design", sm.level), role("Game Design", sm.game), role("VFX / Tech Art", sm.vfx), role("Sound Design", sm.sound, audioList(sm.audio))].join("");
   return `<section class="acad">
     <h2>${esc(sec.title)}</h2>
     <div class="acadtop">
-      ${cover}
+      <div class="acadcover">${cover}${button}</div>
       <div class="acadinfo">
         ${sec.roles ? `<dl class="aboutfacts"><div><dt>My roles</dt><dd>${esc(sec.roles)}</dd></div></dl>` : ""}
-        ${sec.link ? `<p><a class="steam" href="${esc(sec.link)}" target="_blank" rel="noopener">${esc(sec.linkLabel || "Open")} ↗</a></p>` : ""}
         ${overview}
       </div>
     </div>
-    <div class="contrib">${kit.groups(sec.groups)}</div>
+    ${(reel || video) ? `<div class="media acadmedia">${reel}${video}</div>` : ""}
+    ${roles ? `<div class="rolegrid">${roles}</div>` : ""}
   </section>`;
 }
 function category(c){
@@ -525,7 +536,7 @@ function mediaKit(p){
     : b.text ? `<p class="para">${esc(b.text)}</p>`
     : b.list ? `<ul class="blist">${b.list.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "").join("");
   const groups = list => (list||[]).map(g => `<h3>${esc(g.title)}</h3>${g.points && g.points.length ? `<ul>${g.points.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}${g.blocks ? blocks(g) : media(g) + featured(g)}`).join("");
-  return {oneVideo, groups};
+  return {oneVideo, groups, carouselOf};
 }
 
 function project(p){
