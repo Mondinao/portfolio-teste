@@ -87,6 +87,7 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .blist li{margin:10px 0}
 .acadcover{display:flex;flex-direction:column;gap:14px}
 .acadcover p{margin:0}
+.acadinfo .aboutfacts div + div{margin-top:12px}
 .acadinfo .lead{margin:0 0 6px;font-size:1.2rem;color:var(--ink)}
 .acadmedia{margin:36px 0 8px}
 .rolegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 48px;margin:32px 0 8px}
@@ -94,6 +95,8 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .role p{margin:0}
 .audiolist{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
 .audiolist li{display:grid;gap:4px}
+.alabel{margin:14px 0 0;font-size:.85rem;color:var(--muted)}
+.alabel + .audiolist{margin-top:6px}
 .atitle{font-size:.85rem;color:var(--muted)}
 .audiolist audio{width:100%;height:38px}
 .soonbox{padding:8px 12px;border:1px dashed var(--line);border-radius:8px;color:var(--muted);font-size:.9rem}
@@ -303,16 +306,34 @@ const OTHER = [
        {src:"img/academic/dormente-enemy-patrol-spline.png",title:"Dormente Enemies Patrol with Spline",fit:true,bg:"#191919"},
        {video:"img/academic/dormente-patrol-example.mp4",poster:"img/academic/dormente-patrol-example-poster.jpg",title:"Patrol Example",bg:"#000"},
        {src:"img/academic/dormente-2nd-block-camera-setup.png",title:"2nd Block Camera Setup",fit:true,bg:"#000"},
-       {video:"img/academic/dormente-stellar-space-shader.mp4",poster:"img/academic/dormente-stellar-space-shader-poster.jpg",title:"Stellar Space Shader Config",bg:"#000"}],
+       {video:"img/academic/dormente-stellar-space-shader.mp4",poster:"img/academic/dormente-stellar-space-shader-poster.jpg",title:"Stellar Space Shader Config",bg:"#000"},
+       {src:"img/academic/dormente-balancing-archie-skills.png",title:"Balancing Sheet: Archie's Skills (in Portuguese)",fit:true,bg:"#fff"},
+       {src:"img/academic/dormente-balancing-enemies.png",title:"Balancing Sheet: Enemies (in Portuguese)",fit:true,bg:"#fff"},
+       {src:"img/academic/dormente-balancing-general-values.png",title:"Balancing Sheet: General Values (in Portuguese)",fit:true,bg:"#fff"}],
      youtube:{title:"Dormente VFX Showcase", id:"1qKQnDoL_OI"},
      summaries:{
        level:"I planned each scene in Figma from a top-down view, using shapes, colors, arrows and indicators, and marked the tutorial directly on the diagrams. The dungeon has 3 floors, or 'Blocks', with a significant increase in difficulty between them. After the artists made a blockout in Blender from my diagrams, I added the enemy patrols with a 'Patrol Points' system and took part in the first set dressing for the university milestone in June 2024.",
        game:"I developed and balanced the abilities and, together with the team, shaped the resource subversion concept, the checkpoint systems and the progression. One of my main tasks was designing the Skill Tree of the main character, in collaboration with my Level Design colleague.",
        vfx:"I created the shaders and particle effects of the game: emissive particles, torch and sword flames, healing and defensive skills, attack sparks, breakable objects and chest-opening VFX, among others. I also built the 'Stonejourner' portal, which combines an emissive particle loop, a twirl-based spiral shader and a triplanar 'Stellar Space' shader.",
        sound:"Alongside my main tasks, I also worked on the game's sound, from effects to music. For SFX, I search for sounds that closely match the desired result, then mix, adjust and balance them in Audacity and SoundTrap to make them game-ready.",
-       audio:[{title:"Audio sample 1",src:""},{title:"Audio sample 2",src:""},{title:"Audio sample 3",src:""}]
+       audioLabel:"Theme music",
+       audio:[{title:"Come To Me Avalon",src:"audio/dormente/come-to-me-avalon.mp3"},{title:"Masamune's Dance",src:"audio/dormente/masamunes-dance.mp3"},{title:"Archie (Ambience / exploration music)",src:"audio/dormente/archie-ambience.mp3"}]
      }},
-    {title:"Kitty's Rescue", soon:true},
+    {title:"Kitty's Rescue", cover:"img/academic/kittys-rescue-cover.png", coverW:315, coverH:250,
+     link:"https://lipe-gamedev.itch.io/kitty-ao-resgate", linkLabel:"Play the game on itch.io",
+     engine:"Unreal Engine 4",
+     roles:"Game Designer, Narrative Designer, Encounter Designer, Level Designer and Sound Designer",
+     overview:{
+       intro:"A game made between September and November 2023 for university. The project's theme was transmedia, and the concept was to subvert a medium: we chose to subvert the tale of Puss in Boots so that the protagonist is the cat's partner, Kitty Softpaws.",
+       more:["It is an action and platforming game inspired by games like Crash Bandicoot, with a combat concept inspired by hack and slash games like Devil May Cry and God of War."]},
+     youtube:{title:"Kitty's Rescue Video", id:"L7qnA5mGZwQ"},
+     summaries:{
+       level:"I made the diagrams, blockout and set dressing of the levels. I developed the platforming challenges based on iconic references such as Crash Bandicoot and Ben 10 on PSP, and implemented the navigation systems with AI and NavMesh.",
+       game:"I wrote the narrative, balanced the enemies and developed the combos and the combat behavior of the enemies. I also worked as event and encounter designer.",
+       sound:"I developed all of the game's sounds and a unique soundtrack for each level.",
+       audioLabel:"Music & SFX",
+       audio:[{title:"Music: Under the Hood",src:"audio/kittys-rescue/under-the-hood.mp3"},{title:"Music: Felin",src:"audio/kittys-rescue/felin.mp3"},{title:"SFX: Player Jump on Land",src:"audio/kittys-rescue/player-jump-on-land.mp3"},{title:"SFX: Player Slash",src:"audio/kittys-rescue/player-slash.mp3"}]
+     }},
     {title:"Whispers from Candelaria", soon:true},
     {title:"Simple Tasks", soon:true},
     {title:"Bluebell Project", soon:true}
@@ -442,9 +463,9 @@ function initMore(){
 
 // Category page (e.g. Academic Games): one section per project
 const slugify = t => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-function audioList(list){
+function audioList(list, label){
   if (!list || !list.length) return "";
-  return `<ul class="audiolist">${list.map(a => `<li><span class="atitle">${esc(a.title)}</span>${a.src
+  return `${label ? `<p class="alabel">${esc(label)}</p>` : ""}<ul class="audiolist">${list.map(a => `<li><span class="atitle">${esc(a.title)}</span>${a.src
     ? `<audio controls preload="none" src="${esc(a.src)}"></audio>` : `<span class="soonbox">Audio coming soon</span>`}</li>`).join("")}</ul>`;
 }
 function sectionHTML(c, sec){
@@ -461,17 +482,17 @@ function sectionHTML(c, sec){
   const video = sec.youtube ? kit.oneVideo(sec.youtube.title, sec.youtube.id) : "";
   const sm = sec.summaries || {};
   const role = (t, text, extra) => text ? `<div class="role"><h3>${t}</h3><p>${esc(text)}</p>${extra || ""}</div>` : "";
-  const roles = [role("Level Design", sm.level), role("Game Design", sm.game), role("VFX / Tech Art", sm.vfx), role("Sound Design", sm.sound, audioList(sm.audio))].join("");
+  const roles = [role("Level Design", sm.level), role("Game Design", sm.game), role("VFX / Tech Art", sm.vfx), role("Sound Design", sm.sound, audioList(sm.audio, sm.audioLabel))].join("");
   return `<section class="acad">
     <h2>${esc(sec.title)}</h2>
     <div class="acadtop">
       <div class="acadcover">${cover}${button}</div>
       <div class="acadinfo">
-        ${sec.roles ? `<dl class="aboutfacts"><div><dt>My roles</dt><dd>${esc(sec.roles)}</dd></div></dl>` : ""}
+        ${(sec.roles || sec.engine) ? `<dl class="aboutfacts">${sec.roles ? `<div><dt>My roles</dt><dd>${esc(sec.roles)}</dd></div>` : ""}${sec.engine ? `<div><dt>Engine</dt><dd>${esc(sec.engine)}</dd></div>` : ""}</dl>` : ""}
         ${overview}
       </div>
     </div>
-    ${(reel || video) ? `<div class="media acadmedia">${reel}${video}</div>` : ""}
+    ${reel ? `<div class="media acadmedia">${reel}${video}</div>` : video ? `<div class="featured acadmedia">${video}</div>` : ""}
     ${roles ? `<div class="rolegrid">${roles}</div>` : ""}
   </section>`;
 }
