@@ -106,6 +106,9 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .role p{margin:0}
 .audiolist{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
 .audiolist li{display:grid;gap:4px}
+.scframe{width:100%;height:300px;border:0;border-radius:10px;margin-top:12px}
+.sclink{margin:6px 0 0;font-size:.9rem}
+.sclink a{color:var(--muted)}
 .alabel{margin:14px 0 0;font-size:.85rem;color:var(--muted)}
 .alabel + .audiolist{margin-top:6px}
 .atitle{font-size:.85rem;color:var(--muted)}
@@ -203,7 +206,7 @@ const PROJECTS = [
        "Managed the Kanban board, organizing and tracking all tasks.",
        "Designed the asset request process for the artists."]},
      {title:"Game Design", points:[
-       "Wrote the project's first GDD and its first pitch, which were sent to publishers during pre-production.",
+       "Wrote the project's first GDD and first pitch, which were sent to publishers during pre-production.",
        "Designed the linear structure of the game's quests.",
        "Created the climb mechanic, which allows vertical navigation on level walls, an uncommon approach for a Metroidvania."]},
      {title:"Level Design", points:[
@@ -243,7 +246,7 @@ const PROJECTS = [
        "Balanced enemy damage, speed, attack delay and moveset, and their distribution across the biomes to improve progression.",
        "Designed the mirror mechanic: instead of fighting enemies, the player faces the environment inside a mirror world. The exit mirror grants special rewards and works as a fast travel, since it leads to a different place on the map than the entrance.",
        "Defined the order of many rooms to improve the game's flow, and took part in designing the map and the biomes.",
-       "Designed several quests for acquiring the ghosts, the player's skills.",
+       "Designed several quests for acquiring the ghosts, which are the player's skills.",
        "Wrote the game's narrative and dialogue."],
       featured:[{title:"Mirror World Mechanic Preview", id:"z9D22q0kZAA"}]},
      {title:"Level Design", points:[
@@ -265,16 +268,16 @@ const PROJECTS = [
    steam:"https://store.steampowered.com/app/1942330/Haunted_House/",
    contribution:[
      {title:"Game Design", points:[
-       "Created the chase mechanic for the boss rooms. Each boss has three behavior and patrol variations built as behavior trees and swapped as the player moves around the room, so the bosses feel organic and reactive instead of following one predefined behavior.",
+       "Created the chase mechanic for the boss rooms. Each boss has three behavior and patrol routines, built as behavior trees and swapped as the player moves around the room, so the bosses feel organic and reactive instead of following a single predefined behavior.",
        "Developed the concept of freeing allies in special rooms where the player faces sub-bosses.",
        "Defined the economy of the base-building system.",
        "Defined the economy and cost of the consumable items.",
-       "Developed the Trap Rooms: instead of fighting enemies, the player avoids traps to reach a final totem and complete the room. This breaks the survival-horror dynamic of this Metroidvania with a platforming feel.",
+       "Developed the Trap Rooms: instead of fighting enemies, the player avoids traps to reach a final totem and complete the room. This breaks the survival-horror dynamic of this Metroidvania, giving it a platforming feel.",
        "Wrote texts, dialogue and character biographies, and helped build the game's lore."]},
      {title:"Level Design", points:[
        "Designed rooms in the engine from diagrams drawn on paper, using primitive shapes to define colliders and objects.",
        "Handled set dressing with Unity's native 2D lighting and multiple post-processing effects to create the haunted house's terrifying atmosphere.",
-       "Developed and implemented enemies and their patrols using Splines with Bézier curves.",
+       "Developed and implemented enemies and their patrols using splines with Bézier curves.",
        "Developed and implemented the bosses in the boss scenes.",
        "Built the basement boss rooms, where the player fights sub-bosses to free allies who become new playable characters.",
        "Set up the game's cameras with Cinemachine.",
@@ -291,7 +294,7 @@ const PROJECTS = [
      {title:"Biggest Level Design Challenge", points:[
        "Every room is randomly placed within each biome, so a room's internal layout, its enemies and their patrols had to make sense no matter where the player entered or exited."]},
      {title:"VFX", points:[
-       "Learned a VFX plugin to create particles, ghostly barriers, crystal destruction and some of the post-processing used in the levels."]}
+       "Learned to use a VFX plugin to create particles, ghostly barriers, crystal destruction and some of the post-processing used in the levels."]}
    ],
    text:"A roguelite stealth-adventure that reimagines the classic Atari game. Lyn Graves sneaks through a procedurally generated mansion to recover urn shards guarded by bosses, and every run reshuffles the layout and enemy placement.",
    clips:[], videos:[]}
@@ -304,17 +307,19 @@ const OTHER = [
   {slug:"academic-games", title:"Academic Games", sub:"Games developed during my degree", color:"#b4577f", sections:[
     {title:"Dormente", cover:"img/academic/dormente-cover.png", coverW:315, coverH:214,
      link:"https://mondinao.itch.io/dormente-demo", linkLabel:"Play the demo on itch.io",
+     genre:"Turn-based RPG and dungeon crawler", dateLabel:"Developed", date:"From February 2024, as a university thesis project",
+     engine:"Unity",
      roles:"Game Designer, Level Designer, VFX & Tech Artist and Narrative Designer",
      overview:{
-       intro:"The game is a turn-based RPG and dungeon crawler, heavily inspired by SMT, Pokémon, and Persona.",
-       more:["As the proposal for the thesis problem, we decided to emphasize the nuance between attributes and resources by 'shuffling' them. We transformed attributes such as strength, defense, magic, and maximum number of turns into consumable and collectible resources. In this way, we converted passive elements into active ones for an RPG, aiming to revitalize the genre and address a common critique of more traditional turn-based games."]},
+       intro:"The game is a turn-based RPG and dungeon crawler, heavily inspired by SMT, Pokémon and Persona.",
+       more:["As the proposal for our thesis, we decided to emphasize the nuance between attributes and resources by 'shuffling' them. We transformed attributes such as strength, defense, magic and maximum number of turns into consumable and collectible resources. In this way, we turned passive elements into active ones for an RPG, aiming to revitalize the genre and address a common criticism of more traditional turn-based games."]},
      // reel: images {src,title,fit,bg} and silent auto-playing videos {video,poster,title}. The title is the caption.
      reel:[
        {src:"img/academic/dormente-level-diagram-1st-block.png",title:"Dormente Level Diagram: 1st Block",fit:true,bg:"#595959"},
        {src:"img/academic/dormente-level-diagram-2nd-block.png",title:"Dormente Level Diagram: 2nd Block",fit:true,bg:"#595959"},
        {src:"img/academic/dormente-level-diagram-3rd-block-boss.png",title:"Dormente Level Diagram: 3rd Block (Boss)",fit:true,bg:"#595959"},
        {src:"img/academic/dormente-portal.png",title:"Dormente Portal",fit:true,bg:"#202020"},
-       {src:"img/academic/dormente-enemy-patrol-spline.png",title:"Dormente Enemies Patrol with Spline",fit:true,bg:"#191919"},
+       {src:"img/academic/dormente-enemy-patrol-spline.png",title:"Dormente Enemy Patrols with Splines",fit:true,bg:"#191919"},
        {video:"img/academic/dormente-patrol-example.mp4",poster:"img/academic/dormente-patrol-example-poster.jpg",title:"Patrol Example",bg:"#000"},
        {src:"img/academic/dormente-2nd-block-camera-setup.png",title:"2nd Block Camera Setup",fit:true,bg:"#000"},
        {video:"img/academic/dormente-stellar-space-shader.mp4",poster:"img/academic/dormente-stellar-space-shader-poster.jpg",title:"Stellar Space Shader Config",bg:"#000"},
@@ -324,24 +329,25 @@ const OTHER = [
      youtube:{title:"Dormente VFX Showcase", id:"1qKQnDoL_OI"},
      summaries:{
        level:"I planned each scene in Figma from a top-down view, using shapes, colors, arrows and indicators, and marked the tutorial directly on the diagrams. The dungeon has 3 floors, or 'Blocks', with a significant increase in difficulty between them. After the artists made a blockout in Blender from my diagrams, I added the enemy patrols with a 'Patrol Points' system and took part in the first set dressing for the university milestone in June 2024.",
-       game:"I developed and balanced the abilities and, together with the team, shaped the resource subversion concept, the checkpoint systems and the progression. One of my main tasks was designing the Skill Tree of the main character, in collaboration with my Level Design colleague.",
-       vfx:"I created the shaders and particle effects of the game: emissive particles, torch and sword flames, healing and defensive skills, attack sparks, breakable objects and chest-opening VFX, among others. I also built the 'Stonejourner' portal, which combines an emissive particle loop, a twirl-based spiral shader and a triplanar 'Stellar Space' shader.",
-       sound:"Alongside my main tasks, I also worked on the game's sound, from effects to music. For SFX, I search for sounds that closely match the desired result, then mix, adjust and balance them in Audacity and SoundTrap to make them game-ready.",
+       game:"I developed and balanced the abilities and, together with the team, shaped the resource subversion concept, the checkpoint systems and the progression system. One of my main tasks was designing the Skill Tree of the main character, in collaboration with my Level Design colleague.",
+       vfx:"I created shaders and particle effects for the game: emissive particles, torch and sword flames, healing and defensive skills, attack sparks, breakable objects and chest-opening VFX, among others. I also built the 'Stonejourner' portal, which combines an emissive particle loop, a twirl-based spiral shader and a triplanar 'Stellar Space' shader.",
+       sound:"Alongside my main tasks, I also worked on the game's sound, from effects to music. For SFX, I look for sounds that closely match the desired result, then mix, adjust and balance them in Audacity and SoundTrap to make them game-ready.",
        audioLabel:"Theme music",
        audio:[{title:"Come To Me Avalon",src:"audio/dormente/come-to-me-avalon.mp3"},{title:"Masamune's Dance",src:"audio/dormente/masamunes-dance.mp3"},{title:"Archie (Ambience / exploration music)",src:"audio/dormente/archie-ambience.mp3"}]
      }},
     {title:"Kitty's Rescue", cover:"img/academic/kittys-rescue-cover.png", coverW:315, coverH:250,
      link:"https://lipe-gamedev.itch.io/kitty-ao-resgate", linkLabel:"Play the game on itch.io",
+     genre:"Action platformer with hack and slash combat", dateLabel:"Developed", date:"September to November 2023",
      engine:"Unreal Engine 4",
      roles:"Game Designer, Narrative Designer, Encounter Designer, Level Designer and Sound Designer",
      overview:{
-       intro:"A game made between September and November 2023 for university. The project's theme was transmedia, and the concept was to subvert a medium: we chose to subvert the tale of Puss in Boots so that the protagonist is the cat's partner, Kitty Softpaws.",
-       more:["It is an action and platforming game inspired by games like Crash Bandicoot, with a combat concept inspired by hack and slash games like Devil May Cry and God of War."]},
+       intro:"A game made for university between September and November 2023. The theme of the project was transmedia, so we chose to subvert a medium: we subverted the tale of Puss in Boots so that the protagonist is the cat's partner, Kitty Softpaws.",
+       more:["It is an action platformer inspired by games like Crash Bandicoot, with combat inspired by hack and slash games like Devil May Cry and God of War."]},
      youtube:{title:"Kitty's Rescue Video", id:"L7qnA5mGZwQ"},
      summaries:{
-       level:"I made the diagrams, blockout and set dressing of the levels. I developed the platforming challenges based on iconic references such as Crash Bandicoot and Ben 10 on PSP, and implemented the navigation systems with AI and NavMesh.",
-       game:"I wrote the narrative, balanced the enemies and developed the combos and the combat behavior of the enemies. I also worked as event and encounter designer.",
-       sound:"I developed all of the game's sounds and a unique soundtrack for each level.",
+       level:"I made the diagrams, blockout and set dressing for the levels. I developed platforming challenges based on iconic references such as Crash Bandicoot and Ben 10 on PSP, and implemented navigation systems with AI and NavMesh.",
+       game:"I wrote the narrative, balanced the enemies, and developed the combos and combat behavior of the enemies. I also worked as an event and encounter designer.",
+       sound:"I created all of the game's sounds and a unique soundtrack for each level.",
        audioLabel:"Music & SFX",
        audio:[{title:"Music: Under the Hood",src:"audio/kittys-rescue/under-the-hood.mp3"},{title:"Music: Felin",src:"audio/kittys-rescue/felin.mp3"},{title:"SFX: Player Jump on Land",src:"audio/kittys-rescue/player-jump-on-land.mp3"},{title:"SFX: Player Slash",src:"audio/kittys-rescue/player-slash.mp3"}]
      }},
@@ -353,7 +359,7 @@ const OTHER = [
      roles:"Game Designer, Level Designer, Narrative Designer and Composer / Sound Designer",
      overview:{
        intro:"A psychological suspense thriller in the style of Little Nightmares and Limbo, where the player solves puzzles in a 3D platforming environment to escape a ghostly locomotive.",
-       more:["The aim of the semester was to address a historical event or an environmental disaster. My team and I chose to depict the construction of the Madeira-Mamoré railway, inaugurated in 1912, which caused the deaths of many workers and staff due to poor conditions and inflated foreign investment.",
+       more:["The goal of the semester was to address a historical event or an environmental disaster. My team and I chose to depict the construction of the Madeira-Mamoré railway, inaugurated in 1912, which caused the deaths of many workers and staff because of poor conditions and inflated foreign investment.",
              "Join Joanna on this final journey into the past, on this last locomotive. Discover the marks of what was hidden, and listen to those who were never heard..."]},
      // cast: character sprites floating in their own band. h = height in px, dy = vertical offset in px.
      cast:{credit:"Character art by André Bueno (Concept & 2D Artist)", items:[
@@ -362,18 +368,54 @@ const OTHER = [
        {src:"img/academic/whispers-char-3.webp", alt:"Character art: a frightened ghostly worker in a hard hat", h:250, dy:0},
        {src:"img/academic/whispers-char-4.webp", alt:"Character art: a ghostly butcher in an apron holding a knife", h:290, dy:-4}]},
      summaries:{
-       level:"I crafted the structure of the first level and helped with the post-processing controls and the ambiance of the scenes.",
+       level:"I designed the structure of the first level and helped with the post-processing settings and the ambiance of the scenes.",
        game:"I was responsible for developing the tutorial flow and, together with my team, for determining the game's progression.",
        narrative:"This was my main contribution. Building on the historical research of my colleague Alexandre Luz, I developed the characters' personalities, motivations and purposes, and used a three-act structure to tie the story together. Joanna, a journalist, falls asleep on a train and wakes up in a parallel world, where in each car she solves a puzzle and speaks with someone harmed by the construction of the railway.",
        sound:"As it was my first horror game, I studied and played several games to find references and methods. Using an open-source sound library, I mixed and adjusted the sounds to create an oppressive and terrifying atmosphere. The game's thematic soundtrack became memorable enough to stay in the player's mind even in silence.",
        audioLabel:"OST",
        audio:[{title:"Mamorequiem",src:"audio/whispers/mamorequiem.mp3"}]
      }},
-    {title:"Simple Tasks", soon:true},
-    {title:"Bluebell Project", soon:true}
+    {title:"Simple Tasks", cover:"img/academic/simple-tasks-cover.png", coverW:315, coverH:250,
+     link:"https://luckyboys-team.itch.io/simple-tasks", linkLabel:"Play the game on itch.io",
+     date:"June 2022, after 3 months of development",
+     engine:"Unity",
+     roles:"Game Designer, Narrative Designer and Composer / Sound Designer",
+     overview:{
+       intro:"Simple Tasks is a game in which you control a protagonist on the autism spectrum. They must complete small tasks around their home and, through their unique perspective, everyday activities become a little more enjoyable for the player, encouraging reflection and, above all, inclusion.",
+       more:["The theme of the semester was inclusion. We researched in depth what autism really is, and spoke with parents of autistic children and with professionals in the field. Our goal was not to simulate perfectly what it is like to be on the autism spectrum, because that is not our place to represent. Instead, we wanted to prompt typical players to reflect on the topic and, through cultural proximity, bring more awareness and conversation into everyday life, fostering a more natural form of inclusion."]},
+     youtube:{title:"Simple Tasks Video", id:"Llu0Igfd6sU"},
+     summaries:{
+       game:"My biggest challenge was aligning the concept with the gameplay while taking great care not to seem pretentious or offensive. The research and documentation work of this semester was also crucial, and it gave me valuable experience that I would like to have more often. It was a game with real weight and importance.",
+       narrative:"I created the family context of Lo, the protagonist, through a story that unfolds as the boy tackles his challenges. By exploring the environment and interacting with collectibles, the player learns that Lo's father is a hardworking man who, because of the costs of Lo's care, ends up somewhat absent. He communicates with his son through Lo's special interest: birds. Because of this absence, the boy becomes independent and diligent, as well as creative and proactive in solving his 'simple tasks'.",
+       sound:"As in my other projects, I was responsible for the composition and sound design. Since I was also managing other areas, I composed only one thematic piece, meant to reflect childhood and tranquility and heavily inspired by the relaxing soundtracks of games like Minecraft.",
+       soundcloud:{title:"Simple Tasks OST on SoundCloud", url:"https://soundcloud.com/gmondinii12/sets/simple-tasks-ost"}
+     }},
+    {title:"Bluebell Project", cover:"img/academic/bluebell-cover.png", coverW:315, coverH:250,
+     link:"https://mondinao.itch.io/bluebell-project", linkLabel:"Play the game on itch.io",
+     genre:"Side-scrolling shooter",
+     date:"2021, after 3 months of production",
+     engine:"Unity",
+     roles:"Producer, Game Designer, Level Designer, Narrative Designer, Lead Programmer, 2D Artist and Composer / Sound Designer",
+     overview:{
+       intro:"A small side-scrolling shooter, made for a semester proposal to recreate a classic arcade game while adding an innovation that was not in the original.",
+       more:["It was the first game I made for university and my first time using the engine, long before I started taking part in game jams. I took on many roles in this small game, which was made with a lot of care and cuteness.",
+             "The protagonist controls Virginia, a girl in a dystopian future where machines have revolted against humanity. Her mother was a brilliant scientist who believed she had found a solution, but she disappears shortly after, leaving Virginia alone. In search of her mother, Virginia teams up with the only good robot in the world, Sentinel-V, built by her mother to keep her company. Together they face different environments until they reach the final terminal in cyberspace."]},
+     reel:[
+       {src:"img/academic/bluebell-tutorial-level.jpg",title:"Bluebell Project: Tutorial Level"},
+       {src:"img/academic/bluebell-city-level.jpg",title:"Bluebell Project: City Level"},
+       {src:"img/academic/bluebell-space-level.jpg",title:"Bluebell Project: Space Level"}],
+     summaries:{
+       level:"Although level design is now my specialty, in my second semester of college my role was smaller: I was responsible only for the layout, prototyping and implementation of the first level.",
+       game:"I created the mechanic that revitalized the original game: the bluebell flowers, collectibles spread throughout the game that determine the ending and add an emergent narrative. If the player collects all the bluebells in each level, Virginia finds the good ending; otherwise, she gets the 'less good' one. I also defined and developed the abilities and limitations of both the enemies and the protagonist.",
+       narrative:"With little experience and little time, I wrote short texts that explain what happened and placed them between levels as mandatory readings. They are presented as files left by Virginia's mother, guiding the player and constantly reminding them of the main objective. The narrative shines when it becomes interactive: Sentinel-V either sacrifices himself to save the world, if Virginia fails to collect all the bluebells, or survives, if she collects them all. I organized the story into a three-act structure.",
+       other:[{title:"Programming & 2D Art", text:"At the beginning of college we had no well-defined roles, so I tested many areas. The main one was programming, which became my responsibility even before we had a class on object-oriented programming. I also made the 2D art in Illustrator for the enemies and Sentinel-V, while my colleague Alexandre Luz handled the animations and the character Virginia."}],
+       sound:"In the following semesters I composed three pieces of music, one for each level, aiming for a lo-fi atmosphere with occasional arcade elements. I also used minor melodies to add more weight and drama to the narrative.",
+       audioLabel:"Music",
+       audio:[{title:"Virginia Theme",src:"audio/bluebell/virginia-theme.mp3"},{title:"Sentinel Theme",src:"audio/bluebell/sentinel-theme.mp3"},{title:"Server Theme",src:"audio/bluebell/server-theme.mp3"},{title:"Theme 20XX",src:"audio/bluebell/theme-20xx.mp3"}]
+     }}
   ]},
   {slug:"ugc", title:"UGC", sub:"User-generated content", color:"#5a6fb3", sections:[]},
-  {slug:"game-jams", title:"Game Jams", sub:"Games made in game jams", color:"#7d5ba6", sections:[]},
+  {slug:"game-jams", title:"Game Jams", sub:"Games made during game jams", color:"#7d5ba6", sections:[]},
   {slug:"game-design-youtube", title:"Game Design YouTube", sub:"Game design on YouTube", color:"#c0674b", sections:[]}
 ];
 
@@ -407,7 +449,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
 function cardHTML(p){
   // The colored gradient shows if the image is missing or fails to load.
   const img = p.cover ? `<img class="cover" src="${esc(p.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : "";
-  const small = p.sub ? esc(p.sub) : `Studio ${esc(p.studio)}<br>${esc(p.partnerLabel)} ${esc(p.partner)}${p.locked ? "<br>Details coming soon" : ""}`;
+  const small = p.sub ? esc(p.sub) : `${esc(p.studio)}<br>${esc(p.partnerLabel)}: ${esc(p.partner)}${p.locked ? "<br>Details coming soon" : ""}`;
   const label = `<div class="name"><span>${esc(p.title)}<small>${small}</small></span></div>`;
   const bg = `background:linear-gradient(160deg, ${p.color}, #0b0b0d)`;
   const cls = "card" + (p.cover ? "" : " nocover");
@@ -502,6 +544,11 @@ function audioList(list, label){
   return `${label ? `<p class="alabel">${esc(label)}</p>` : ""}<ul class="audiolist">${list.map(a => `<li><span class="atitle">${esc(a.title)}</span>${a.src
     ? `<audio controls preload="none" src="${esc(a.src)}"></audio>` : `<span class="soonbox">Audio coming soon</span>`}</li>`).join("")}</ul>`;
 }
+function soundcloud(sc){
+  if (!sc) return "";
+  const src = "https://w.soundcloud.com/player/?url=" + encodeURIComponent(sc.url) + "&color=%23f6a9cf&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false";
+  return `<iframe class="scframe" title="${esc(sc.title)}" loading="lazy" src="${src}"></iframe><p class="sclink"><a href="${esc(sc.url)}" target="_blank" rel="noopener">Open the playlist on SoundCloud ↗</a></p>`;
+}
 function sectionHTML(c, sec){
   const id = "sec-" + c.slug + "-" + slugify(sec.title);
   if (sec.soon) return `<section class="acad"><h2>${esc(sec.title)}</h2><p class="soon">Details coming soon.</p></section>`;
@@ -514,12 +561,12 @@ function sectionHTML(c, sec){
   const overview = sec.overview ? `<p class="lead">${esc(sec.overview.intro)}</p>${moreHTML(id + "-more", sec.overview.more)}` : "";
   const reel = sec.reel && sec.reel.length ? `<div class="cell">${kit.carouselOf(sec.reel, sec.title)}</div>` : "";
   const video = sec.youtube ? kit.oneVideo(sec.youtube.title, sec.youtube.id) : "";
-  const factRows = [["Genre", sec.genre], ["Released", sec.date], ["Engine", sec.engine], ["My roles", sec.roles]].filter(r => r[1]);
+  const factRows = [["Genre", sec.genre], [sec.dateLabel || "Released", sec.date], ["Engine", sec.engine], ["My roles", sec.roles]].filter(r => r[1]);
   const facts = factRows.length ? `<dl class="aboutfacts">${factRows.map(([k,v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : "";
   const cast = sec.cast ? `<div class="cast" role="group" aria-label="Character art"><ul>${sec.cast.items.map((c,k) => `<li style="--h:${c.h}px;--dy:${c.dy || 0}px;--i:${k}"><span class="sprite"><img src="${esc(c.src)}" alt="${esc(c.alt)}" loading="lazy"></span></li>`).join("")}</ul>${sec.cast.credit ? `<p class="castcredit">${esc(sec.cast.credit)}</p>` : ""}</div>` : "";
   const sm = sec.summaries || {};
-  const role = (t, text, extra) => text ? `<div class="role"><h3>${t}</h3><p>${esc(text)}</p>${extra || ""}</div>` : "";
-  const roles = [role("Level Design", sm.level), role("Game Design", sm.game), role("Narrative Design", sm.narrative), role("VFX / Tech Art", sm.vfx), role("Sound Design", sm.sound, audioList(sm.audio, sm.audioLabel))].join("");
+  const role = (t, text, extra) => text ? `<div class="role"><h3>${esc(t)}</h3><p>${esc(text)}</p>${extra || ""}</div>` : "";
+  const roles = [role("Level Design", sm.level), role("Game Design", sm.game), role("Narrative Design", sm.narrative), ...(sm.other || []).map(o => role(o.title, o.text)), role("VFX / Tech Art", sm.vfx), role("Sound Design", sm.sound, audioList(sm.audio, sm.audioLabel) + soundcloud(sm.soundcloud))].join("");
   return `<section class="acad">
     <h2>${esc(sec.title)}</h2>
     <div class="acadtop">
@@ -530,7 +577,7 @@ function sectionHTML(c, sec){
       </div>
     </div>
     ${cast}
-    ${reel ? `<div class="media acadmedia">${reel}${video}</div>` : video ? `<div class="featured acadmedia">${video}</div>` : ""}
+    ${reel && video ? `<div class="media acadmedia">${reel}${video}</div>` : reel ? `<div class="featured acadmedia">${kit.carouselOf(sec.reel, sec.title)}</div>` : video ? `<div class="featured acadmedia">${video}</div>` : ""}
     ${roles ? `<div class="rolegrid">${roles}</div>` : ""}
   </section>`;
 }
@@ -632,7 +679,7 @@ function project(p){
     <div class="top">
       <div class="info">
         <dl class="facts">
-          ${fact("My role",p.role)}${fact("Worked on it",p.period)}${fact("Studio",p.studio)}${fact(p.partnerLabel,p.partner)}${fact("Genre",p.genre)}${fact("Release",p.release)}${fact("Platform",p.platform)}${fact("Engine",p.engine)}
+          ${fact("My roles",p.role)}${fact("Worked on it",p.period)}${fact("Studio",p.studio)}${fact(p.partnerLabel,p.partner)}${fact("Genre",p.genre)}${fact("Release",p.release)}${fact("Platform",p.platform)}${fact("Engine",p.engine)}
         </dl>
         <p>${esc(p.text)}</p>
         <p><a class="steam" href="${esc(p.steam)}" target="_blank" rel="noopener">View on Steam</a></p>
