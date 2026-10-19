@@ -33,6 +33,9 @@ header p{margin:20px 0 0;font-size:clamp(1.1rem,2.4vw,1.5rem);color:var(--muted)
 .track{display:flex;gap:20px;width:max-content}
 .railwrap .arrow{top:132px}
 @media (max-width:600px){.railwrap .arrow{top:102px;width:40px;height:40px}}
+.railwrap.wide .card{aspect-ratio:16/9}
+.railwrap.wide .arrow{top:102px}
+@media (max-width:600px){.railwrap.wide .arrow{top:79px}}
 .card{position:relative;flex:0 0 auto;width:320px;aspect-ratio:4/3;border-radius:10px;overflow:hidden;display:block;background:var(--card);text-decoration:none}
 .card .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .card .name{position:absolute;inset:0;display:flex;align-items:flex-end;padding:20px;font:800 1.5rem/1.1 "Bricolage Grotesque",sans-serif;color:#fff;background:linear-gradient(to top,rgba(8,8,10,.88),rgba(8,8,10,.1) 65%);opacity:0;transition:opacity .25s}
@@ -109,6 +112,16 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .scframe{width:100%;height:300px;border:0;border-radius:10px;margin-top:12px}
 .sclink{margin:6px 0 0;font-size:.9rem}
 .sclink a{color:var(--muted)}
+.lb{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;background:rgba(6,6,8,.95)}
+.lb-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;padding-top:calc(12px + env(safe-area-inset-top,0px))}
+.lb-cap{color:var(--muted);font-size:.95rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-btns{display:flex;gap:10px;flex:none}
+.lb-btn{background:rgba(14,14,16,.9);border:2px solid var(--accent);border-radius:999px;color:var(--accent);padding:8px 18px;font:inherit;font-weight:500;cursor:pointer}
+.lb-btn:hover,.lb-btn:focus-visible{background:var(--accent);color:var(--bg)}
+.lb-stage{flex:1;min-height:0;overflow:hidden;display:grid;place-items:center;padding:4px 16px calc(20px + env(safe-area-inset-bottom,0px))}
+.lb-stage img{display:block;max-width:100%;max-height:calc(100vh - 92px);max-height:calc(100dvh - 92px);object-fit:contain;cursor:zoom-in}
+.lb.full .lb-stage{display:block;overflow:auto;text-align:center}
+.lb.full .lb-stage img{display:inline-block;max-width:none;max-height:none;cursor:zoom-out}
 .alabel{margin:14px 0 0;font-size:.85rem;color:var(--muted)}
 .alabel + .audiolist{margin-top:6px}
 .atitle{font-size:.85rem;color:var(--muted)}
@@ -304,7 +317,7 @@ const PROJECTS = [
    cover: optional image for the roleta card (empty = colored card with the title).
    sections: the projects shown on the category page. */
 const OTHER = [
-  {slug:"academic-games", title:"Academic Games", sub:"Games developed during my degree", color:"#b4577f", sections:[
+  {slug:"academic-games", title:"Academic Games", sub:"Games developed during my degree", color:"#b4577f", cover:"img/covers/academic-games.jpg", titled:true, sections:[
     {title:"Dormente", cover:"img/academic/dormente-cover.png", coverW:315, coverH:214,
      link:"https://mondinao.itch.io/dormente-demo", linkLabel:"Play the demo on itch.io",
      genre:"Turn-based RPG and dungeon crawler", dateLabel:"Developed", date:"From February 2024, as a university thesis project",
@@ -414,9 +427,10 @@ const OTHER = [
        audio:[{title:"Virginia Theme",src:"audio/bluebell/virginia-theme.mp3"},{title:"Sentinel Theme",src:"audio/bluebell/sentinel-theme.mp3"},{title:"Server Theme",src:"audio/bluebell/server-theme.mp3"},{title:"Theme 20XX",src:"audio/bluebell/theme-20xx.mp3"}]
      }}
   ]},
-  {slug:"ugc", title:"UGC", sub:"User-generated content", color:"#5a6fb3", sections:[]},
-  {slug:"game-jams", title:"Game Jams", sub:"Games made during game jams", color:"#7d5ba6", sections:[]},
-  {slug:"game-design-youtube", title:"Game Design YouTube", sub:"Game design on YouTube", color:"#c0674b", sections:[]}
+  {slug:"ugc", title:"UGC", sub:"User-generated content", color:"#5a6fb3", cover:"img/covers/ugc.jpg", titled:true, sections:[]},
+  {slug:"game-jams", title:"Game Jams", sub:"Games made during game jams", color:"#7d5ba6", cover:"img/covers/game-jams.jpg", titled:true, sections:[]},
+  {slug:"articles-and-analysis", title:"Articles and Analysis", sub:"Articles and game analysis", color:"#a14fc0", cover:"img/covers/articles-and-analysis.jpg", titled:true, sections:[]},
+  {slug:"game-design-youtube", title:"Game Design YouTube", sub:"Game design on YouTube", color:"#c0674b", cover:"img/covers/game-design-youtube.jpg", titled:true, sections:[]}
 ];
 
 /* ============ EDIT HERE: partner logos (shown on the home page) ============
@@ -446,11 +460,48 @@ const ABOUT = {
 const app = document.getElementById("app");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
+// Image viewer: click an image to enlarge it; the Close button, Esc or a click outside shrinks it back
+let lb = null, lbReturn = null;
+function closeLightbox(){
+  if (!lb) return;
+  lb.remove(); lb = null; document.body.style.overflow = "";
+  document.removeEventListener("keydown", lbKeys);
+  if (lbReturn && lbReturn.focus) lbReturn.focus({preventScroll:true});
+}
+function lbKeys(e){
+  if (!lb) return;
+  if (e.key === "Escape") { e.preventDefault(); closeLightbox(); return; }
+  if (e.key === "Tab") { const b = [...lb.querySelectorAll("button")], i = b.indexOf(document.activeElement); e.preventDefault(); b[(i + (e.shiftKey ? -1 : 1) + b.length) % b.length].focus(); }
+}
+function openLightbox(src, caption){
+  closeLightbox();
+  lbReturn = document.activeElement;
+  lb = document.createElement("div");
+  lb.className = "lb"; lb.setAttribute("role","dialog"); lb.setAttribute("aria-modal","true"); lb.setAttribute("aria-label","Image viewer");
+  lb.innerHTML = '<div class="lb-bar"><span class="lb-cap"></span><span class="lb-btns"><button type="button" class="lb-btn" data-zoom>Zoom in</button><button type="button" class="lb-btn" data-close>✕ Close</button></span></div><div class="lb-stage"><img alt=""></div>';
+  const img = lb.querySelector("img"), stage = lb.querySelector(".lb-stage"), zoom = lb.querySelector("[data-zoom]");
+  img.src = src; img.alt = caption || ""; lb.querySelector(".lb-cap").textContent = caption || "";
+  const toggle = () => { const full = lb.classList.toggle("full"); zoom.textContent = full ? "Zoom out" : "Zoom in"; };
+  zoom.addEventListener("click", toggle); img.addEventListener("click", toggle);
+  lb.querySelector("[data-close]").addEventListener("click", closeLightbox);
+  stage.addEventListener("click", e => { if (e.target === stage) closeLightbox(); });
+  document.body.appendChild(lb); document.body.style.overflow = "hidden";
+  document.addEventListener("keydown", lbKeys);
+  lb.querySelector("[data-close]").focus({preventScroll:true});
+}
+document.addEventListener("click", e => {
+  const a = e.target.closest && e.target.closest("a.zoom");
+  if (!a) return;
+  e.preventDefault();
+  const im = a.querySelector("img");
+  openLightbox(a.href, im ? im.alt : "");
+});
+
 function cardHTML(p){
   // The colored gradient shows if the image is missing or fails to load.
   const img = p.cover ? `<img class="cover" src="${esc(p.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : "";
   const small = p.sub ? esc(p.sub) : `${esc(p.studio)}<br>${esc(p.partnerLabel)}: ${esc(p.partner)}${p.locked ? "<br>Details coming soon" : ""}`;
-  const label = `<div class="name"><span>${esc(p.title)}<small>${small}</small></span></div>`;
+  const label = `<div class="name"><span>${p.titled ? "" : esc(p.title)}<small>${small}</small></span></div>`;
   const bg = `background:linear-gradient(160deg, ${p.color}, #0b0b0d)`;
   const cls = "card" + (p.cover ? "" : " nocover");
   return p.locked
@@ -471,9 +522,9 @@ function projectButton(p){
 
 const CHEV_L = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const CHEV_R = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-function railHTML(list, label){
+function railHTML(list, label, cls){
   const set = list.map(cardHTML).join("");
-  return `<div class="railwrap" role="group" aria-roledescription="carousel" aria-label="${esc(label)}">
+  return `<div class="railwrap${cls ? " " + cls : ""}" role="group" aria-roledescription="carousel" aria-label="${esc(label)}">
     <button type="button" class="arrow prev" aria-label="Previous">${CHEV_L}</button>
     <div class="rail"><div class="track" data-n="${list.length}">${set.repeat(6)}</div></div>
     <button type="button" class="arrow next" aria-label="Next">${CHEV_R}</button>
@@ -629,7 +680,7 @@ function home(){
   <section class="projects" aria-labelledby="op">
     <h2 id="op">Other Projects</h2>
   </section>
-  ${railHTML(OTHER, "Other projects")}`;
+  ${railHTML(OTHER, "Other projects", "wide")}`;
   // duplicates exist only for the looping animation; hidden from screen readers
   app.querySelectorAll(".track").forEach(t => { const n = +t.dataset.n; t.querySelectorAll(".card").forEach((c,i) => { if (i >= n) { c.setAttribute("aria-hidden","true"); c.tabIndex = -1; } }); });
   initRail(); initMore();
@@ -726,6 +777,7 @@ function initCarousels(){
 }
 
 function route(){
+  closeLightbox();
   cleanups.forEach(f => f()); cleanups = [];
   const slug = location.hash.replace("#/","");
   const p = PROJECTS.find(x => x.slug === slug);
