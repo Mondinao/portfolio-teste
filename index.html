@@ -88,6 +88,8 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .contrib .para{max-width:65ch;margin:0 0 1em}
 .blist{max-width:65ch;margin:0 0 1.2em;padding-left:1.2em}
 .blist li{margin:10px 0}
+.coverlink.ph{aspect-ratio:315/250;display:grid;place-items:center;text-align:center;line-height:1.4;color:var(--muted);background:linear-gradient(160deg,#2b1f3a,var(--card))}
+.phtext{padding:0 16px;font-size:1rem}
 .acadcover{display:flex;flex-direction:column;gap:14px}
 .acadcover p{margin:0}
 .acadinfo .aboutfacts div + div{margin-top:12px}
@@ -122,6 +124,32 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .lb-stage img{display:block;max-width:100%;max-height:calc(100vh - 92px);max-height:calc(100dvh - 92px);object-fit:contain;cursor:zoom-in}
 .lb.full .lb-stage{display:block;overflow:auto;text-align:center}
 .lb.full .lb-stage img{display:inline-block;max-width:none;max-height:none;cursor:zoom-out}
+.catintro{max-width:65ch;font-size:1.2rem;color:var(--ink);margin:0 0 8px}
+.ugc .lead{max-width:65ch;font-size:1.2rem;color:var(--ink);margin:0 0 24px}
+.kpistrip{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.kpi{display:flex;flex-direction:column;gap:4px;padding:20px 20px 18px;border:2px solid var(--accent);border-radius:14px;background:linear-gradient(160deg,#241b26,var(--card))}
+.kpi b{font:800 clamp(2.1rem,4.4vw,3.2rem)/1 "Bricolage Grotesque",sans-serif;color:var(--accent)}
+.kpi .kl{font-weight:500;color:var(--ink)}
+.kpi .kn{font-size:.88rem;color:var(--muted)}
+.kfoot{margin:8px 0 0;font-size:.85rem;color:var(--muted)}
+.ugch{font-size:1.25rem;color:var(--accent);margin:44px 0 14px}
+.prodgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.prod{padding:22px;border:2px solid var(--line);border-radius:14px;background:var(--card)}
+.prod h3{font-size:1.4rem;margin:0 0 4px}
+.prod .pp{margin:0 0 12px;font-size:.9rem;color:var(--muted)}
+.pk{display:flex;gap:28px;margin:10px 0 12px}
+.pk b{display:block;font:800 1.9rem/1 "Bricolage Grotesque",sans-serif;color:var(--accent)}
+.pk span{font-size:.85rem;color:var(--muted)}
+.prod .pf{margin:0 0 10px;font-size:.9rem;color:var(--ink)}
+.prod ul{margin:0 0 16px;padding-left:1.2em}
+.prod li{margin:6px 0}
+.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.tags li{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:.95rem}
+.pills{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.pills a,.pills span{display:inline-block;padding:9px 16px;border:2px solid var(--line);border-radius:999px;text-decoration:none;background:var(--card)}
+.pills a{border-color:var(--accent);color:var(--accent)}
+.pills a:hover,.pills a:focus-visible{background:var(--accent);color:var(--bg)}
+@media (max-width:800px){.prodgrid{grid-template-columns:1fr}}
 .alabel{margin:14px 0 0;font-size:.85rem;color:var(--muted)}
 .alabel + .audiolist{margin-top:6px}
 .atitle{font-size:.85rem;color:var(--muted)}
@@ -427,8 +455,82 @@ const OTHER = [
        audio:[{title:"Virginia Theme",src:"audio/bluebell/virginia-theme.mp3"},{title:"Sentinel Theme",src:"audio/bluebell/sentinel-theme.mp3"},{title:"Server Theme",src:"audio/bluebell/server-theme.mp3"},{title:"Theme 20XX",src:"audio/bluebell/theme-20xx.mp3"}]
      }}
   ]},
-  {slug:"ugc", title:"UGC", sub:"User-generated content", color:"#5a6fb3", cover:"img/covers/ugc.jpg", titled:true, sections:[]},
-  {slug:"game-jams", title:"Game Jams", sub:"Games made during game jams", color:"#7d5ba6", cover:"img/covers/game-jams.jpg", titled:true, sections:[]},
+  {slug:"ugc", title:"UGC", sub:"User-generated content", color:"#5a6fb3", cover:"img/covers/ugc.jpg", titled:true, sections:[],
+   ugc:{
+     title:"Fortnite and Metaverse",
+     lead:"When I started working at Hermit Crab Studio, I took on the role of Level Designer. It was my first experience with the Metaverse: using Unreal Editor for Fortnite (UEFN), I created several successful maps and experiences on the Fortnite platform.",
+     intro:["I worked on Fortnite experiences heavily focused on player retention, engagement loops and live-service performance. I developed Tycoon-style experiences that consistently exceeded internal KPI expectations, especially in branded partnerships with major Brazilian football clubs such as CR Vasco da Gama, Clube Atlético Mineiro and Grêmio Foot-Ball Porto Alegrense, as well as collaborations with the Confederação Brasileira de Voleibol and Caixa Econômica Federal."],
+     more:["Beyond strengthening my technical execution as a Level Designer, I significantly expanded my expertise as a Game Designer, integrating brand identity directly into gameplay experiences and designing engaging systems and mechanics aligned with retention and engagement goals. I worked extensively with live-service KPIs, including single-session retention, D1/D7 retention, progression pacing and engagement optimization, which gave me strong practical knowledge of player behavior and live operations design.",
+           "I also gained hands-on experience with live updates and post-launch support for successful projects such as Cars Tuning Tycoon, helping design seasonal events, progression updates and community-oriented content strategies. Working closely with player communities helped me better understand player motivation, feedback cycles and long-term engagement patterns.",
+           "One of the most rewarding challenges of my Fortnite experience was balancing genuinely satisfying gameplay with business, retention and marketing objectives in a highly competitive live-service ecosystem."],
+     highlights:[
+       {value:"18,990", label:"Peak CCU", note:"Grêmio's Football Tycoon"},
+       {value:"40.2 min", label:"Average session length", note:"Grêmio's Football Tycoon"},
+       {value:"8,764", label:"Peak CCU", note:"Vasco's Soccer Team Tycoon"},
+       {value:"Exceeded", label:"Internal KPI expectations, consistently", note:"Tycoon-style and branded experiences"}],
+     products:[
+       {title:"Grêmio's Football Tycoon", partner:"Branded experience in partnership with Grêmio Foot-Ball Porto Alegrense",
+        kpis:[["18,990","Peak CCU"],["40.2 min","Average session"]],
+        points:["Designed updates, live events, retention systems and player engagement strategies.","Focused on long-term progression pacing and session retention optimization."],
+        link:"https://fortnite.gg/island/8773-9657-5309"},
+       {title:"Vasco's Soccer Team Tycoon", partner:"Branded experience in partnership with CR Vasco da Gama",
+        kpis:[["8,764","Peak CCU"],["25.5 min","Average session"]], focus:"Retention focus: D1 and session retention",
+        points:["Designed gameplay progression loops and economy balancing.","Improved the onboarding flow and reward pacing for better player retention."],
+        link:"https://fortnite.gg/island/1701-7859-9582"},
+       {title:"Surf Tycoon", partner:"Tycoon experience",
+        kpis:[["1,473","Peak CCU"],["30.9 min","Average session"]],
+        points:["Developed systems and gameplay features.","Focused on level design and mapping.","Focused on scalable progression and engagement loops."],
+        link:"https://fortnite.gg/island/3286-6093-6738"},
+       {title:"American Football Tycoon", partner:"Tycoon experience",
+        kpis:[["581","Peak CCU"],["28.7 min","Average session"]],
+        points:["Worked on progression systems and gameplay structure.","Designed the flow, balancing, progression systems, mechanics and retention strategies.","Worked on live ops content to improve D1 to D7 retention."],
+        link:"https://fortnite.gg/island/3737-8784-3421"}],
+     rldd:{
+       text:"To start working on a new platform, I first needed to learn Fortnite's predefined physics and scaling values. For that, I developed an RLDD (Rational Level Design Document) and a gym with Fortnite-specific measurements. I ran tests on jumping, sprinting, swimming and blocking abilities, and created a spreadsheet to map out difficulty levels and scaling.",
+       // images: replace each src ("img/ugc/xxx.png") with your image; the title is the caption.
+       images:[{src:"",title:"Jump Heights / Difficulty"},{src:"",title:"Swimming Ability"},{src:"",title:"Measures"}]},
+     experience:["Live-service design and retention-oriented systems","D1/D7 engagement strategies","Economy balancing and progression pacing","KPI-oriented iteration workflows","Seasonal live ops content","Player behavior analysis and engagement optimization","Cross-disciplinary collaboration in Agile production environments","AI-assisted workflows for documentation, balancing and production efficiency"],
+     othersIntro:"I also worked on many other Fortnite maps with a variety of themes. The Metaverse is a matter of consistency and not just big numbers, so they have not performed as well, but they are still great content with their own merits, which I'm proud of.",
+     others:[{title:"Ice Hockey Tycoon",link:"https://fortnite.gg/island/7474-2891-9022"},{title:"Baseball Tycoon",link:"https://fortnite.gg/island/0752-0223-8137"},{title:"Coconuts vs Pirates",link:"https://fortnite.gg/island/0534-2548-0763"},{title:"Sports Only Up"},{title:"Football Goal Tycoon",link:"https://fortnite.gg/island/4600-2680-7823"},{title:"Skate Trick Simulator",link:"https://fortnite.gg/island/7178-9189-3451"}]
+   }},
+  {slug:"game-jams", title:"Game Jams", sub:"Games made during game jams", color:"#7d5ba6", cover:"img/covers/game-jams.jpg", titled:true,
+   intro:"After my first game jam, which I joined about six months after starting the game design course, I met the Rataiada team, who taught me a lot. Together we created three games for game jams. In those projects I mainly worked on Game Design and Sound Design, but I was also able to experience various other areas, which broadened my perspective.",
+   sections:[
+    {title:"50 Years of Gaming", cover:"", link:"https://rataiada.itch.io/50-years-of-gaming", linkLabel:"Play on itch.io",
+     genre:"Platformer, a tribute to platform games",
+     dateLabel:"Developed", date:"2021, in 48 hours, for the Jam for All game jam",
+     roles:"Pixel Artist, Enemy Designer and Composer / Sound Designer",
+     overview:{
+       intro:"A homage to video games that traces their evolution over 50 years, with each level inspired by a game from a different decade.",
+       more:["The levels are inspired by Pong (1970s), Super Mario Bros (1980s), Super Metroid (1990s), Limbo (2000s) and Celeste (2010s).",
+             "The theme of the jam was \"50\", which could be interpreted freely, so we chose to honor 50 years of game development. The game can be played in its web version on itch.io.",
+             "It was my first game jam, so I experimented with several areas along the way."]},
+     summaries:{
+       game:"I designed the enemies for the levels inspired by Super Mario Bros and Super Metroid.",
+       other:[{title:"Pixel Art", text:"I experimented with creating pixel art, including assets and animations for the Celeste-inspired level."}],
+       sound:"I composed the soundtrack for all of the levels together with my colleague Thierry Gaspar."
+     }},
+    {title:"Build'em Up", cover:"", link:"https://enezio.itch.io/buildem-up", linkLabel:"Play on itch.io",
+     genre:"Beat 'em up",
+     dateLabel:"Developed", date:"In 48 hours, for the Magalu game jam",
+     roles:"Game Designer and Composer / Sound Designer",
+     overview:{
+       intro:"A beat 'em up created in 48 hours for the Magalu game jam, in which the player must use and upgrade tools from a construction site to fend off waves of aliens and save the neighborhood from the invasion."},
+     summaries:{
+       game:"I played a significant role in the game design and in planning the mechanics. As the team member with the most experience in beat 'em ups, I was able to exercise a lot of creativity with the skills and combat mechanics.",
+       sound:"My main role was in Sound Design. Besides composing all of the music, I created the sound effects: using tools like Audacity, I transformed sounds from various sources into custom sounds that matched what we were aiming for in the game."
+     }},
+    {title:"Super Dumb Cyber Rangers", cover:"", link:"https://rataiada.itch.io/dumb-rangers", linkLabel:"Play on itch.io",
+     dateLabel:"Developed", date:"In 48 hours, for the Wowie 4.0 game jam",
+     roles:"Game Designer, Level Designer and Composer / Sound Designer",
+     overview:{
+       intro:"A game created in 48 hours for the Wowie 4.0 game jam. The theme was AI, so we chose to create a parody team of Power Rangers as the controllable characters.",
+       more:["The player's objective is to assign each member to a part of the \"Megazord\": one controls the movement, another controls the attack, and the other manages the special ability."]},
+     summaries:{
+       game:"Together with the Game and Level Design team, I developed the systems and designed the game mechanics, including buffs and debuffs, status effects and the planning of the game's progression.",
+       sound:"I also worked on the soundtrack and composed the music, with strong inspiration from the theme music of Mighty Morphin Power Rangers."
+     }}
+   ]},
   {slug:"articles-and-analysis", title:"Articles and Analysis", sub:"Articles and game analysis", color:"#a14fc0", cover:"img/covers/articles-and-analysis.jpg", titled:true, sections:[]},
   {slug:"game-design-youtube", title:"Game Design YouTube", sub:"Game design on YouTube", color:"#c0674b", cover:"img/covers/game-design-youtube.jpg", titled:true, sections:[]}
 ];
@@ -604,10 +706,13 @@ function sectionHTML(c, sec){
   const id = "sec-" + c.slug + "-" + slugify(sec.title);
   if (sec.soon) return `<section class="acad"><h2>${esc(sec.title)}</h2><p class="soon">Details coming soon.</p></section>`;
   const kit = mediaKit({title: sec.title, color: c.color});
-  const img = `<img src="${esc(sec.cover)}" alt="${esc(sec.title)} cover art" width="${sec.coverW}" height="${sec.coverH}">`;
-  const cover = sec.cover ? (sec.link
-    ? `<a class="coverlink" href="${esc(sec.link)}" target="_blank" rel="noopener" aria-label="${esc(sec.linkLabel || "Open")}: ${esc(sec.title)}">${img}<span class="cl">${esc(sec.linkLabel || "Open")} ↗</span></a>`
-    : `<div class="coverlink">${img}</div>`) : "";
+  const img = sec.cover
+    ? `<img src="${esc(sec.cover)}" alt="${esc(sec.title)} cover art" width="${sec.coverW}" height="${sec.coverH}">`
+    : `<span class="phtext">${esc(sec.title)}<br>Cover coming soon</span>`;
+  const ccls = "coverlink" + (sec.cover ? "" : " ph");
+  const cover = sec.link
+    ? `<a class="${ccls}" href="${esc(sec.link)}" target="_blank" rel="noopener" aria-label="${esc(sec.linkLabel || "Open")}: ${esc(sec.title)}">${img}<span class="cl">${esc(sec.linkLabel || "Open")} ↗</span></a>`
+    : `<div class="${ccls}">${img}</div>`;
   const button = sec.link ? `<p><a class="steam" href="${esc(sec.link)}" target="_blank" rel="noopener">${esc(sec.linkLabel || "Open")} ↗</a></p>` : "";
   const overview = sec.overview ? `<p class="lead">${esc(sec.overview.intro)}</p>${moreHTML(id + "-more", sec.overview.more)}` : "";
   const reel = sec.reel && sec.reel.length ? `<div class="cell">${kit.carouselOf(sec.reel, sec.title)}</div>` : "";
@@ -642,11 +747,43 @@ function initReveal(){
   });
 }
 
+function ugcHTML(c){
+  const u = c.ugc, kit = mediaKit({title: u.title, color: c.color});
+  const ext = (href, label) => `<a class="steam" href="${esc(href)}" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
+  const kpis = `<div class="kpistrip">${u.highlights.map(h => `<div class="kpi"><b>${esc(h.value)}</b><span class="kl">${esc(h.label)}</span><span class="kn">${esc(h.note)}</span></div>`).join("")}</div>
+    <p class="kfoot">CCU = concurrent users.</p>`;
+  const prods = `<div class="prodgrid">${u.products.map(pr => `<article class="prod">
+      <h3>${esc(pr.title)}</h3><p class="pp">${esc(pr.partner)}</p>
+      <div class="pk">${pr.kpis.map(([v,l]) => `<div><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("")}</div>
+      ${pr.focus ? `<p class="pf">${esc(pr.focus)}</p>` : ""}
+      <ul>${pr.points.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+      ${pr.link ? `<p>${ext(pr.link, "Open the map on Fortnite.gg")}</p>` : ""}</article>`).join("")}</div>`;
+  const others = `<ul class="pills">${u.others.map(o => `<li>${o.link ? `<a href="${esc(o.link)}" target="_blank" rel="noopener">${esc(o.title)} ↗</a>` : `<span>${esc(o.title)}</span>`}</li>`).join("")}</ul>`;
+  return `<section class="acad ugc">
+    <h2>${esc(u.title)}</h2>
+    <p class="lead">${esc(u.lead)}</p>
+    ${kpis}
+    <h3 class="ugch">Shipped products: numbers and performance</h3>
+    ${prods}
+    <h3 class="ugch">My role</h3>
+    ${u.intro.map(t => `<p>${esc(t)}</p>`).join("")}
+    ${moreHTML("ugc-more", u.more)}
+    <h3 class="ugch">Intro and RLDD</h3>
+    <p>${esc(u.rldd.text)}</p>
+    <div class="featured">${kit.carouselOf(u.rldd.images, "RLDD")}</div>
+    <h3 class="ugch">Key experience</h3>
+    <ul class="tags">${u.experience.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+    <h3 class="ugch">Other products</h3>
+    <p>${esc(u.othersIntro)}</p>
+    ${others}
+  </section>`;
+}
 function category(c){
-  const secs = (c.sections || []).map(sec => sectionHTML(c, sec)).join("");
+  const secs = c.ugc ? ugcHTML(c) : (c.sections || []).map(sec => sectionHTML(c, sec)).join("");
   app.innerHTML = `<div class="project">
     <p class="topbtn"><a class="steam" href="#/">← Back to Home Page</a></p>
     <h1>${esc(c.title)}</h1>
+    ${c.intro ? `<p class="lead catintro">${esc(c.intro)}</p>` : ""}
     ${secs || `<p class="soon">Content coming soon.</p>`}
     <p class="bottom"><a class="steam" href="#/">← Back to Home Page</a></p></div>`;
   initCarousels(); initMore(); initReveal();
