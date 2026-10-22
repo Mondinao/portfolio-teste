@@ -150,6 +150,48 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .pills a{border-color:var(--accent);color:var(--accent)}
 .pills a:hover,.pills a:focus-visible{background:var(--accent);color:var(--bg)}
 @media (max-width:800px){.prodgrid{grid-template-columns:1fr}}
+.pill{display:inline-block;padding:2px 10px;border:1px solid var(--accent);border-radius:999px;font-size:.75rem;line-height:1.5;color:var(--accent);background:rgba(14,14,16,.6)}
+.arts{border-top:0;padding-top:12px}
+.artgrid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.art{position:relative;display:block;width:100%;aspect-ratio:1/1;padding:0;border:2px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);color:var(--ink);font:inherit;text-align:left;cursor:pointer;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .3s}
+.art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1),filter .4s}
+.artmeta{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start;padding:48px 16px 16px;background:linear-gradient(to top,rgba(8,8,10,.95),rgba(8,8,10,0));opacity:0;transform:translateY(14px);transition:opacity .35s,transform .4s cubic-bezier(.2,.8,.2,1)}
+.artmeta b{font:800 1.15rem/1.15 "Bricolage Grotesque",sans-serif;color:#fff}
+.artmeta time{font-size:.85rem;color:var(--muted)}
+.art:hover,.art:focus-visible{transform:scale(1.08);z-index:3;border-color:var(--accent);box-shadow:0 18px 40px rgba(0,0,0,.55)}
+.art:hover img,.art:focus-visible img{transform:scale(1.07);filter:brightness(.75)}
+.art:hover .artmeta,.art:focus-visible .artmeta{opacity:1;transform:none}
+@media (hover:none){.artmeta{opacity:1;transform:none}.art:hover{transform:none}}
+.soonart{display:grid;place-items:center;text-align:center;border-style:dashed;color:var(--muted);cursor:default;line-height:1.5}
+.artmodal{position:fixed;inset:0;z-index:110;overflow-y:auto;background:rgba(6,6,8,.92);padding:24px 14px 40px;animation:artin .3s ease}
+@keyframes artin{from{opacity:0}to{opacity:1}}
+.artpanel{max-width:800px;margin:0 auto;padding:22px clamp(18px,5vw,56px) 36px;border:2px solid var(--line);border-radius:18px;background:var(--bg);animation:artup .4s cubic-bezier(.2,.8,.2,1);outline:none}
+@keyframes artup{from{transform:translateY(28px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+.artbar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;margin:0 -8px 8px;padding:8px;background:linear-gradient(to bottom,var(--bg) 70%,rgba(14,14,16,0))}
+.arthead h1{font-size:clamp(1.9rem,5vw,3rem);line-height:1.08;margin:8px 0 12px}
+.artsub{margin:0 0 16px;font-size:1.2rem;line-height:1.4;color:var(--muted)}
+.artby{margin:0;font-size:.95rem;color:var(--muted)}
+.artby strong{color:var(--ink)}
+.adiv{border:0;height:1px;margin:34px 0;background:var(--line)}
+.adiv.strong{height:3px;margin:22px 0 28px;background:var(--accent);border-radius:3px}
+.artfig{margin:0 0 32px}
+.artfig img{width:100%;height:auto;display:block;border-radius:12px}
+.artfig figcaption{margin-top:8px;font-size:.88rem;color:var(--muted)}
+.artbody p{max-width:none;margin:0 0 1.15em;font-size:1.08rem;line-height:1.8}
+.artbody h2{font-size:clamp(1.4rem,3.4vw,1.9rem);color:var(--accent);margin:0 0 16px}
+.artbody .pull{padding:6px 0 6px 20px;border-left:3px solid var(--accent);font:800 1.25rem/1.4 "Bricolage Grotesque",sans-serif;color:var(--ink)}
+.artfoot{margin-top:32px;text-align:center}
+@media (prefers-reduced-motion:reduce){.artmodal,.artpanel{animation:none}.art,.art img,.artmeta{transition:none}}
+.contact{padding:8px 0 90px}
+.contact h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:24px}
+.clist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
+.cbtn{display:flex;align-items:center;gap:16px;padding:14px 18px 14px 14px;border:2px solid var(--line);border-radius:14px;background:var(--card);text-decoration:none;transition:border-color .2s,transform .2s,background .2s}
+.cbtn:hover,.cbtn:focus-visible{border-color:var(--accent);transform:translateY(-2px);background:#211f23}
+.cico{flex:none;display:grid;place-items:center;width:50px;height:50px;border:2px solid var(--accent);border-radius:12px;color:var(--accent);transition:background .2s,color .2s}
+.cbtn:hover .cico,.cbtn:focus-visible .cico{background:var(--accent);color:var(--bg)}
+.ctext{display:flex;flex-direction:column;min-width:0}
+.clabel{font-size:.82rem;color:var(--muted)}
+.cval{font-weight:500;overflow-wrap:anywhere}
 .alabel{margin:14px 0 0;font-size:.85rem;color:var(--muted)}
 .alabel + .audiolist{margin-top:6px}
 .atitle{font-size:.85rem;color:var(--muted)}
@@ -531,9 +573,110 @@ const OTHER = [
        sound:"I also worked on the soundtrack and composed the music, with strong inspiration from the theme music of Mighty Morphin Power Rangers."
      }}
    ]},
-  {slug:"articles-and-analysis", title:"Articles and Analysis", sub:"Articles and game analysis", color:"#a14fc0", cover:"img/covers/articles-and-analysis.jpg", titled:true, sections:[]},
+  {slug:"articles-and-analysis", title:"Articles and Analysis", sub:"Articles and game analysis", color:"#a14fc0", cover:"img/covers/articles-and-analysis.jpg", titled:true, articles:true,
+   intro:"I am a games journalism enthusiast, and I love writing about the market, the industry and game reviews. This page is a repository of those articles.",
+   sections:[]},
   {slug:"game-design-youtube", title:"Game Design YouTube", sub:"Game design on YouTube", color:"#c0674b", cover:"img/covers/game-design-youtube.jpg", titled:true, sections:[]}
 ];
+
+/* ============ EDIT HERE: articles (shown on the Articles and Analysis page) ============
+   body: plain text. Blank line = new paragraph, "## " = section heading, "> " = highlighted line, "---" = divider. */
+const ARTICLES = [
+  {id:"big-2022", title:"O que aprendi como Monitor do BIG 2022",
+   subtitle:"Lições de design, comunicação e acessibilidade vividas dentro do BIG Festival",
+   author:"Gustavo Mondini", role:"Jr. Game Designer", date:"July 24, 2022", lang:"pt-BR", langLabel:"Portuguese",
+   card:"img/articles/big-2022-card.jpg", photo:"img/articles/big-2022-photo.jpg",
+   photoAlt:"Gustavo Mondini and Shuhei Yoshida smiling and giving thumbs up at the BIG Festival",
+   caption:"Com Shuhei Yoshida no BIG Festival.",
+   body:`O BIG Festival é um festival brasileiro que tem o objetivo de divulgar e apoiar a indústria de games nacional, assim como desenvolvedores e estúdios independentes. Isso é feito através de sua divulgação, rodadas de negócios com patrocinadores dentro do evento e palestras que envolvem filosofias do Game Design. É claro que ao longo dos anos o BIG tem se tornado um evento mais popular e isto trouxe uma abrangência maior de público-alvo. Este ano, o BIG recebeu grandes apoiadores como Magazine Luiza e Omelete (Que é de fato o maior propagador da cultura nerd e geek, trazendo conteúdo com excelência internacional para o público brasileiro em mídias sociais).
+
+Houve algumas contradições com relação à edição do BIG de 2022. O fato de ter se voltado mais para o “Mainstream” incomodou alguns que diziam que isto tirava o foco e o apoio de desenvolvedores independentes, que é a proposta do evento.
+
+Porém, como um desenvolvedor de jogos júnior e entusiasta do jornalismo de games, tenho minha opinião concreta de que a importância desse evento para minha carreira como Game Designer foi algo ao qual eu serei grato para o resto de minha vida, e ao longo deste artigo, irei explicar as razões.
+
+---
+
+## O que eu fiz no BIG 2022?
+
+Iniciei meus estudos no curso de Game Design da Universidade Anhembi Morumbi em janeiro de 2021. Desde então, claro que meu sonho se tornou conseguir alguma oportunidade de estágio ou entrar no mercado nacional que admiro tanto. Então quando surgiu a oportunidade de trabalhar no BIG, prontamente iniciei minha inscrição e após um processo seletivo fui convocado para trabalhar no festival como Super Monitor.
+
+Este cargo recebe um nome bonito, mas a principal função foi ajudar as pessoas a configurar os jogos e dispositivos e tirar dúvidas sobre os aparelhos.
+
+Claro, com minha paixão por video-games, isso se tornou muito maior dentro de mim. Busquei conhecer sobre cada jogo que estava em exposição, pois eu queria propagar a cultura do game design quando houvesse oportunidade. Explicar para a pessoa, por exemplo, que “Solar Ash” era um jogo que tinha foco em sua narrativa audiovisual, e era de um estúdio independente que veio crescendo, publicado pela Annapurna Interactive.
+
+Eu interagi com as pessoas para tentar mostrar a beleza por trás do simples ato de jogar, pois afinal, isso é o BIG. Fico feliz em dizer que isto me trouxe experiências incríveis que nunca serei capaz de esquecer, e algumas delas vou deixar para descrever em tópicos a seguir.
+
+Além da parte da monitoria dos games em exposição, fui encarregado de administrar algumas das palestras e eventos que ocorreram dentro do auditório, como o CBCS (Circuito brasileiro de Counter Strike) e principalmente a grande premiação dos jogos.
+
+Como eu sou um fanático por Final Fantasy, não perdi a oportunidade de pedir para ajudar no auditório durante a palestra de Takashi Tokita (Lead Designer de Final Fantasy 4, Chrono Trigger e Live A Live)
+
+---
+
+## O que aprendi como Designer?
+
+O ato de observar, conversar e interpretar as pessoas que estavam jogando me permitiu adquirir um grande repertório de dados sobre o feedback das pessoas. Seja que tipo de jogabilidade se torna atraente de cara ou que tipo de mecânica demora um pouco mais para pegar. Quais pessoas se interessam mais pelos jogos menores e experimentais ou quais se interessam pelas grandes marcas.
+
+O conjunto dessas informações me permite melhorar meu trabalho pessoal e me preparar para a parte de contato com usuários, que é muito importante no processo de produção de um game.
+
+Tive a oportunidade, no dia do meu treinamento (um dia antes da abertura) de jogar todos os jogos em exposição, tanto das grandes publicadoras que fizeram presença no evento, quanto dos desenvolvedores e estudantes brasileiros.
+
+Ter essa “overdose” de conteúdo enriqueceu muito minhas referências. Fui apresentado a mecânicas inovadoras como um game que utiliza leitor facial do iPhone como input, ou o game “Welcome Back” que trouxe uma Demo tão polida que me agarrou do início ao fim e fez com maestria o ato de desenvolver a narrativa o suficiente para entrar na Steam e pesquisar o jogo logo que eu chegasse em casa. Este tipo de contato com inovação e experimentação não é possível ter dentro de casa, por mais que você pesquise.
+
+O principal legado que tive como designer foi a mensagem de que este sonho é possível. Ver a beleza de jogar jogos de pessoas, para pessoas e com pessoas me motivou muito a continuar nessa jornada. As pessoas que estavam lá jogando são como eu, amam games. Porém mais do que isto, as pessoas que estavam expondo seus jogos também são como eu: amam fazer jogos, e amam a felicidade que podem trazer com poucos minutos de interatividade que tiveram com a audiência.
+
+---
+
+## O que aprendi sobre a comunicação
+
+Falar com as pessoas é a habilidade mais importante que podemos desenvolver, pessoalmente e profissionalmente. O que nos difere de neandertais é a capacidade de viver em sociedade e cooperar, portanto o trabalho de monitor me permitiu treinar, aprender e exercer a comunicação de forma que nunca tinha feito antes.
+
+Sempre fui aficionado por literatura, texto e redação, principalmente o jornalismo do nicho ao qual pertenço (games e cultura pop). Poder conversar com as pessoas sobre os jogos que elas gostam, o que elas gostaram no evento, o que elas jogaram e conhecê-las foi algo muito importante para minha formação.
+
+Como escritor, o texto é sempre apoiado em suas referências e sua bagagem cultural, e a proporção do contato humano proporcionado por eventos como o BIG, que colocam muitas pessoas com um mesmo interesse em um ambiente em comum, enriquece muito a erudição e favorece o repertório.
+
+Sinto que essa experiência me trouxe conhecimentos sociais que poucas pessoas tiveram a oportunidade de obter. Fora o fato de que, ao trabalhar na organização do evento, tive contato com pessoas da produção e do desenvolvimento, me permitindo conhecer mais sobre diversas áreas e aumentando tanto meu conhecimento sobre o nicho de games quanto de diversas outras profissões.
+
+Além disso, tive a oportunidade de conhecer grandes referências pessoais (ou ídolos) que tenho relacionados à comunicação. Consegui conhecer o gênio da comunicação Felipe Goldenberg (“Goldenboy”) que trabalha atualmente no Canaltech, um veículo muito importante de tecnologia. Conheci também Angelo Sarmiento (Analista de produto da Omelete Company), que eu já havia visto em produções do The Enemy (Veículo focado em games do Omelete). Poder conversar, por mais que de forma ligeira, com grandes inspirações que tenho para a área do jornalismo de games, também me motivou a, inclusive, redigir este artigo com o intuito de transmitir minhas experiências com as outras pessoas.
+
+A experiência no BIG tornou claro para mim a importância que estes e outros influenciadores têm para indústria. Muitas vezes eles sofrem críticas por estarem no “jogo do capitalismo” e dobrarem-se aos patrocínios ou divulgações tendenciosas. Mas a beleza do trabalho de trazer informação sobre algo que amamos, na tentativa de unir as pessoas por um interesse em comum, é muito maior do que estas falácias, e no fim, o que eles fazem move a economia e a motivação das pessoas do mercado de games.
+
+Trago como exemplo minha experiência pessoal. Se eu não consumisse o conteúdo produzido por veículos como Omelete, Nautilus, The Enemy, IGN etc. é provável que eu nunca tivesse me interessado por Game Design ou visto como uma profissão.
+
+---
+
+## O mais importante do BIG 2022
+
+Para não estender demais um artigo tão pessoal que já pode ter desamarrado a atenção do leitor, desejo concluir com algumas das coisas que aprendi no evento que foram de fato as mais importantes.
+
+Primeiramente tenho que citar algo que tocou o meu coração e me motivou muito:
+
+> A acessibilidade que o festival trouxe para pessoas que não têm condições de jogar videogame.
+
+É fato que no Brasil o hobby de jogar videogame é um luxo que poucas pessoas são capazes de ter, e, como monitor, ver o sorriso de um garoto jogando pela primeira vez, ou tendo seu primeiro contato com um PS5 ou VR na vida foi transformador para minha pessoa.
+
+Esse momento me trouxe uma epifania e me fez enxergar a importância do que estou fazendo. É isso que quero trazer para as pessoas, essa felicidade incondicional que é permitida através da tecnologia.
+
+Mais do que isso, em minha carreira, defenderei a luta de trabalhar para tornar os games mais acessíveis, seja estudando maneiras mais inteligentes de produzir ou apenas fortalecendo o mercado nacional, mas essa experiência única acendeu minha empolgação e motivou a continuar o caminho pelo Game Design.
+
+Por fim, gostaria de citar que algo muito importante para mim foi a sensação de gratidão pelo evento. Quando olho para meu perfil profissional, como um jovem que acabou de entrar no mercado de games, sinto-me muitas vezes perdido em meio às oportunidades e caminhos possíveis para seguir, mas poder ter contato com pessoas da área, com pessoas de outras áreas e com o público do evento, me permite traçar uma estratégia melhor para tornar meu sonho possível. Aprendi muito, vivi muito e conheci muito, e espero que tenha conseguido tornar a experiência de alguém um pouco melhor durante o BIG 2022.
+
+Para aqueles que participaram do festival, obrigado, vocês me ajudaram a ter essa experiência enriquecedora.
+
+Para aqueles que estão lendo e não participaram: Aguardo vocês no ano que vem, como Game Designer.`}
+];
+
+/* ============ EDIT HERE: contact details (shown at the end of the home page) ============ */
+const CONTACT = {
+  linkedin: {url:"https://www.linkedin.com/in/gustavo-mondini-35ba6a17b/", text:"Gustavo Mondini"},
+  emailUser: "gmondini7", emailHost: "gmail.com",     // kept in two parts so simple bots do not collect the address
+  phone: {tel:"+5511963256749", text:"+55 (11) 96325-6749"}
+};
+// Icons drawn for this site (simple outline style, they inherit the text color)
+const ICON = {
+  linkedin: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7.5 10.5V17M11.5 17v-6.5M11.5 13.6c0-1.9 1.1-3.1 2.7-3.1 1.7 0 2.8 1.1 2.8 3.1V17"/><circle cx="7.5" cy="7.6" r="1.1" fill="currentColor" stroke="none"/></svg>',
+  email: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7.5l8 5.8 8-5.8"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 4h3l1.5 4-2 1.4a11.5 11.5 0 005 5l1.4-2 4 1.5v3A2 2 0 0116 19C9.4 19 4 13.6 4 7a2 2 0 011.2-3z"/></svg>'
+};
 
 /* ============ EDIT HERE: partner logos (shown on the home page) ============
    logo: file inside img/partners/ (PNG or SVG with transparent background).
@@ -778,8 +921,65 @@ function ugcHTML(c){
     ${others}
   </section>`;
 }
+// Articles: a mosaic of 1:1 boxes; clicking one opens the full article in a popup
+let artEl = null, artReturn = null;
+function articleBody(md){
+  return md.split(/\n\s*\n/).map(b => {
+    b = b.trim();
+    if (b === "---") return '<hr class="adiv">';
+    if (b.startsWith("## ")) return `<h2>${esc(b.slice(3))}</h2>`;
+    if (b.startsWith("> ")) return `<p class="pull">${esc(b.slice(2))}</p>`;
+    return `<p>${esc(b)}</p>`;
+  }).join("");
+}
+function closeArticle(){
+  if (!artEl) return;
+  artEl.remove(); artEl = null; document.body.style.overflow = "";
+  document.removeEventListener("keydown", artKeys);
+  if (artReturn && artReturn.focus) artReturn.focus({preventScroll:true});
+}
+function artKeys(e){
+  if (!artEl) return;
+  if (e.key === "Escape") { e.preventDefault(); closeArticle(); return; }
+  if (e.key === "Tab") { const b = [...artEl.querySelectorAll("button, a[href]")]; if (!b.length) return; const i = b.indexOf(document.activeElement); e.preventDefault(); b[(i + (e.shiftKey ? -1 : 1) + b.length) % b.length].focus(); }
+}
+function openArticle(id, trigger){
+  const a = ARTICLES.find(x => x.id === id);
+  if (!a) return;
+  closeArticle();
+  artReturn = trigger || document.activeElement;
+  artEl = document.createElement("div");
+  artEl.className = "artmodal"; artEl.setAttribute("role","dialog"); artEl.setAttribute("aria-modal","true"); artEl.setAttribute("aria-labelledby","art-title");
+  artEl.innerHTML = `<div class="artpanel" tabindex="-1">
+    <div class="artbar"><span class="pill">${esc(a.langLabel)}</span><button type="button" class="lb-btn" data-artclose>✕ Close</button></div>
+    <article lang="${esc(a.lang)}">
+      <header class="arthead">
+        <h1 id="art-title">${esc(a.title)}</h1>
+        <p class="artsub">${esc(a.subtitle)}</p>
+        <p class="artby"><strong>${esc(a.author)}</strong> · ${esc(a.role)} · <time>${esc(a.date)}</time></p>
+      </header>
+      <hr class="adiv strong">
+      ${a.photo ? `<figure class="artfig"><img src="${esc(a.photo)}" alt="${esc(a.photoAlt)}" loading="lazy">${a.caption ? `<figcaption>${esc(a.caption)}</figcaption>` : ""}</figure>` : ""}
+      <div class="artbody">${articleBody(a.body)}</div>
+    </article>
+    <div class="artfoot"><button type="button" class="lb-btn" data-artclose>✕ Close</button></div>
+  </div>`;
+  artEl.addEventListener("click", e => { if (e.target === artEl || e.target.closest("[data-artclose]")) closeArticle(); });
+  document.body.appendChild(artEl); document.body.style.overflow = "hidden";
+  document.addEventListener("keydown", artKeys);
+  const panel = artEl.querySelector(".artpanel"); panel.scrollTop = 0; artEl.querySelector("[data-artclose]").focus({preventScroll:true});
+}
+function articlesHTML(c){
+  return `<section class="acad arts">
+    <ul class="artgrid">${ARTICLES.map(a => `<li><button type="button" class="art" data-art="${esc(a.id)}" aria-label="Read the article: ${esc(a.title)}">
+        <img src="${esc(a.card)}" alt="" loading="lazy">
+        <span class="artmeta"><span class="pill">${esc(a.langLabel)}</span><b>${esc(a.title)}</b><time>${esc(a.date)}</time></span>
+      </button></li>`).join("")}
+      <li><div class="art soonart" aria-hidden="true"><span>More articles<br>coming soon</span></div></li></ul>
+  </section>`;
+}
 function category(c){
-  const secs = c.ugc ? ugcHTML(c) : (c.sections || []).map(sec => sectionHTML(c, sec)).join("");
+  const secs = c.articles ? articlesHTML(c) : c.ugc ? ugcHTML(c) : (c.sections || []).map(sec => sectionHTML(c, sec)).join("");
   app.innerHTML = `<div class="project">
     <p class="topbtn"><a class="steam" href="#/">← Back to Home Page</a></p>
     <h1>${esc(c.title)}</h1>
@@ -787,6 +987,7 @@ function category(c){
     ${secs || `<p class="soon">Content coming soon.</p>`}
     <p class="bottom"><a class="steam" href="#/">← Back to Home Page</a></p></div>`;
   initCarousels(); initMore(); initReveal();
+  app.querySelectorAll("[data-art]").forEach(b => b.addEventListener("click", () => openArticle(b.dataset.art, b)));
 }
 
 function home(){
@@ -817,7 +1018,15 @@ function home(){
   <section class="projects" aria-labelledby="op">
     <h2 id="op">Other Projects</h2>
   </section>
-  ${railHTML(OTHER, "Other projects", "wide")}`;
+  ${railHTML(OTHER, "Other projects", "wide")}
+  <section class="contact" id="contact" aria-labelledby="ct">
+    <h2 id="ct">Contact</h2>
+    <ul class="clist">
+      <li><a class="cbtn" href="${esc(CONTACT.linkedin.url)}" target="_blank" rel="noopener"><span class="cico">${ICON.linkedin}</span><span class="ctext"><span class="clabel">LinkedIn</span><span class="cval">${esc(CONTACT.linkedin.text)}</span></span></a></li>
+      <li><a class="cbtn" href="mailto:${esc(CONTACT.emailUser)}@${esc(CONTACT.emailHost)}"><span class="cico">${ICON.email}</span><span class="ctext"><span class="clabel">E-mail</span><span class="cval">${esc(CONTACT.emailUser)}@${esc(CONTACT.emailHost)}</span></span></a></li>
+      <li><a class="cbtn" href="tel:${esc(CONTACT.phone.tel)}"><span class="cico">${ICON.phone}</span><span class="ctext"><span class="clabel">Phone</span><span class="cval">${esc(CONTACT.phone.text)}</span></span></a></li>
+    </ul>
+  </section>`;
   // duplicates exist only for the looping animation; hidden from screen readers
   app.querySelectorAll(".track").forEach(t => { const n = +t.dataset.n; t.querySelectorAll(".card").forEach((c,i) => { if (i >= n) { c.setAttribute("aria-hidden","true"); c.tabIndex = -1; } }); });
   initRail(); initMore();
@@ -914,7 +1123,7 @@ function initCarousels(){
 }
 
 function route(){
-  closeLightbox();
+  closeLightbox(); closeArticle();
   cleanups.forEach(f => f()); cleanups = [];
   const slug = location.hash.replace("#/","");
   const p = PROJECTS.find(x => x.slug === slug);
