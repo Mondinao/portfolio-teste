@@ -220,6 +220,9 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .vlink{margin:12px 0 0;text-align:right;font-size:.95rem}
 .vlink a{color:var(--muted)}
 @media (max-width:640px){.chstrip{flex-wrap:wrap}.chgo{margin-left:62px}}
+.featured.small{max-width:480px}
+.trailerbox{margin-top:28px}
+.trailerbox video{width:100%;aspect-ratio:16/9;display:block;border-radius:12px;background:#000}
 .alabel{margin:14px 0 0;font-size:.85rem;color:var(--muted)}
 .alabel + .audiolist{margin-top:6px}
 .atitle{font-size:.85rem;color:var(--muted)}
@@ -557,16 +560,20 @@ const OTHER = [
         link:"https://fortnite.gg/island/3737-8784-3421"}],
      rldd:{
        text:"To start working on a new platform, I first needed to learn Fortnite's predefined physics and scaling values. For that, I developed an RLDD (Rational Level Design Document) and a gym with Fortnite-specific measurements. I ran tests on jumping, sprinting, swimming and blocking abilities, and created a spreadsheet to map out difficulty levels and scaling.",
-       // images: replace each src ("img/ugc/xxx.png") with your image; the title is the caption.
-       images:[{src:"",title:"Jump Heights / Difficulty"},{src:"",title:"Swimming Ability"},{src:"",title:"Measures"}]},
+       images:[
+         {src:"img/ugc/jump-heights-gym.jpg",title:"Jump Heights",fit:true,bg:"#111"},
+         {src:"img/ugc/jump-difficulty-sheet.png",title:"Jump Heights: Difficulty Spreadsheet",fit:true,bg:"#fff"},
+         {src:"img/ugc/swim-gym.jpg",title:"Swim",fit:true,bg:"#111"},
+         {src:"img/ugc/measures-sheet.png",title:"Measures",fit:true,bg:"#fff"}]},
      experience:["Live-service design and retention-oriented systems","D1/D7 engagement strategies","Economy balancing and progression pacing","KPI-oriented iteration workflows","Seasonal live ops content","Player behavior analysis and engagement optimization","Cross-disciplinary collaboration in Agile production environments","AI-assisted workflows for documentation, balancing and production efficiency"],
+     trailer:{title:"Baseball Tycoon Trailer", src:"img/ugc/baseball-tycoon-trailer.mp4", poster:"img/ugc/baseball-tycoon-trailer-poster.jpg", link:"https://fortnite.gg/island/0752-0223-8137"},
      othersIntro:"I also worked on many other Fortnite maps with a variety of themes. The Metaverse is a matter of consistency and not just big numbers, so they have not performed as well, but they are still great content with their own merits, which I'm proud of.",
      others:[{title:"Ice Hockey Tycoon",link:"https://fortnite.gg/island/7474-2891-9022"},{title:"Baseball Tycoon",link:"https://fortnite.gg/island/0752-0223-8137"},{title:"Coconuts vs Pirates",link:"https://fortnite.gg/island/0534-2548-0763"},{title:"Sports Only Up"},{title:"Football Goal Tycoon",link:"https://fortnite.gg/island/4600-2680-7823"},{title:"Skate Trick Simulator",link:"https://fortnite.gg/island/7178-9189-3451"}]
    }},
   {slug:"game-jams", title:"Game Jams", sub:"Games made during game jams", color:"#7d5ba6", cover:"img/covers/game-jams.jpg", titled:true,
    intro:"After my first game jam, which I joined about six months after starting the game design course, I met the Rataiada team, who taught me a lot. Together we created three games for game jams. In those projects I mainly worked on Game Design and Sound Design, but I was also able to experience various other areas, which broadened my perspective.",
    sections:[
-    {title:"50 Years of Gaming", cover:"", link:"https://rataiada.itch.io/50-years-of-gaming", linkLabel:"Play on itch.io",
+    {title:"50 Years of Gaming", cover:"img/jams/50-years-of-gaming.jpg", coverW:960, coverH:540, link:"https://rataiada.itch.io/50-years-of-gaming", linkLabel:"Play on itch.io",
      genre:"Platformer, a tribute to platform games",
      dateLabel:"Developed", date:"2021, in 48 hours, for the Jam for All game jam",
      roles:"Pixel Artist, Enemy Designer and Composer / Sound Designer",
@@ -580,7 +587,10 @@ const OTHER = [
        other:[{title:"Pixel Art", text:"I experimented with creating pixel art, including assets and animations for the Celeste-inspired level."}],
        sound:"I composed the soundtrack for all of the levels together with my colleague Thierry Gaspar."
      }},
-    {title:"Build'em Up", cover:"", link:"https://enezio.itch.io/buildem-up", linkLabel:"Play on itch.io",
+    {title:"Build'em Up", cover:"img/jams/buildem-up-logo.png", coverW:640, coverH:320, coverBg:"#efe6d6", link:"https://enezio.itch.io/buildem-up", linkLabel:"Play on itch.io",
+     // the gameplay clip is a small, silent video that plays only while it is on screen (no heavy GIF)
+     reelSmall:true,
+     reel:[{video:"img/jams/buildem-up-gameplay.mp4", poster:"img/jams/buildem-up-gameplay-poster.jpg", title:"Build'em Up Gameplay", bg:"#000"}],
      genre:"Beat 'em up",
      dateLabel:"Developed", date:"In 48 hours, for the Magalu game jam",
      roles:"Game Designer and Composer / Sound Designer",
@@ -590,7 +600,7 @@ const OTHER = [
        game:"I played a significant role in the game design and in planning the mechanics. As the team member with the most experience in beat 'em ups, I was able to exercise a lot of creativity with the skills and combat mechanics.",
        sound:"My main role was in Sound Design. Besides composing all of the music, I created the sound effects: using tools like Audacity, I transformed sounds from various sources into custom sounds that matched what we were aiming for in the game."
      }},
-    {title:"Super Dumb Cyber Rangers", cover:"", link:"https://rataiada.itch.io/dumb-rangers", linkLabel:"Play on itch.io",
+    {title:"Super Dumb Cyber Rangers", cover:"img/jams/super-dumb-cyber-rangers.png", coverW:347, coverH:275, link:"https://rataiada.itch.io/dumb-rangers", linkLabel:"Play on itch.io",
      dateLabel:"Developed", date:"In 48 hours, for the Wowie 4.0 game jam",
      roles:"Game Designer, Level Designer and Composer / Sound Designer",
      overview:{
@@ -790,13 +800,13 @@ To those of you who are reading and did not take part: I look forward to seeing 
 const CONTACT = {
   linkedin: {url:"https://www.linkedin.com/in/gustavo-mondini-35ba6a17b/", text:"Gustavo Mondini"},
   emailUser: "gmondini7", emailHost: "gmail.com",     // kept in two parts so simple bots do not collect the address
-  phone: {tel:"+5511963256749", text:"+55 (11) 96325-6749"}
+  whatsapp: {url:"https://wa.me/5511963256749", text:"+55 (11) 96325-6749"}   // wa.me opens a chat with this number directly
 };
 // Icons drawn for this site (simple outline style, they inherit the text color)
 const ICON = {
   linkedin: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7.5 10.5V17M11.5 17v-6.5M11.5 13.6c0-1.9 1.1-3.1 2.7-3.1 1.7 0 2.8 1.1 2.8 3.1V17"/><circle cx="7.5" cy="7.6" r="1.1" fill="currentColor" stroke="none"/></svg>',
   email: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7.5l8 5.8 8-5.8"/></svg>',
-  phone: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 4h3l1.5 4-2 1.4a11.5 11.5 0 005 5l1.4-2 4 1.5v3A2 2 0 0116 19C9.4 19 4 13.6 4 7a2 2 0 011.2-3z"/></svg>'
+  whatsapp: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2a8.8 8.8 0 00-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1012 3.2z"/><g transform="translate(6.4 6.4) scale(.5)"><path stroke-width="3.4" d="M5.2 4h3l1.5 4-2 1.4a11.5 11.5 0 005 5l1.4-2 4 1.5v3A2 2 0 0116 19C9.4 19 4 13.6 4 7a2 2 0 011.2-3z"/></g></svg>'
 };
 
 /* ============ EDIT HERE: partner logos (shown on the home page) ============
@@ -978,9 +988,10 @@ function sectionHTML(c, sec){
     ? `<img src="${esc(sec.cover)}" alt="${esc(sec.title)} cover art" width="${sec.coverW}" height="${sec.coverH}">`
     : `<span class="phtext">${esc(sec.title)}<br>Cover coming soon</span>`;
   const ccls = "coverlink" + (sec.cover ? "" : " ph");
+  const cbg = sec.coverBg ? ` style="background:${esc(sec.coverBg)}"` : "";
   const cover = sec.link
-    ? `<a class="${ccls}" href="${esc(sec.link)}" target="_blank" rel="noopener" aria-label="${esc(sec.linkLabel || "Open")}: ${esc(sec.title)}">${img}<span class="cl">${esc(sec.linkLabel || "Open")} ↗</span></a>`
-    : `<div class="${ccls}">${img}</div>`;
+    ? `<a class="${ccls}"${cbg} href="${esc(sec.link)}" target="_blank" rel="noopener" aria-label="${esc(sec.linkLabel || "Open")}: ${esc(sec.title)}">${img}<span class="cl">${esc(sec.linkLabel || "Open")} ↗</span></a>`
+    : `<div class="${ccls}"${cbg}>${img}</div>`;
   const button = sec.link ? `<p><a class="steam" href="${esc(sec.link)}" target="_blank" rel="noopener">${esc(sec.linkLabel || "Open")} ↗</a></p>` : "";
   const overview = sec.overview ? `<p class="lead">${esc(sec.overview.intro)}</p>${moreHTML(id + "-more", sec.overview.more)}` : "";
   const reel = sec.reel && sec.reel.length ? `<div class="cell">${kit.carouselOf(sec.reel, sec.title)}</div>` : "";
@@ -1001,7 +1012,7 @@ function sectionHTML(c, sec){
       </div>
     </div>
     ${cast}
-    ${reel && video ? `<div class="media acadmedia">${reel}${video}</div>` : reel ? `<div class="featured acadmedia">${kit.carouselOf(sec.reel, sec.title)}</div>` : video ? `<div class="featured acadmedia">${video}</div>` : ""}
+    ${reel && video ? `<div class="media acadmedia">${reel}${video}</div>` : reel ? `<div class="featured${sec.reelSmall ? " small" : ""} acadmedia">${kit.carouselOf(sec.reel, sec.title)}</div>` : video ? `<div class="featured acadmedia">${video}</div>` : ""}
     ${roles ? `<div class="rolegrid">${roles}</div>` : ""}
   </section>`;
 }
@@ -1044,6 +1055,7 @@ function ugcHTML(c){
     <h3 class="ugch">Other products</h3>
     <p>${esc(u.othersIntro)}</p>
     ${others}
+    ${u.trailer ? `<div class="featured trailerbox"><video controls playsinline preload="metadata" poster="${esc(u.trailer.poster)}" src="${esc(u.trailer.src)}" aria-label="${esc(u.trailer.title)}"></video><p class="vcap"><span class="vtitle">${esc(u.trailer.title)}</span><a href="${esc(u.trailer.link)}" target="_blank" rel="noopener">Open the map on Fortnite.gg ↗</a></p></div>` : ""}
   </section>`;
 }
 // Articles: a mosaic of 1:1 boxes; clicking one opens the full article in a popup
@@ -1207,7 +1219,7 @@ function home(){
     <ul class="clist">
       <li><a class="cbtn" href="${esc(CONTACT.linkedin.url)}" target="_blank" rel="noopener"><span class="cico">${ICON.linkedin}</span><span class="ctext"><span class="clabel">LinkedIn</span><span class="cval">${esc(CONTACT.linkedin.text)}</span></span></a></li>
       <li><a class="cbtn" href="mailto:${esc(CONTACT.emailUser)}@${esc(CONTACT.emailHost)}"><span class="cico">${ICON.email}</span><span class="ctext"><span class="clabel">E-mail</span><span class="cval">${esc(CONTACT.emailUser)}@${esc(CONTACT.emailHost)}</span></span></a></li>
-      <li><a class="cbtn" href="tel:${esc(CONTACT.phone.tel)}"><span class="cico">${ICON.phone}</span><span class="ctext"><span class="clabel">Phone</span><span class="cval">${esc(CONTACT.phone.text)}</span></span></a></li>
+      <li><a class="cbtn" href="${esc(CONTACT.whatsapp.url)}" target="_blank" rel="noopener" aria-label="Chat with me on WhatsApp"><span class="cico">${ICON.whatsapp}</span><span class="ctext"><span class="clabel">WhatsApp</span><span class="cval">${esc(CONTACT.whatsapp.text)}</span></span></a></li>
     </ul>
   </section>`;
   // duplicates exist only for the looping animation; hidden from screen readers
