@@ -1,32 +1,3 @@
 {
- "articles": [
-  {
-   "id": "article-test-title-20261028",
-   "title": "Article test title",
-   "subtitle": "Test about my article",
-   "author": "Gustavo Mondini",
-   "role": "Game Designer",
-   "date": "October 28, 2026",
-   "iso": "2026-10-28",
-   "lang": "en",
-   "langLabel": "English",
-   "card": "articles/img/article-test-title-20261028-card-mvs2yist.jpg",
-   "photo": "articles/img/article-test-title-20261028-photo-mvs2yist.jpg",
-   "photoAlt": "Article test title",
-   "caption": "very cool test article",
-   "blocks": [
-    {
-     "type": "h1",
-     "html": "How it started"
-    },
-    {
-     "type": "p",
-     "html": "It started years ago and my hing is ok."
-    },
-    {
-     "type": "hr"
-    }
-   ]
-  }
- ]
+ "articles": []
 }
