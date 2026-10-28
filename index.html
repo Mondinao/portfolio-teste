@@ -223,6 +223,114 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .featured.small{max-width:480px}
 .trailerbox{margin-top:28px}
 .trailerbox video{width:100%;aspect-ratio:16/9;display:block;border-radius:12px;background:#000}
+.history{padding:8px 0 40px}
+.history h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:26px}
+.jobs{list-style:none;margin:0;padding:0 0 0 26px;border-left:2px solid var(--line);display:grid;gap:30px}
+.job{position:relative}
+.job::before{content:"";position:absolute;left:-34px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--bg)}
+.jobdate{display:block;font-size:.88rem;font-weight:500;color:var(--accent)}
+.jobtitle{margin:2px 0 0;font:800 clamp(1.15rem,2.6vw,1.45rem)/1.2 "Bricolage Grotesque",sans-serif}
+.jobco{margin:2px 0 6px;color:var(--muted)}
+.job .moreinner p{max-width:70ch;margin:10px 0}
+.artsfoot{margin:64px 0 8px;text-align:center}
+.logomini{width:44px;height:44px;padding:0;border:0;border-radius:50%;background:none;cursor:pointer;opacity:.38;transition:opacity .25s,transform .25s}
+.logomini img{width:100%;height:100%;object-fit:contain;display:block}
+.logomini:hover,.logomini:focus-visible{opacity:1;transform:scale(1.12)}
+.gate{z-index:140;display:grid;place-items:center}
+.gateform{display:grid;gap:12px;width:min(92vw,340px);padding:24px;border:2px solid var(--accent);border-radius:16px;background:var(--bg)}
+.gateform input{padding:10px 12px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+.gateform input:focus{outline:none;border-color:var(--accent)}
+.gerr{min-height:1.2em;margin:0;color:#ff9db5;font-size:.9rem}
+.gbtns{display:flex;gap:10px}
+.artbody ul,.artbody ol{margin:0 0 1.15em;padding-left:1.4em;font-size:1.08rem;line-height:1.8}
+.artbody li{margin:4px 0}
+.artbody blockquote{margin:0 0 1.15em;padding:4px 0 4px 18px;border-left:3px solid var(--accent);font-style:italic;font-size:1.08rem;line-height:1.8}
+.callout{display:flex;gap:12px;margin:0 0 1.15em;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);line-height:1.7}
+.callout .ci{flex:none;display:grid;place-items:center;width:24px;height:24px;margin-top:2px;border:2px solid var(--accent);border-radius:50%;color:var(--accent);font:800 .8rem "Bricolage Grotesque",sans-serif}
+.artbody pre{margin:0 0 1.15em;padding:14px 16px;overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#0a0a0c}
+.artbody pre code,.ebcode{font:.95rem/1.6 ui-monospace,Consolas,monospace}
+.artbody pre code{background:none;padding:0}
+.artbody code,.ebt code{padding:1px 6px;border-radius:5px;background:#26222a;font-family:ui-monospace,Consolas,monospace;font-size:.92em}
+.artbody a,.ebt a{color:var(--accent)}
+.artbody h2.lvl1{font-size:clamp(1.5rem,3.6vw,2rem)}
+.artbody h3.lvl2{margin:1.6em 0 .6em;font:800 1.45rem/1.25 "Bricolage Grotesque",sans-serif}
+.artbody h4.lvl3{margin:1.4em 0 .5em;font:800 1.15rem/1.3 "Bricolage Grotesque",sans-serif}
+.todos{list-style:none;padding-left:0 !important}
+.todos li{display:flex;gap:10px;align-items:flex-start}
+.tick{flex:none;display:grid;place-items:center;width:20px;height:20px;margin-top:5px;border:2px solid var(--accent);border-radius:5px;color:var(--bg);font-size:.8rem}
+.todos .done .tick{background:var(--accent)}
+.todos .done span:last-child{color:var(--muted);text-decoration:line-through}
+.edmodal{position:fixed;inset:0;z-index:120;display:flex;flex-direction:column;background:var(--bg);color:var(--ink)}
+.edtop{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));border-bottom:1px solid var(--line);background:#141316}
+.edname{font:800 1.05rem "Bricolage Grotesque",sans-serif}
+.edstatus{flex:1;min-width:150px;font-size:.85rem;color:var(--muted)}
+.edstatus.ok{color:#9be3b0}
+.edstatus.err{color:#ff9db5}
+.edbtns{display:flex;flex-wrap:wrap;gap:8px}
+.edbtns .lb-btn{padding:6px 14px;font-size:.9rem}
+.lb-btn.primary{background:var(--accent);color:var(--bg)}
+.edbtns button:disabled{opacity:.5;cursor:wait}
+.edscroll{flex:1;overflow-y:auto;padding:0 16px 90px}
+.edpage{max-width:820px;margin:0 auto;padding-top:24px}
+.edcoverbtn{width:100%;padding:34px 12px;border:2px dashed var(--line);border-radius:14px;background:var(--card);color:var(--muted);font:inherit;cursor:pointer}
+.edcoverbtn:hover{border-color:var(--accent);color:var(--accent)}
+.edhint{margin:8px 0;font-size:.85rem;color:var(--muted)}
+.edcovwrap{display:flex;gap:14px;align-items:flex-start}
+.edcard{flex:none;width:150px;height:150px;object-fit:cover;border:2px solid var(--accent);border-radius:12px}
+.edhero{flex:1;min-width:0;height:150px;object-fit:cover;border-radius:12px}
+.edfield{width:100%;margin-top:10px;padding:8px 12px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+.edcovbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.edtitle,.edsub{display:block;width:100%;padding:6px 0;border:0;border-bottom:2px solid transparent;background:none;color:var(--ink)}
+.edtitle{margin:26px 0 4px;font:800 clamp(2rem,5vw,3rem)/1.1 "Bricolage Grotesque",sans-serif}
+.edsub{margin:0 0 6px;font:400 1.2rem/1.4 Figtree,sans-serif;color:var(--muted)}
+.edtitle:focus,.edsub:focus{outline:none;border-bottom-color:var(--accent)}
+.edmeta{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0 8px}
+.edmeta label,.edform label{display:grid;gap:4px;font-size:.8rem;color:var(--muted)}
+.edmeta input,.edmeta select,.edform input{padding:7px 10px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+.edform{display:grid;gap:10px}
+.edtools{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:18px 0 10px;padding:8px;border:1px solid var(--line);border-radius:12px;background:#141316}
+.edtools button{min-width:36px;height:34px;padding:0 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.edtools button:hover{border-color:var(--accent);color:var(--accent)}
+.edtools select{height:34px;padding:0 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit}
+.edtools .sep{width:1px;height:22px;margin:0 4px;background:var(--line)}
+.eb{position:relative;display:flex;align-items:flex-start;gap:8px;margin:2px 0}
+.ebctl{position:absolute;right:0;top:-14px;z-index:2;display:flex;gap:2px;padding:2px;border:1px solid var(--line);border-radius:8px;background:var(--bg);opacity:0;transition:opacity .15s}
+.eb:hover .ebctl,.eb:focus-within .ebctl{opacity:1}
+.ebctl button{width:24px;height:24px;padding:0;border:0;border-radius:6px;background:none;color:var(--muted);font-size:.8rem;cursor:pointer}
+.ebctl button:hover{color:var(--accent)}
+.ebt,.ebcode,.ebcap{flex:1;min-width:0;padding:4px 2px;border-radius:6px;outline:none;font-size:1.08rem;line-height:1.7;overflow-wrap:anywhere}
+.ebt:focus:empty::before,.ebcode:focus:empty::before,.ebcap:empty::before{content:attr(data-ph);color:#6f6670;pointer-events:none}
+.eb-h1 .ebt{font:800 1.9rem/1.2 "Bricolage Grotesque",sans-serif}
+.eb-h2 .ebt{font:800 1.5rem/1.25 "Bricolage Grotesque",sans-serif}
+.eb-h3 .ebt{font:800 1.2rem/1.3 "Bricolage Grotesque",sans-serif}
+.eb-quote .ebt{padding-left:14px;border-left:3px solid var(--accent);font-style:italic}
+.eb-callout .ebt{padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.eb-code .ebcode{margin:0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#0a0a0c;white-space:pre-wrap}
+.ebmark{flex:none;width:24px;text-align:center;line-height:1.7;color:var(--accent)}
+.ebchk{flex:none;margin:10px 4px 0;accent-color:var(--accent)}
+.eb-img .artfig{width:100%;margin:8px 0}
+.eb-img .ebcap{display:block;margin-top:6px;font-size:.9rem;color:var(--muted)}
+.eb-hr{padding:10px 0}
+.eb-hr .adiv{width:100%;margin:6px 0}
+.edadd{width:100%;margin-top:18px;padding:10px;border:1px dashed var(--line);border-radius:10px;background:none;color:var(--muted);font:inherit;cursor:pointer}
+.edadd:hover{border-color:var(--accent);color:var(--accent)}
+.slashmenu{position:fixed;z-index:125;width:280px;max-height:300px;overflow:auto;padding:6px;border:1px solid var(--line);border-radius:12px;background:#17151a;box-shadow:0 18px 40px rgba(0,0,0,.6)}
+.slashmenu .si{display:grid;gap:2px;width:100%;padding:8px 10px;border:0;border-radius:8px;background:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.slashmenu .si span{font-size:.8rem;color:var(--muted)}
+.slashmenu .si.on,.slashmenu .si:hover{background:#2a2430}
+.edpanel{position:fixed;inset:0;z-index:128;display:grid;place-items:center;padding:16px;background:rgba(6,6,8,.78)}
+.edpanelbox{width:min(100%,580px);max-height:88vh;overflow:auto;padding:20px;border:2px solid var(--accent);border-radius:16px;background:var(--bg)}
+.edpanelhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.edpanelbox h3{margin:18px 0 8px;font-size:1.05rem;color:var(--accent)}
+.edpanelbox h3 small{font:400 .8rem Figtree,sans-serif;color:var(--muted)}
+.edlist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.edlist li{display:flex;gap:8px;align-items:stretch}
+.edopen{flex:1;display:grid;gap:2px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.edopen:hover{border-color:var(--accent)}
+.edopen small{color:var(--muted)}
+.edhelp{margin-top:12px;font-size:.9rem}
+.edhelp ol{margin:8px 0 0;padding-left:1.2em;line-height:1.6}
+@media (max-width:640px){.edcovwrap{flex-direction:column}.edhero{width:100%}.jobs{padding-left:20px}.job::before{left:-28px}}
 .alabel{margin:14px 0 0;font-size:.85rem;color:var(--muted)}
 .alabel + .audiolist{margin-top:6px}
 .atitle{font-size:.85rem;color:var(--muted)}
@@ -636,7 +744,7 @@ const OTHER = [
 const ARTICLES = [
   {id:"big-2022", title:"O que aprendi como Monitor do BIG 2022",
    subtitle:"Lições de design, comunicação e acessibilidade vividas dentro do BIG Festival",
-   author:"Gustavo Mondini", role:"Jr. Game Designer", date:"July 24, 2022", lang:"pt-BR", langLabel:"Portuguese",
+   author:"Gustavo Mondini", role:"Jr. Game Designer", date:"July 24, 2022", iso:"2022-07-24", lang:"pt-BR", langLabel:"Portuguese",
    card:"img/articles/big-2022-card.jpg", photo:"img/articles/big-2022-photo.jpg",
    photoAlt:"Gustavo Mondini and Shuhei Yoshida smiling and giving thumbs up at the BIG Festival",
    caption:"Com Shuhei Yoshida no BIG Festival.",
@@ -808,6 +916,26 @@ const ICON = {
   email: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7.5l8 5.8 8-5.8"/></svg>',
   whatsapp: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2a8.8 8.8 0 00-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1012 3.2z"/><g transform="translate(6.4 6.4) scale(.5)"><path stroke-width="3.4" d="M5.2 4h3l1.5 4-2 1.4a11.5 11.5 0 005 5l1.4-2 4 1.5v3A2 2 0 0116 19C9.4 19 4 13.6 4 7a2 2 0 011.2-3z"/></g></svg>'
 };
+
+/* ============ EDIT HERE: professional history (home page) ============ */
+const HISTORY = [
+  {date:"2024 – Present", title:"Game Designer (Level Design Specialist)", company:"Hermit Crab Studio", paras:[
+    "At Hermit Crab, I focus primarily on Game Design, owning the creation and development of core gameplay systems, progression and in-game economies. I am responsible for delivering complete GDDs and for defining mechanics, dynamics and a player experience aligned with product goals, KPIs and monetization strategies.",
+    "My work is driven by a balance between player-centric design and commercial performance, creating systems that support retention, engagement and long-term sustainability. I operate in fast-paced UGC and Metaverse environments within Fortnite, contributing to high-impact projects and partnerships.",
+    "While Game Design is my primary focus and long-term career path, I continue to draw on my Level Design background to ensure strong gameplay flow, readability and effective implementation within the playable space. I work mainly with Unreal Engine and Unreal Editor for Fortnite."]},
+  {date:"2024", title:"Tech Artist and VFX Artist", company:"Orbit Studio", paras:[
+    "My curiosity led me to start developing simple shaders and particle systems at Orbit Studio, and I quickly fell in love with the field. After nearly a year of learning, I am able to create and understand shaders and visual effects using Shader Graph, the Particle System, VFX Graph and basic shader language.",
+    "I have also learned about graphics and performance optimization, which has made me more efficient and benefits level design by enabling richer environments. I continue to study to improve my skills and deliver exceptional results."]},
+  {date:"2022 – 2024", title:"Level Designer", company:"Orbit Studio", paras:[
+    "At Orbit Studio, I worked as a Level Designer, handling several critical tasks in game development. My responsibilities included camera setup and using Cinemachine to create impactful visual experiences. I deepened my expertise in Unity 2D and 3D, performing level prototyping and blockouts, as well as set dressing and environment design.",
+    "I was also involved in difficulty balancing and enemy placement, ensuring that each level offered a fair and engaging challenge for players.",
+    "I feel immensely honored to have learned from the designers behind Retro Machina. They have been not only outstanding mentors but also great friends throughout the years, significantly enriching my journey in game design."]},
+  {date:"2021 – 2022", title:"Game Designer and Narrative Designer", company:"Rataiada Studio", paras:[
+    "At Rataiada Studio, I worked on narrative design and game design for three game jam projects. These projects were my first steps on itch.io and allowed me to meet incredible people in the field. I am very grateful to Rataiada and take great pride in the projects we developed together."]},
+  {date:"2018 – 2022", title:"Marketing Specialist", company:"Sal Digital", paras:[
+    "As a Digital Marketing Sponsorship Specialist, I developed and managed digital advertising campaigns, focusing on creating and optimizing target audiences on Facebook and LinkedIn Ads. My role included crafting sponsorship strategies, negotiating with partners and analyzing performance to maximize return on investment.",
+    "I also managed budgets and kept up with industry trends."]}
+];
 
 /* ============ EDIT HERE: partner logos (shown on the home page) ============
    logo: file inside img/partners/ (PNG or SVG with transparent background).
@@ -1058,6 +1186,679 @@ function ugcHTML(c){
     ${u.trailer ? `<div class="featured trailerbox"><video controls playsinline preload="metadata" poster="${esc(u.trailer.poster)}" src="${esc(u.trailer.src)}" aria-label="${esc(u.trailer.title)}"></video><p class="vcap"><span class="vtitle">${esc(u.trailer.title)}</span><a href="${esc(u.trailer.link)}" target="_blank" rel="noopener">Open the map on Fortnite.gg ↗</a></p></div>` : ""}
   </section>`;
 }
+/* ============ Article editor ============
+   Hidden: click the small logo at the bottom of the Articles page and enter the password.
+   The password only hides the editor. Publishing needs a GitHub token that lives in the author's browser. */
+const EDITOR_HASH = "421fbbe78d03bbab34df0f67db6d437335610e1040941496f9dcc8e4e913bb61";
+const ED_DRAFTS = "mondini.editor.drafts.v1", ED_CFG = "mondini.editor.cfg.v1";
+
+function sha256Hex(str){
+  const maxWord = Math.pow(2, 32), utf8 = unescape(encodeURIComponent(str)), words = [];
+  const bitLen = utf8.length * 8;
+  for (let i = 0; i < utf8.length; i++) words[i >> 2] |= utf8.charCodeAt(i) << (24 - (i % 4) * 8);
+  words[bitLen >> 5] |= 0x80 << (24 - bitLen % 32);
+  words[(((bitLen + 64) >> 9) << 4) + 15] = bitLen;
+  const K = [], H = [];
+  const isPrime = n => { for (let d = 2; d * d <= n; d++) if (n % d === 0) return false; return true; };
+  for (let c = 0, n = 2; c < 64; n++) if (isPrime(n)) { if (c < 8) H[c] = (Math.pow(n, 1/2) % 1 * maxWord) | 0; K[c++] = (Math.pow(n, 1/3) % 1 * maxWord) | 0; }
+  const w = [];
+  for (let j = 0; j < words.length; j += 16) {
+    let [a, b, c, d, e, f, g, h] = H;
+    const old = H.slice(0, 8);
+    for (let i = 0; i < 64; i++) {
+      if (i < 16) w[i] = words[j + i] | 0;
+      else { const g0 = w[i-15], g1 = w[i-2];
+        w[i] = (w[i-16] + (((g0>>>7)|(g0<<25)) ^ ((g0>>>18)|(g0<<14)) ^ (g0>>>3)) + w[i-7] + (((g1>>>17)|(g1<<15)) ^ ((g1>>>19)|(g1<<13)) ^ (g1>>>10))) | 0; }
+      const t1 = (h + (((e>>>6)|(e<<26)) ^ ((e>>>11)|(e<<21)) ^ ((e>>>25)|(e<<7))) + ((e & f) ^ (~e & g)) + K[i] + w[i]) | 0;
+      const t2 = ((((a>>>2)|(a<<30)) ^ ((a>>>13)|(a<<19)) ^ ((a>>>22)|(a<<10))) + ((a & b) ^ (a & c) ^ (b & c))) | 0;
+      h = g; g = f; f = e; e = (d + t1) | 0; d = c; c = b; b = a; a = (t1 + t2) | 0;
+    }
+    const nv = [a, b, c, d, e, f, g, h];
+    for (let i = 0; i < 8; i++) H[i] = (old[i] + nv[i]) | 0;
+  }
+  return H.map(x => ("00000000" + (x >>> 0).toString(16)).slice(-8)).join("");
+}
+
+// Keeps only simple inline formatting (bold, italic, underline, strike, code, links). Everything else is removed.
+function sanitizeInline(html){
+  const ALLOWED = {b:1, strong:1, i:1, em:1, u:1, s:1, strike:1, del:1, code:1, br:1, a:1};
+  return String(html || "").replace(/<!--[\s\S]*?-->/g, "").replace(/(<\/?[a-zA-Z][^>]*>)|(<)|([^<]+)/g, (m, tag, lt, txt) => {
+    if (txt !== undefined) return txt;
+    if (lt) return "&lt;";
+    const mm = /^<(\/?)([a-zA-Z][a-zA-Z0-9]*)([^>]*)>$/.exec(tag);
+    if (!mm) return "";
+    const closing = mm[1] === "/", name = mm[2].toLowerCase();
+    if (!ALLOWED[name]) return "";
+    if (closing) return name === "br" ? "" : "</" + name + ">";
+    if (name === "a") {
+      const h = /href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i.exec(mm[3]);
+      let u = h ? (h[1] !== undefined ? h[1] : h[2] !== undefined ? h[2] : h[3]) : "";
+      u = u.replace(/&amp;/g, "&").trim();
+      if (!/^(https?:\/\/|mailto:)/i.test(u)) return "<a>";
+      return '<a href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">';
+    }
+    return "<" + name + ">";
+  });
+}
+
+// Article body made of blocks (written in the editor)
+function articleBlocksHTML(blocks){
+  const out = []; let i = 0;
+  const inl = h => sanitizeInline(h);
+  while (i < blocks.length) {
+    const b = blocks[i];
+    if (b.type === "ul" || b.type === "ol" || b.type === "todo") {
+      const kind = b.type, items = [];
+      while (i < blocks.length && blocks[i].type === kind) { items.push(blocks[i]); i++; }
+      if (kind === "todo") out.push('<ul class="todos">' + items.map(x => `<li class="${x.checked ? "done" : ""}"><span class="tick" aria-hidden="true">${x.checked ? "✓" : ""}</span><span>${inl(x.html)}</span></li>`).join("") + "</ul>");
+      else out.push(`<${kind}>` + items.map(x => `<li>${inl(x.html)}</li>`).join("") + `</${kind}>`);
+      continue;
+    }
+    i++;
+    if (b.type === "h1") out.push(`<h2 class="lvl1">${inl(b.html)}</h2>`);
+    else if (b.type === "h2") out.push(`<h3 class="lvl2">${inl(b.html)}</h3>`);
+    else if (b.type === "h3") out.push(`<h4 class="lvl3">${inl(b.html)}</h4>`);
+    else if (b.type === "quote") out.push(`<blockquote>${inl(b.html)}</blockquote>`);
+    else if (b.type === "callout") out.push(`<aside class="callout"><span class="ci" aria-hidden="true">i</span><div>${inl(b.html)}</div></aside>`);
+    else if (b.type === "code") out.push(`<pre><code>${esc(b.text || "")}</code></pre>`);
+    else if (b.type === "hr") out.push('<hr class="adiv">');
+    else if (b.type === "img") { const src = b.dataUrl || b.src; if (src) out.push(`<figure class="artfig"><img src="${esc(src)}" alt="${esc((b.caption || "").replace(/<[^>]*>/g, ""))}" loading="lazy">${b.caption ? `<figcaption>${inl(b.caption)}</figcaption>` : ""}</figure>`); }
+    else if (inl(b.html).replace(/<br>|&nbsp;|\s/g, "")) out.push(`<p>${inl(b.html)}</p>`);
+  }
+  return out.join("");
+}
+
+/* ---------- remote articles (published from the editor) ---------- */
+async function loadRemoteArticles(){
+  try {
+    const r = await fetch("articles/index.json?v=" + Date.now(), {cache: "no-store"});
+    if (!r.ok) return false;
+    const data = await r.json(), list = Array.isArray(data) ? data : (data.articles || []);
+    list.forEach(a => { a._remote = true; const i = ARTICLES.findIndex(x => x.id === a.id); if (i >= 0) ARTICLES[i] = a; else ARTICLES.push(a); });
+    return list.length > 0;
+  } catch (e) { return false; }
+}
+function articleItemsHTML(){
+  const list = ARTICLES.slice().sort((x, y) => (y.iso || "").localeCompare(x.iso || ""));
+  const code = a => a.lang === "pt-BR" ? "PT" : a.lang === "en" ? "EN" : String(a.lang || "").slice(0, 2).toUpperCase();
+  return list.map(a => `<li><button type="button" class="art" data-art="${esc(a.id)}" aria-label="Read the article: ${esc(a.title)}">
+      <img src="${esc(a.card)}" alt="" loading="lazy">
+      <span class="artmeta"><span class="pills2"><span class="pill">${esc(code(a))}</span>${a.en ? '<span class="pill">EN</span>' : ""}</span><b>${esc(a.title)}</b><time>${esc(a.date)}</time></span>
+    </button></li>`).join("") + `<li><div class="art soonart" aria-hidden="true"><span>More articles<br>coming soon</span></div></li>`;
+}
+function bindArticleButtons(){
+  app.querySelectorAll("[data-art]").forEach(b => { if (!b._bound) { b._bound = true; b.addEventListener("click", () => openArticle(b.dataset.art, b)); } });
+}
+function refreshArticleGrid(){
+  const ul = app.querySelector(".artgrid");
+  if (!ul) return;
+  ul.innerHTML = articleItemsHTML(); bindArticleButtons();
+}
+
+/* ---------- password gate ---------- */
+let gateEl = null, gateFails = 0, gateReturn = null;
+function closeGate(){
+  if (!gateEl) return;
+  gateEl.remove(); gateEl = null; document.removeEventListener("keydown", gateKeys);
+  if (gateReturn && gateReturn.focus && !edEl) gateReturn.focus({preventScroll:true});
+}
+function gateKeys(e){ if (e.key === "Escape") { e.preventDefault(); closeGate(); } }
+function openGate(trigger){
+  gateReturn = trigger || document.activeElement;
+  let unlocked = false;
+  try { unlocked = sessionStorage.getItem("mondini.ed") === "1"; } catch (e) {}
+  if (unlocked) { openEditor(); return; }
+  closeGate();
+  gateEl = document.createElement("div");
+  gateEl.className = "artmodal gate"; gateEl.setAttribute("role","dialog"); gateEl.setAttribute("aria-modal","true"); gateEl.setAttribute("aria-label","Editor password");
+  gateEl.innerHTML = `<form class="gateform" autocomplete="off"><label for="gpw">Password</label>
+    <input id="gpw" type="password" autocomplete="off" spellcheck="false">
+    <p class="gerr" role="alert"></p>
+    <div class="gbtns"><button type="submit" class="lb-btn">Unlock</button><button type="button" class="lb-btn" data-gclose>Cancel</button></div></form>`;
+  const form = gateEl.querySelector("form"), input = gateEl.querySelector("#gpw"), err = gateEl.querySelector(".gerr"), go = gateEl.querySelector("[type=submit]");
+  gateEl.addEventListener("click", e => { if (e.target === gateEl || e.target.closest("[data-gclose]")) closeGate(); });
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    if (sha256Hex(input.value) === EDITOR_HASH) {
+      try { sessionStorage.setItem("mondini.ed", "1"); } catch (x) {}
+      closeGate(); openEditor(); return;
+    }
+    gateFails++; input.value = ""; err.textContent = "Wrong password.";
+    go.disabled = true; setTimeout(() => { go.disabled = false; input.focus(); }, Math.min(gateFails * 1200, 8000));
+  });
+  document.body.appendChild(gateEl); document.addEventListener("keydown", gateKeys);
+  input.focus();
+}
+
+/* ---------- editor state and storage ---------- */
+let edEl = null, ed = null, edCur = 0, edTimer = null, edSlash = null, edPanel = null;
+const ED_TYPES = [
+  {type:"p", label:"Text", hint:"Plain paragraph", key:"text paragraph"},
+  {type:"h1", label:"Heading 1", hint:"Large section heading", key:"h1 heading1 title"},
+  {type:"h2", label:"Heading 2", hint:"Medium heading", key:"h2 heading2"},
+  {type:"h3", label:"Heading 3", hint:"Small heading", key:"h3 heading3"},
+  {type:"ul", label:"Bulleted list", hint:"A simple list", key:"bullet list ul"},
+  {type:"ol", label:"Numbered list", hint:"An ordered list", key:"number numbered list ol"},
+  {type:"todo", label:"To-do list", hint:"A checklist", key:"todo task checkbox check"},
+  {type:"quote", label:"Quote", hint:"Highlight a quote", key:"quote"},
+  {type:"callout", label:"Callout", hint:"A highlighted note", key:"callout note box"},
+  {type:"code", label:"Code", hint:"Monospaced code block", key:"code"},
+  {type:"hr", label:"Divider", hint:"A horizontal line", key:"divider line hr"},
+  {type:"img", label:"Image", hint:"Attach an image", key:"image photo picture attachment"}
+];
+const EDPH = {p:"Type '/' for commands", h1:"Heading 1", h2:"Heading 2", h3:"Heading 3", ul:"List item", ol:"List item", todo:"To-do", quote:"Quote", callout:"Write a note", code:"Code"};
+const TEXTY = ["p","h1","h2","h3","ul","ol","todo","quote","callout"];
+const todayISO = () => { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
+const fmtDate = iso => { const [y, m, d] = String(iso || todayISO()).split("-").map(Number); return new Date(y, m - 1, d).toLocaleDateString("en-US", {year:"numeric", month:"long", day:"numeric"}); };
+const LANG_LABEL = {"en":"English", "pt-BR":"Portuguese", "es":"Spanish"};
+const isData = u => typeof u === "string" && u.startsWith("data:");
+function edCfg(){
+  const def = {owner:"mondinao", repo:"portfolio-teste", branch:"main", token:"", role:"Game Designer"};
+  try { return Object.assign(def, JSON.parse(localStorage.getItem(ED_CFG) || "{}")); } catch (e) { return def; }
+}
+function edDrafts(){ try { return JSON.parse(localStorage.getItem(ED_DRAFTS) || "[]"); } catch (e) { return []; } }
+function edBlank(){ return {id:"draft-" + Date.now().toString(36), title:"", subtitle:"", iso:todayISO(), lang:"en", role:edCfg().role, cover:null, coverCaption:"", blocks:[{type:"p", html:""}], published:false}; }
+function edIsEmpty(){ return !ed.title && !ed.cover && ed.blocks.every(b => (b.type === "img" ? false : !(b.html || b.text || "").replace(/<br>|&nbsp;|\s/g, ""))); }
+function edStatus(msg, kind){
+  const s = edEl && edEl.querySelector("#edstatus");
+  if (s) { s.textContent = msg; s.className = "edstatus " + (kind || ""); }
+}
+function edSync(){
+  if (!edEl || !ed) return;
+  const g = id => edEl.querySelector("#" + id);
+  ed.title = g("edtitle").value.trim(); ed.subtitle = g("edsub").value.trim();
+  ed.iso = g("eddate").value || todayISO(); ed.lang = g("edlang").value; ed.role = g("edrole").value.trim() || "Game Designer";
+  const cc = g("edcovercap"); if (cc) ed.coverCaption = cc.value.trim();
+  edEl.querySelectorAll(".eb").forEach(w => {
+    const b = ed.blocks[+w.dataset.i]; if (!b) return;
+    const t = w.querySelector(".ebt"); if (t) b.html = t.innerHTML;
+    const c = w.querySelector(".ebcode"); if (c) b.text = c.textContent;
+    const cap = w.querySelector("[data-field=caption]"); if (cap) b.caption = cap.innerHTML;
+    const chk = w.querySelector(".ebchk"); if (chk) b.checked = chk.checked;
+  });
+}
+function edAutosave(){
+  clearTimeout(edTimer);
+  edTimer = setTimeout(() => {
+    if (!edEl || !ed) return;
+    edSync();
+    let list = edDrafts().filter(d => d.id !== ed.id);
+    if (!edIsEmpty()) list.unshift(Object.assign({}, ed, {saved: Date.now()}));
+    try { localStorage.setItem(ED_DRAFTS, JSON.stringify(list.slice(0, 20))); edStatus(edIsEmpty() ? "" : "Draft saved in this browser at " + new Date().toLocaleTimeString(), ""); }
+    catch (e) { edStatus("The draft is too large to save in this browser. Publish it or download a backup.", "err"); }
+  }, 700);
+}
+
+/* ---------- images ---------- */
+function edReadImage(file){
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onerror = () => rej(new Error("Could not read the file."));
+    r.onload = () => { const img = new Image(); img.onerror = () => rej(new Error("This file is not a valid image.")); img.onload = () => res(img); img.src = r.result; };
+    r.readAsDataURL(file);
+  });
+}
+function edScale(img, maxW){
+  const s = Math.min(1, maxW / img.naturalWidth), c = document.createElement("canvas");
+  c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
+  const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, c.width, c.height); x.drawImage(img, 0, 0, c.width, c.height);
+  return c.toDataURL("image/jpeg", 0.86);
+}
+function edSquare(img, size){
+  const m = Math.min(img.naturalWidth, img.naturalHeight), c = document.createElement("canvas");
+  c.width = c.height = size;
+  c.getContext("2d").drawImage(img, (img.naturalWidth - m) / 2, (img.naturalHeight - m) / 2, m, m, 0, 0, size, size);
+  return c.toDataURL("image/jpeg", 0.86);
+}
+function edPick(multiple){
+  return new Promise(res => { const i = document.createElement("input"); i.type = "file"; i.accept = "image/*"; i.multiple = !!multiple; i.onchange = () => res([...i.files]); i.click(); });
+}
+async function edAddFiles(i, files, replace){
+  edStatus("Adding image…");
+  try {
+    const out = [];
+    for (const f of files) { const img = await edReadImage(f); out.push({type:"img", dataUrl:edScale(img, 1600), caption:""}); }
+    edSync();
+    if (replace && ed.blocks[i]) ed.blocks.splice(i, 1, ...out); else ed.blocks.splice(i + 1, 0, ...out);
+    const last = i + out.length;
+    if (!ed.blocks[last + 1]) ed.blocks.push({type:"p", html:""});
+    edRenderBlocks(last + 1, false); edAutosave(); edStatus("Image added.", "ok");
+  } catch (err) { edStatus(err.message, "err"); }
+}
+async function edChooseCover(){
+  const [f] = await edPick(false); if (!f) return;
+  try {
+    const img = await edReadImage(f);
+    ed.cover = {card:edSquare(img, 720), photo:edScale(img, 1400)};
+    edRenderCover(); edAutosave(); edStatus("Cover image set.", "ok");
+  } catch (err) { edStatus(err.message, "err"); }
+}
+function edRenderCover(){
+  const host = edEl.querySelector("#edcover");
+  const c = ed.cover;
+  host.innerHTML = c
+    ? `<div class="edcovwrap"><img class="edcard" src="${esc(c.card)}" alt="Cover, square version used in the mosaic"><img class="edhero" src="${esc(c.photo)}" alt="Cover, wide version shown in the article"></div>
+       <input id="edcovercap" class="edfield" placeholder="Cover caption (optional)" value="${esc(ed.coverCaption || "")}">
+       <div class="edcovbtns"><button type="button" class="lb-btn" data-ed="cover">Change cover image</button><button type="button" class="lb-btn" data-ed="nocover">Remove</button></div>`
+    : `<button type="button" class="edcoverbtn" data-ed="cover">＋ Choose a cover image</button><p class="edhint">It becomes the square picture in the mosaic and the wide photo at the top of the article.</p>`;
+}
+
+/* ---------- blocks ---------- */
+function edBlockHTML(b, i, n){
+  const ctl = '<span class="ebctl"><button type="button" data-act="up" aria-label="Move block up">↑</button><button type="button" data-act="down" aria-label="Move block down">↓</button><button type="button" data-act="del" aria-label="Delete block">✕</button></span>';
+  let body;
+  if (b.type === "hr") body = '<hr class="adiv">';
+  else if (b.type === "img") body = `<figure class="artfig"><img src="${esc(b.dataUrl || b.src || "")}" alt=""><figcaption class="ebcap" contenteditable="true" data-field="caption" data-ph="Add a caption (optional)">${sanitizeInline(b.caption || "")}</figcaption></figure>`;
+  else if (b.type === "code") body = `<pre class="ebcode" contenteditable="true" spellcheck="false" data-ph="Code">${esc(b.text || "")}</pre>`;
+  else {
+    const lead = b.type === "todo" ? `<input type="checkbox" class="ebchk" ${b.checked ? "checked" : ""} aria-label="Done">` : b.type === "ul" ? '<span class="ebmark">•</span>' : b.type === "ol" ? `<span class="ebmark">${n}.</span>` : "";
+    body = `${lead}<div class="ebt" contenteditable="true" data-ph="${esc(EDPH[b.type] || "")}">${sanitizeInline(b.html || "")}</div>`;
+  }
+  return `<div class="eb eb-${b.type}" data-i="${i}">${ctl}${body}</div>`;
+}
+function edRenderBlocks(focusI, atEnd){
+  const host = edEl.querySelector("#edblocks"); let n = 0;
+  host.innerHTML = ed.blocks.map((b, i) => { n = b.type === "ol" ? ((ed.blocks[i-1] && ed.blocks[i-1].type === "ol") ? n + 1 : 1) : 0; return edBlockHTML(b, i, n); }).join("");
+  if (focusI != null) edFocus(focusI, atEnd);
+}
+function edFocusable(i){ const w = edEl.querySelector(`.eb[data-i="${i}"]`); return w && w.querySelector(".ebt, .ebcode, .ebcap"); }
+function edFocus(i, atEnd){
+  i = Math.max(0, Math.min(i, ed.blocks.length - 1));
+  const el = edFocusable(i); if (!el) return;
+  el.focus({preventScroll:false}); edCur = i;
+  const sel = getSelection(), r = document.createRange(); r.selectNodeContents(el); r.collapse(!atEnd); sel.removeAllRanges(); sel.addRange(r);
+  const ts = edEl.querySelector("#edtype"); if (ts) ts.value = ed.blocks[i].type;
+}
+function edInsertAfter(i, block, focus){ edSync(); ed.blocks.splice(i + 1, 0, block); edRenderBlocks(focus ? i + 1 : null, false); edAutosave(); }
+function edRemove(i){ edSync(); ed.blocks.splice(i, 1); if (!ed.blocks.length) ed.blocks.push({type:"p", html:""}); edRenderBlocks(Math.max(0, i - 1), true); edAutosave(); }
+function edMove(i, d){ edSync(); const j = i + d; if (j < 0 || j >= ed.blocks.length) return; [ed.blocks[i], ed.blocks[j]] = [ed.blocks[j], ed.blocks[i]]; edRenderBlocks(j, true); edAutosave(); }
+function edConvert(i, type, clear){
+  edSync(); const b = ed.blocks[i]; if (!b) return;
+  if (type === "img") { edPick(true).then(files => { if (files.length) edAddFiles(i, files, !b.html && b.type === "p" || clear); }); return; }
+  if (type === "hr") { ed.blocks.splice(i, 1, {type:"hr"}, {type:"p", html:""}); edRenderBlocks(i + 1, false); edAutosave(); return; }
+  const keep = !clear && TEXTY.includes(b.type) && TEXTY.includes(type);
+  const html = keep ? b.html : "";
+  if (type === "code") ed.blocks[i] = {type, text: clear ? "" : (b.text || (b.html || "").replace(/<[^>]*>/g, ""))};
+  else ed.blocks[i] = {type, html, checked: false};
+  edRenderBlocks(i, true); edAutosave();
+}
+function edCaretAtEdge(el, which){
+  const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return false;
+  const r = sel.getRangeAt(0).cloneRange(), probe = document.createRange(); probe.selectNodeContents(el);
+  if (which === "start") probe.setEnd(r.startContainer, r.startOffset); else probe.setStart(r.endContainer, r.endOffset);
+  return probe.toString().length === 0;
+}
+function edNeighbor(i, d){ for (let j = i + d; j >= 0 && j < ed.blocks.length; j += d) if (edFocusable(j)) return j; return null; }
+function edSplit(i, t){
+  const b = ed.blocks[i], sel = getSelection(); let tail = "";
+  if (sel.rangeCount) {
+    const r = sel.getRangeAt(0), rr = document.createRange(); rr.selectNodeContents(t); rr.setStart(r.endContainer, r.endOffset);
+    const d = document.createElement("div"); d.appendChild(rr.extractContents()); tail = d.innerHTML;
+  }
+  b.html = t.innerHTML;
+  const nextType = ["ul", "ol", "todo"].includes(b.type) ? b.type : "p";
+  edSyncOthers(i); ed.blocks.splice(i + 1, 0, {type:nextType, html:tail}); edRenderBlocks(i + 1, false); edAutosave();
+}
+function edSyncOthers(skip){
+  edEl.querySelectorAll(".eb").forEach(w => { const j = +w.dataset.i; if (j === skip) return; const b = ed.blocks[j]; if (!b) return;
+    const t = w.querySelector(".ebt"); if (t) b.html = t.innerHTML; const c = w.querySelector(".ebcode"); if (c) b.text = c.textContent;
+    const cap = w.querySelector("[data-field=caption]"); if (cap) b.caption = cap.innerHTML; const chk = w.querySelector(".ebchk"); if (chk) b.checked = chk.checked; });
+}
+
+/* ---------- slash menu ---------- */
+function edSlashClose(){ if (edSlash) { edSlash.el.remove(); edSlash = null; } }
+function edSlashOpen(w, q){
+  const items = ED_TYPES.filter(x => !q || (x.label + " " + x.key).toLowerCase().includes(q.toLowerCase()));
+  if (!items.length) { edSlashClose(); return; }
+  if (!edSlash) { edSlash = {el:document.createElement("div"), sel:0, items:[], i:0}; edSlash.el.className = "slashmenu"; edSlash.el.setAttribute("role","listbox"); edEl.appendChild(edSlash.el); }
+  edSlash.items = items; edSlash.sel = 0; edSlash.i = +w.dataset.i;
+  edSlash.el.innerHTML = items.map((x, k) => `<button type="button" class="si${k === 0 ? " on" : ""}" data-slash="${x.type}"><b>${esc(x.label)}</b><span>${esc(x.hint)}</span></button>`).join("");
+  const r = w.getBoundingClientRect(); edSlash.el.style.top = Math.max(60, Math.min(r.bottom + 4, innerHeight - 320)) + "px"; edSlash.el.style.left = Math.max(12, Math.min(r.left + 30, innerWidth - 300)) + "px";
+}
+function edSlashKey(k){
+  if (!edSlash) return;
+  if (k === "Escape") { edSlashClose(); return; }
+  if (k === "Enter" || k === "Tab") { edSlashPick(edSlash.items[edSlash.sel].type); return; }
+  edSlash.sel = (edSlash.sel + (k === "ArrowDown" ? 1 : -1) + edSlash.items.length) % edSlash.items.length;
+  edSlash.el.querySelectorAll(".si").forEach((b, n) => b.classList.toggle("on", n === edSlash.sel));
+}
+function edSlashPick(type){ const i = edSlash.i; edSlashClose(); edConvert(i, type, true); }
+
+/* ---------- editor events ---------- */
+function edInput(e){
+  const t = e.target, w = t.closest && t.closest(".eb");
+  if (!w) { if (t.id) edAutosave(); return; }
+  edAutosave();
+  if (!t.classList.contains("ebt")) return;
+  const i = +w.dataset.i, b = ed.blocks[i], s = t.textContent.replace(/\u00a0/g, " ");
+  if (b.type === "p") {
+    const m = {"# ":"h1", "## ":"h2", "### ":"h3", "- ":"ul", "* ":"ul", "1. ":"ol", "[] ":"todo", "[ ] ":"todo", "> ":"quote", "``` ":"code", "```":"code", "---":"hr"}[s];
+    if (m) { edSlashClose(); edConvert(i, m, true); return; }
+    const sm = /^\/([a-z0-9 ]*)$/i.exec(s);
+    if (sm) { edSlashOpen(w, sm[1]); return; }
+  }
+  edSlashClose();
+}
+function edKey(e){
+  const t = e.target, w = t.closest && t.closest(".eb"); if (!w) return;
+  const i = +w.dataset.i, b = ed.blocks[i];
+  if (edSlash && ["ArrowDown","ArrowUp","Enter","Escape","Tab"].includes(e.key)) { e.preventDefault(); edSlashKey(e.key); return; }
+  if (t.classList.contains("ebcap")) { if (e.key === "Enter") { e.preventDefault(); edInsertAfter(i, {type:"p", html:""}, true); } return; }
+  if (t.classList.contains("ebcode")) {
+    if (e.key === "Enter") { e.preventDefault(); if (e.shiftKey) edInsertAfter(i, {type:"p", html:""}, true); else document.execCommand("insertText", false, "\n"); }
+    else if (e.key === "Tab") { e.preventDefault(); document.execCommand("insertText", false, "  "); }
+    else if (e.key === "Backspace" && !t.textContent) { e.preventDefault(); edConvert(i, "p", true); }
+    return;
+  }
+  if (!t.classList.contains("ebt") || e.isComposing) return;
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    if (!t.textContent.trim() && b.type !== "p") { edConvert(i, "p", true); return; }
+    edSplit(i, t); return;
+  }
+  if (e.key === "Backspace" && !t.textContent) { e.preventDefault(); if (b.type !== "p") edConvert(i, "p", true); else if (ed.blocks.length > 1) edRemove(i); return; }
+  if (e.key === "ArrowUp" && edCaretAtEdge(t, "start")) { const j = edNeighbor(i, -1); if (j != null) { e.preventDefault(); edFocus(j, true); } }
+  if (e.key === "ArrowDown" && edCaretAtEdge(t, "end")) { const j = edNeighbor(i, 1); if (j != null) { e.preventDefault(); edFocus(j, false); } }
+}
+function edPaste(e){
+  const t = e.target; if (!(t.closest && t.closest(".ebt, .ebcode, .ebcap"))) return;
+  const cd = e.clipboardData; if (!cd) return;
+  const files = [...(cd.files || [])].filter(f => f.type.startsWith("image/"));
+  e.preventDefault();
+  if (files.length) { edAddFiles(edCur, files, false); return; }
+  const text = cd.getData("text/plain").replace(/\r/g, "");
+  const parts = t.classList.contains("ebt") ? text.split(/\n{2,}/) : [text];
+  document.execCommand("insertText", false, parts[0].replace(/\n/g, t.classList.contains("ebcode") ? "\n" : " "));
+  if (parts.length > 1) { edSync(); const w = t.closest(".eb"), i = +w.dataset.i; ed.blocks.splice(i + 1, 0, ...parts.slice(1).map(p => ({type:"p", html:esc(p.replace(/\n/g, " ").trim())}))); edRenderBlocks(i + parts.length - 1, true); edAutosave(); }
+}
+function edWrapCode(){
+  const sel = getSelection(); if (!sel.rangeCount || sel.isCollapsed) { edStatus("Select some text first, then click Code."); return; }
+  const r = sel.getRangeAt(0), c = document.createElement("code"); c.appendChild(r.extractContents()); r.insertNode(c); edAutosave();
+}
+function edTool(name){
+  if (["bold", "italic", "underline", "strikeThrough"].includes(name)) { document.execCommand(name); edAutosave(); return; }
+  if (name === "code") { edWrapCode(); return; }
+  if (name === "link") {
+    const sel = getSelection(); if (!sel || sel.isCollapsed) { edStatus("Select some text first, then click Link."); return; }
+    let u = prompt("Link address (https://...)"); if (!u) return;
+    if (!/^(https?:\/\/|mailto:)/i.test(u)) u = "https://" + u;
+    document.execCommand("createLink", false, u); edAutosave(); return;
+  }
+  if (name === "image") { edPick(true).then(files => { if (files.length) edAddFiles(edCur, files, false); }); return; }
+  if (name === "hr") { edInsertAfter(edCur, {type:"hr"}, false); edInsertAfter(edCur + 1, {type:"p", html:""}, true); }
+}
+
+/* ---------- article object, preview, download ---------- */
+function edToArticle(mode){   // mode "pub": JSON-safe (image paths). mode "view": for display (data URLs allowed)
+  const pub = mode === "pub", iso = ed.iso || todayISO();
+  const id = ed.published ? ed.id : (slugify(ed.title) || "article") + "-" + iso.replace(/-/g, "");
+  const keep = b => b.type === "hr" || (b.type === "img" && (b.src || b.dataUrl)) || (b.type === "code" && (b.text || "").trim()) || (TEXTY.includes(b.type) && sanitizeInline(b.html || "").replace(/<br>|&nbsp;|\s/g, ""));
+  const blocks = ed.blocks.filter(keep).map(b => {
+    if (b.type === "img") return pub ? {type:"img", src:b.src, caption:sanitizeInline(b.caption || "")} : {type:"img", src:b.src, dataUrl:b.dataUrl, caption:sanitizeInline(b.caption || "")};
+    if (b.type === "code") return {type:"code", text:b.text || ""};
+    if (b.type === "hr") return {type:"hr"};
+    const o = {type:b.type, html:sanitizeInline(b.html || "")}; if (b.type === "todo") o.checked = !!b.checked; return o;
+  });
+  const c = ed.cover || {};
+  return {id, title:ed.title, subtitle:ed.subtitle, author:"Gustavo Mondini", role:ed.role, date:fmtDate(iso), iso, lang:ed.lang, langLabel:LANG_LABEL[ed.lang] || ed.lang,
+    card: pub ? c.cardPath : (c.card || c.cardPath), photo: pub ? c.photoPath : (c.photo || c.photoPath), photoAlt: ed.title, caption: ed.coverCaption || "", blocks};
+}
+function edPreview(){ edSync(); if (!ed.title) { edStatus("Add a title to preview the article.", "err"); return; } openArticleObj(edToArticle("view"), null); }
+function edDownload(){
+  edSync();
+  const blob = new Blob([JSON.stringify(Object.assign(edToArticle("view"), {cover:ed.cover}), null, 1)], {type:"application/json"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = (slugify(ed.title) || "article") + ".json"; document.body.appendChild(a); a.click(); a.remove();
+}
+
+/* ---------- GitHub publishing ---------- */
+const b64Text = s => btoa(unescape(encodeURIComponent(s)));
+const fromB64Text = b => decodeURIComponent(escape(atob(String(b).replace(/\n/g, ""))));
+async function ghError(r){
+  let m = ""; try { m = (await r.json()).message || ""; } catch (e) {}
+  const hint = r.status === 401 ? "GitHub rejected the token. Check it in Settings." : r.status === 403 ? "The token does not have permission (it needs Contents: Read and write on this repository)." : r.status === 404 ? "Repository or file not found. Check the owner, repository name and token access in Settings." : (r.status === 409 || r.status === 422) ? "GitHub reported a conflict. Try again." : "GitHub error " + r.status + ".";
+  return new Error(hint + (m ? " (" + m + ")" : ""));
+}
+const ghHeaders = cfg => ({Authorization:"Bearer " + cfg.token, Accept:"application/vnd.github+json", "X-GitHub-Api-Version":"2022-11-28"});
+const ghUrl = (cfg, path) => `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${path}`;
+async function ghGet(cfg, path){
+  const r = await fetch(ghUrl(cfg, path) + "?ref=" + encodeURIComponent(cfg.branch) + "&t=" + Date.now(), {headers:ghHeaders(cfg), cache:"no-store"});
+  if (r.status === 404) return null;
+  if (!r.ok) throw await ghError(r);
+  return r.json();
+}
+async function ghPut(cfg, path, b64, message, sha){
+  const body = {message, content:b64, branch:cfg.branch}; if (sha) body.sha = sha;
+  const r = await fetch(ghUrl(cfg, path), {method:"PUT", headers:Object.assign({"Content-Type":"application/json"}, ghHeaders(cfg)), body:JSON.stringify(body)});
+  if (!r.ok) throw await ghError(r);
+  return r.json();
+}
+async function ghUpdateIndex(cfg, mutate, message){
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const cur = await ghGet(cfg, "articles/index.json");
+    let list = {articles:[]}, sha;
+    if (cur) { sha = cur.sha; try { list = JSON.parse(fromB64Text(cur.content)); } catch (e) {} if (Array.isArray(list)) list = {articles:list}; }
+    list.articles = mutate(list.articles || []);
+    try { await ghPut(cfg, "articles/index.json", b64Text(JSON.stringify(list, null, 1)), message, sha); return; }
+    catch (e) { if (attempt === 1) throw e; }
+  }
+}
+async function edPublish(){
+  edSync();
+  const cfg = edCfg();
+  if (!ed.title) { edStatus("Add a title first.", "err"); return; }
+  if (!ed.cover) { edStatus("Choose a cover image first (it is the picture in the mosaic).", "err"); return; }
+  if (!ed.blocks.some(b => b.type === "img" || (b.html || b.text || "").replace(/<[^>]*>|&nbsp;|\s/g, ""))) { edStatus("Write something in the article first.", "err"); return; }
+  if (!cfg.token) { edStatus("Add your GitHub token in Settings first.", "err"); edSettings(); return; }
+  const btn = edEl.querySelector('[data-ed="publish"]'); btn.disabled = true;
+  try {
+    const iso = ed.iso || todayISO(), id = ed.published ? ed.id : (slugify(ed.title) || "article") + "-" + iso.replace(/-/g, ""), ts = Date.now().toString(36);
+    const upload = async (dataUrl, name) => { const path = `articles/img/${id}-${name}-${ts}.jpg`; await ghPut(cfg, path, dataUrl.split(",")[1], "Add article image"); return path; };
+    edStatus("Publishing… uploading the cover");
+    const c = ed.cover;
+    if (isData(c.card)) c.cardPath = await upload(c.card, "card"); else if (!c.cardPath) c.cardPath = c.card;
+    if (isData(c.photo)) c.photoPath = await upload(c.photo, "photo"); else if (!c.photoPath) c.photoPath = c.photo;
+    let n = 0;
+    for (const b of ed.blocks) if (b.type === "img" && b.dataUrl && !b.src) { n++; edStatus(`Publishing… uploading image ${n}`); b.src = await upload(b.dataUrl, "img" + n); }
+    edStatus("Publishing… updating the article list");
+    ed.id = id; ed.published = true;
+    const art = edToArticle("pub");
+    await ghUpdateIndex(cfg, list => [art].concat(list.filter(x => x.id !== art.id)), "Publish article: " + art.title);
+    const live = edToArticle("view"); live._remote = true;
+    const k = ARTICLES.findIndex(x => x.id === live.id); if (k >= 0) ARTICLES[k] = live; else ARTICLES.push(live);
+    if (location.hash === "#/articles-and-analysis") refreshArticleGrid();
+    edAutosave();
+    edStatus("Published ✓ It will be visible to everyone in about 1 to 2 minutes (GitHub Pages is rebuilding).", "ok");
+  } catch (err) { edStatus(err.message || "Could not publish.", "err"); }
+  btn.disabled = false;
+}
+async function edDeletePublished(id){
+  const cfg = edCfg();
+  if (!cfg.token) { edStatus("Add your GitHub token in Settings first.", "err"); return; }
+  edStatus("Removing the article…");
+  try {
+    await ghUpdateIndex(cfg, list => list.filter(x => x.id !== id), "Remove article: " + id);
+    const k = ARTICLES.findIndex(x => x.id === id); if (k >= 0) ARTICLES.splice(k, 1);
+    if (location.hash === "#/articles-and-analysis") refreshArticleGrid();
+    edStatus("Article removed. It disappears for everyone in 1 to 2 minutes.", "ok");
+  } catch (err) { edStatus(err.message, "err"); }
+}
+
+/* ---------- editor window ---------- */
+function edSaveNow(){
+  if (!edEl || !ed) return;
+  clearTimeout(edTimer); edSync();
+  const list = edDrafts().filter(d => d.id !== ed.id);
+  if (!edIsEmpty()) list.unshift(Object.assign({}, ed, {saved: Date.now()}));
+  try { localStorage.setItem(ED_DRAFTS, JSON.stringify(list.slice(0, 20))); } catch (e) {}
+}
+function edGlobalKeys(e){
+  if (e.key !== "Escape" || artEl) return;
+  if (edSlash) { edSlashClose(); return; }
+  if (edPanel) { edClosePanel(); }
+}
+function closeEditor(){
+  if (!edEl) return;
+  edSaveNow(); edSlashClose(); edClosePanel();
+  edEl.remove(); edEl = null; ed = null; document.body.style.overflow = "";
+  document.removeEventListener("keydown", edGlobalKeys);
+  const sl = document.querySelector("#secretlogo"); if (sl) sl.focus({preventScroll:true});
+}
+function edLoad(obj){
+  ed = obj ? JSON.parse(JSON.stringify(obj)) : edBlank();
+  const g = id => edEl.querySelector("#" + id);
+  g("edtitle").value = ed.title || ""; g("edsub").value = ed.subtitle || ""; g("eddate").value = ed.iso || todayISO();
+  g("edlang").value = ed.lang || "en"; g("edrole").value = ed.role || "Game Designer";
+  edRenderCover(); edRenderBlocks(null); edStatus("");
+  edEl.querySelector(".edscroll").scrollTop = 0;
+}
+function edFromArticle(a){
+  return {id:a.id, title:a.title, subtitle:a.subtitle || "", iso:a.iso || todayISO(), lang:a.lang || "en", role:a.role || edCfg().role,
+    cover:{card:a.card, photo:a.photo, cardPath:isData(a.card) ? "" : a.card, photoPath:isData(a.photo) ? "" : a.photo},
+    coverCaption:a.caption || "", blocks:(a.blocks || []).map(b => Object.assign({}, b)), published:true};
+}
+function openEditor(){
+  closeEditor(); closeGate(); closeArticle();
+  edEl = document.createElement("div");
+  edEl.className = "edmodal"; edEl.setAttribute("role","dialog"); edEl.setAttribute("aria-modal","true"); edEl.setAttribute("aria-label","Article editor");
+  const types = ED_TYPES.filter(t => t.type !== "hr" && t.type !== "img").map(t => `<option value="${t.type}">${esc(t.label)}</option>`).join("");
+  edEl.innerHTML = `<div class="edtop">
+      <strong class="edname">Article editor</strong>
+      <span class="edstatus" id="edstatus" role="status"></span>
+      <span class="edbtns">
+        <button type="button" class="lb-btn" data-ed="new">New</button>
+        <button type="button" class="lb-btn" data-ed="open">Open</button>
+        <button type="button" class="lb-btn" data-ed="preview">Preview</button>
+        <button type="button" class="lb-btn" data-ed="download">Backup</button>
+        <button type="button" class="lb-btn" data-ed="settings">Settings</button>
+        <button type="button" class="lb-btn primary" data-ed="publish">Publish</button>
+        <button type="button" class="lb-btn" data-ed="close">✕ Close</button>
+      </span>
+    </div>
+    <div class="edscroll"><div class="edpage">
+      <div id="edcover" class="edcover"></div>
+      <input id="edtitle" class="edtitle" placeholder="Article title" maxlength="140" aria-label="Title">
+      <input id="edsub" class="edsub" placeholder="Subtitle" maxlength="200" aria-label="Subtitle">
+      <div class="edmeta">
+        <label>Date<input id="eddate" type="date"></label>
+        <label>Language<select id="edlang"><option value="en">English</option><option value="pt-BR">Portuguese</option><option value="es">Spanish</option></select></label>
+        <label>Role shown under the title<input id="edrole" maxlength="60"></label>
+      </div>
+      <div class="edtools" role="toolbar" aria-label="Formatting">
+        <button type="button" data-tool="bold" title="Bold (Ctrl+B)"><b>B</b></button>
+        <button type="button" data-tool="italic" title="Italic (Ctrl+I)"><i>I</i></button>
+        <button type="button" data-tool="underline" title="Underline (Ctrl+U)"><u>U</u></button>
+        <button type="button" data-tool="strikeThrough" title="Strikethrough"><s>S</s></button>
+        <button type="button" data-tool="code" title="Inline code">&lt;/&gt;</button>
+        <button type="button" data-tool="link" title="Link">Link</button>
+        <span class="sep"></span>
+        <select id="edtype" aria-label="Block type">${types}</select>
+        <span class="sep"></span>
+        <button type="button" data-tool="image" title="Attach an image">Image</button>
+        <button type="button" data-tool="hr" title="Divider">Divider</button>
+      </div>
+      <p class="edhint">Tip: type <b>/</b> for the block menu, or use shortcuts like <b># </b> heading, <b>- </b> list, <b>1. </b> numbered list, <b>[] </b> to-do, <b>&gt; </b> quote, <b>---</b> divider. You can also paste images.</p>
+      <div id="edblocks" class="edblocks"></div>
+      <button type="button" class="edadd" data-ed="addblock">+ Add a block</button>
+    </div></div>`;
+  document.body.appendChild(edEl); document.body.style.overflow = "hidden";
+  edLoad(null);
+  edEl.addEventListener("click", edClick);
+  edEl.addEventListener("input", edInput);
+  edEl.addEventListener("keydown", edKey);
+  edEl.addEventListener("paste", edPaste);
+  edEl.addEventListener("focusin", e => { const w = e.target.closest && e.target.closest(".eb"); if (w && ed && ed.blocks[+w.dataset.i]) { edCur = +w.dataset.i; const ts = edEl.querySelector("#edtype"); if (ts && ts.querySelector(`[value="${ed.blocks[edCur].type}"]`)) ts.value = ed.blocks[edCur].type; } });
+  edEl.addEventListener("change", e => {
+    if (e.target.id === "edtype") { edConvert(edCur, e.target.value, false); return; }
+    edAutosave();
+  });
+  edEl.addEventListener("mousedown", e => { if (e.target.closest && e.target.closest(".edtools button")) e.preventDefault(); });
+  edEl.querySelector(".edscroll").addEventListener("scroll", edSlashClose);
+  document.addEventListener("keydown", edGlobalKeys);
+  edEl.querySelector("#edtitle").focus();
+}
+function edClick(e){
+  const t = e.target;
+  const sl = t.closest("[data-slash]"); if (sl) { edSlashPick(sl.dataset.slash); return; }
+  if (edSlash && !t.closest(".slashmenu")) edSlashClose();
+  const act = t.closest("[data-act]");
+  if (act) { const i = +act.closest(".eb").dataset.i; if (act.dataset.act === "up") edMove(i, -1); else if (act.dataset.act === "down") edMove(i, 1); else edRemove(i); return; }
+  const tool = t.closest("[data-tool]"); if (tool) { edTool(tool.dataset.tool); return; }
+  const d = t.closest("[data-ed]"); if (!d) return;
+  const what = d.dataset.ed;
+  if (what === "new") { edSaveNow(); edLoad(null); edStatus("New article."); }
+  else if (what === "open") edOpenPanel();
+  else if (what === "preview") edPreview();
+  else if (what === "download") edDownload();
+  else if (what === "settings") edSettings();
+  else if (what === "publish") edPublish();
+  else if (what === "close") closeEditor();
+  else if (what === "cover") edChooseCover();
+  else if (what === "nocover") { ed.cover = null; edRenderCover(); edAutosave(); }
+  else if (what === "addblock") { edSync(); ed.blocks.push({type:"p", html:""}); edRenderBlocks(ed.blocks.length - 1, false); }
+}
+
+/* ---------- panels: open article, settings ---------- */
+function edClosePanel(){ if (edPanel) { edPanel.remove(); edPanel = null; } }
+function edPanelShell(title, inner){
+  edClosePanel();
+  edPanel = document.createElement("div"); edPanel.className = "edpanel"; edPanel.setAttribute("role","dialog"); edPanel.setAttribute("aria-label", title);
+  edPanel.innerHTML = `<div class="edpanelbox"><div class="edpanelhead"><strong>${esc(title)}</strong><button type="button" class="lb-btn" data-p="close">✕ Close</button></div>${inner}</div>`;
+  edEl.appendChild(edPanel);
+  edPanel.addEventListener("click", e => { if (e.target === edPanel || e.target.closest('[data-p="close"]')) edClosePanel(); });
+  return edPanel;
+}
+function edOpenPanel(){
+  edSync();
+  const drafts = edDrafts().filter(d => !ed || d.id !== ed.id), pubs = ARTICLES.filter(a => a._remote);
+  const p = edPanelShell("Open an article", `
+    <h3>My drafts <small>(saved in this browser)</small></h3>
+    ${drafts.length ? `<ul class="edlist">${drafts.map(d => `<li><button type="button" class="edopen" data-p="draft" data-id="${esc(d.id)}">${esc(d.title || "Untitled")}<small>${esc(new Date(d.saved || Date.now()).toLocaleString())}</small></button><button type="button" class="lb-btn" data-p="deldraft" data-id="${esc(d.id)}">Delete</button></li>`).join("")}</ul>` : '<p class="edhint">No other drafts.</p>'}
+    <h3>Published from the editor</h3>
+    ${pubs.length ? `<ul class="edlist">${pubs.map(a => `<li><button type="button" class="edopen" data-p="pub" data-id="${esc(a.id)}">${esc(a.title)}<small>${esc(a.date)}</small></button><button type="button" class="lb-btn" data-p="delpub" data-id="${esc(a.id)}">Remove</button></li>`).join("")}</ul>` : '<p class="edhint">Nothing published from the editor yet.</p>'}`);
+  p.addEventListener("click", e => {
+    const b = e.target.closest("[data-p]"); if (!b) return; const id = b.dataset.id, kind = b.dataset.p;
+    if (kind === "draft") { edSaveNow(); const d = edDrafts().find(x => x.id === id); if (d) { edLoad(d); edClosePanel(); edStatus("Draft opened."); } }
+    else if (kind === "deldraft") { if (confirm("Delete this draft from this browser?")) { try { localStorage.setItem(ED_DRAFTS, JSON.stringify(edDrafts().filter(x => x.id !== id))); } catch (x) {} edOpenPanel(); } }
+    else if (kind === "pub") { const a = ARTICLES.find(x => x.id === id); if (a) { edSaveNow(); edLoad(edFromArticle(a)); edClosePanel(); edStatus("Published article opened. Publish again to update it."); } }
+    else if (kind === "delpub") { if (confirm("Remove this article from the site for everyone?")) { edClosePanel(); edDeletePublished(id); } }
+  });
+}
+function edSettings(){
+  const c = edCfg();
+  const p = edPanelShell("Settings", `
+    <p class="edhint">To publish without uploading files by hand, the editor saves your article straight into your GitHub repository. For that it needs a personal access token. The token is kept only in this browser and is never part of the site.</p>
+    <div class="edform">
+      <label>GitHub user<input id="cfgowner" value="${esc(c.owner)}" autocomplete="off"></label>
+      <label>Repository<input id="cfgrepo" value="${esc(c.repo)}" autocomplete="off"></label>
+      <label>Branch<input id="cfgbranch" value="${esc(c.branch)}" autocomplete="off"></label>
+      <label>Token<input id="cfgtoken" type="password" value="${esc(c.token)}" autocomplete="off" spellcheck="false" placeholder="github_pat_..."></label>
+      <label>Default role under the title<input id="cfgrole" value="${esc(c.role)}"></label>
+    </div>
+    <div class="edcovbtns"><button type="button" class="lb-btn primary" data-p="savecfg">Save</button><button type="button" class="lb-btn" data-p="testcfg">Test connection</button></div>
+    <p id="cfgmsg" class="edhint" role="status"></p>
+    <details class="edhelp"><summary>How to create the token (once)</summary><ol>
+      <li>On github.com, open your profile menu, then <b>Settings</b>, then <b>Developer settings</b> at the bottom of the left menu.</li>
+      <li>Choose <b>Personal access tokens</b>, then <b>Fine-grained tokens</b>, then <b>Generate new token</b>.</li>
+      <li>Give it a name, choose an expiration date, and under <b>Repository access</b> pick <b>Only select repositories</b> and select this site's repository.</li>
+      <li>Under <b>Permissions</b>, open <b>Repository permissions</b> and set <b>Contents</b> to <b>Read and write</b>.</li>
+      <li>Click <b>Generate token</b>, copy it and paste it above. GitHub shows it only once.</li>
+    </ol></details>`);
+  const read = () => ({owner:p.querySelector("#cfgowner").value.trim(), repo:p.querySelector("#cfgrepo").value.trim(), branch:p.querySelector("#cfgbranch").value.trim() || "main", token:p.querySelector("#cfgtoken").value.trim(), role:p.querySelector("#cfgrole").value.trim() || "Game Designer"});
+  p.addEventListener("click", async e => {
+    const b = e.target.closest("[data-p]"); if (!b) return; const msg = p.querySelector("#cfgmsg");
+    if (b.dataset.p === "savecfg") { try { localStorage.setItem(ED_CFG, JSON.stringify(read())); msg.textContent = "Saved in this browser."; } catch (x) { msg.textContent = "Could not save the settings."; } }
+    if (b.dataset.p === "testcfg") {
+      const c2 = read(); msg.textContent = "Testing…";
+      try {
+        const r = await fetch(`https://api.github.com/repos/${encodeURIComponent(c2.owner)}/${encodeURIComponent(c2.repo)}`, {headers:ghHeaders(c2), cache:"no-store"});
+        if (!r.ok) throw await ghError(r);
+        const j = await r.json();
+        msg.textContent = j.permissions && j.permissions.push ? "Connected to " + j.full_name + ". The token can publish." : "Connected to " + j.full_name + ", but this token cannot write to it. Check the Contents permission.";
+      } catch (err) { msg.textContent = err.message; }
+    }
+  });
+}
+
 // Articles: a mosaic of 1:1 boxes; clicking one opens the full article in a popup
 let artEl = null, artReturn = null;
 function articleBody(md){
@@ -1089,11 +1890,13 @@ function articleView(a, lang){
     </header>
     <hr class="adiv strong">
     ${a.photo ? `<figure class="artfig"><img src="${esc(a.photo)}" alt="${esc(a.photoAlt)}" loading="lazy">${t.caption ? `<figcaption>${esc(t.caption)}</figcaption>` : ""}</figure>` : ""}
-    <div class="artbody">${articleBody(t.body)}</div>`;
+    <div class="artbody">${a.blocks ? articleBlocksHTML(a.blocks) : articleBody(t.body)}</div>`;
 }
 function openArticle(id, trigger){
   const a = ARTICLES.find(x => x.id === id);
-  if (!a) return;
+  if (a) openArticleObj(a, trigger);
+}
+function openArticleObj(a, trigger){
   closeArticle();
   artReturn = trigger || document.activeElement;
   artEl = document.createElement("div");
@@ -1114,17 +1917,14 @@ function openArticle(id, trigger){
     artEl.querySelectorAll("[data-lang]").forEach(x => { const on = x === lb; x.classList.toggle("on", on); x.setAttribute("aria-pressed", String(on)); });
     artEl.querySelector(".artpanel").scrollTop = 0;
   });
-  document.body.appendChild(artEl); document.body.style.overflow = "hidden";
+  document.body.appendChild(artEl); document.body.style.overflow = "hidden"; if (edEl) artEl.style.zIndex = "130";
   document.addEventListener("keydown", artKeys);
   const panel = artEl.querySelector(".artpanel"); panel.scrollTop = 0; artEl.querySelector("[data-artclose]").focus({preventScroll:true});
 }
 function articlesHTML(c){
   return `<section class="acad arts">
-    <ul class="artgrid">${ARTICLES.map(a => `<li><button type="button" class="art" data-art="${esc(a.id)}" aria-label="Read the article: ${esc(a.title)}">
-        <img src="${esc(a.card)}" alt="" loading="lazy">
-        <span class="artmeta"><span class="pills2"><span class="pill">PT</span>${a.en ? '<span class="pill">EN</span>' : ""}</span><b>${esc(a.title)}</b><time>${esc(a.date)}</time></span>
-      </button></li>`).join("")}
-      <li><div class="art soonart" aria-hidden="true"><span>More articles<br>coming soon</span></div></li></ul>
+    <ul class="artgrid">${articleItemsHTML()}</ul>
+    <footer class="artsfoot"><button type="button" class="logomini" id="secretlogo" aria-label="Mondgine logo"><img src="img/brand/mondgine-watermark.png" alt="" width="44" height="44"></button></footer>
   </section>`;
 }
 // YouTube page: video cards in a rail; a click opens the video in a popup player
@@ -1180,11 +1980,16 @@ function category(c){
     ${secs || `<p class="soon">Content coming soon.</p>`}
     <p class="bottom"><a class="steam" href="#/">← Back to Home Page</a></p></div>`;
   initCarousels(); initMore(); initReveal();
-  app.querySelectorAll("[data-art]").forEach(b => b.addEventListener("click", () => openArticle(b.dataset.art, b)));
+  bindArticleButtons();
+  const sl = app.querySelector("#secretlogo"); if (sl) sl.addEventListener("click", () => openGate(sl));
+  if (c.articles) loadRemoteArticles().then(ok => { if (ok && location.hash === "#/articles-and-analysis") refreshArticleGrid(); });
   app.querySelectorAll("[data-yt]").forEach(b => b.addEventListener("click", () => openVideo(b.dataset.yt, b.dataset.title, b)));
   markRailDuplicates(); initRail();
 }
 
+function jobHTML(j, k){
+  return `<li class="job"><span class="jobdate">${esc(j.date)}</span><h3 class="jobtitle">${esc(j.title)}</h3><p class="jobco">${esc(j.company)}</p>${moreHTML("job-" + k, j.paras)}</li>`;
+}
 function home(){
   app.innerHTML = `
   <header>
@@ -1209,6 +2014,10 @@ function home(){
       </div>
       <figure class="aboutphoto"><img src="img/brand/gustavo.webp" alt="Gustavo Mondini smiling and giving a thumbs up at Gamescom Latam" width="800" height="800" loading="lazy"></figure>
     </div>
+  </section>
+  <section class="history" id="history" aria-labelledby="ph">
+    <h2 id="ph">Professional History</h2>
+    <ol class="jobs">${HISTORY.map(jobHTML).join("")}</ol>
   </section>
   <section class="projects" aria-labelledby="op">
     <h2 id="op">Other Projects</h2>
@@ -1318,7 +2127,7 @@ function initCarousels(){
 }
 
 function route(){
-  closeLightbox(); closeArticle();
+  closeLightbox(); closeArticle(); closeGate();
   cleanups.forEach(f => f()); cleanups = [];
   const slug = location.hash.replace("#/","");
   const p = PROJECTS.find(x => x.slug === slug);
