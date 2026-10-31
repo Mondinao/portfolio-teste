@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow"> <!-- TEST VERSION: remove this line when the site is final -->
+<meta name="description" content="Portfolio of Gustavo Mondini, a Brazilian game designer specialized in level design, with projects, articles and videos.">
 <meta name="theme-color" content="#0e0e10">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Gustavo Mondini's Portfolio</title>
@@ -211,7 +212,17 @@ a.coverlink:hover,a.coverlink:focus-visible{transform:translateY(-3px)}
 .ytnote{margin:0 0 16px;font-size:.9rem;color:var(--muted)}
 .soonpill{font-family:Figtree,system-ui,sans-serif;font-size:.8rem;font-weight:500;padding:3px 12px}
 .shorts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;max-width:760px}
-.shorts li{aspect-ratio:9/16;display:grid;place-items:center;text-align:center;border:2px dashed var(--line);border-radius:14px;background:var(--card);color:var(--muted);font-size:.9rem}
+.shorts li{aspect-ratio:9/16}
+.shorts li[aria-hidden="true"]{display:grid;place-items:center;text-align:center;border:2px dashed var(--line);border-radius:14px;background:var(--card);color:var(--muted);font-size:.9rem}
+.short{position:relative;display:block;width:100%;height:100%;padding:0;border:2px solid var(--line);border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#5a2a52,#0b0b0d);color:#fff;font:inherit;text-align:left;cursor:pointer;transition:border-color .2s,transform .3s}
+.short img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.short:hover,.short:focus-visible{border-color:var(--accent);transform:translateY(-3px)}
+.short:hover img{transform:scale(1.05)}
+.short:hover .play,.short:focus-visible .play{background:var(--accent);color:var(--bg);transform:scale(1.08)}
+.stitle{position:absolute;left:0;right:0;bottom:0;padding:34px 12px 12px;background:linear-gradient(to top,rgba(8,8,10,.92),rgba(8,8,10,0));font:800 1rem/1.15 "Bricolage Grotesque",sans-serif}
+.shorts .slot{display:grid;place-items:center;width:100%;height:100%}
+.vshort{max-width:480px}
+.vidframe.vertical{width:min(100%,calc(76vh * 9 / 16));aspect-ratio:9/16;margin:0 auto}
 .vpanel{max-width:980px}
 .vpanel .artbar{margin:0 -8px 12px}
 .vt{min-width:0;margin-right:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:800 1.15rem/1.2 "Bricolage Grotesque",sans-serif}
@@ -416,7 +427,7 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.9rem}
 const PROJECTS = [
   {slug:"sportia", title:"Sportia", studio:"Hermit Crab Studio", partnerLabel:"Partnership", partner:"Ubisoft",
    cover:"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3897390/f53437221ec8d2a020b4f8a07966010967c326dd/header.jpg", color:"#c9503c",
-   locked:true}, // not released yet: no page, no link. Full content is kept privately until launch.
+   locked:true, external:"https://store.steampowered.com/app/3897390/Sportia/"}, // not released yet: no page, no link. Full content is kept privately until launch.
   {slug:"sky-dust", title:"Sky Dust", studio:"Orbit Studio", partnerLabel:"Publisher", partner:"Twin Sails Interactive",
    cover:"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3066300/cb30b99727684343e5efe874830487a0ad0bfb28/header.jpg", color:"#3d7ea6",
    role:"Producer, Level Designer, Game Designer & VFX Artist", period:"2024", release:"To be announced", genre:"Cyberpunk Metroidvania", platform:"PC (Windows)", engine:"Unity",
@@ -735,7 +746,8 @@ const OTHER = [
        {id:"QxcNfhdjLi4", title:"A Mensagem de Death Stranding"},
        {id:"pwd6-mZkOWQ", title:"Design de Narrativa - Áreas do Game Design"},
        {id:"hZAnwbdI7WU", title:"One Piece Odyssey vai ser bom?"}],
-     shortsNote:"My Shorts will be posted here."
+     shortsNote:"My Shorts live here. More are on the way.",
+     shorts:[{id:"99JbhhHtqiA", title:"Game Design Short"}]
    }}
 ];
 
@@ -1004,10 +1016,11 @@ document.addEventListener("click", e => {
 function cardHTML(p){
   // The colored gradient shows if the image is missing or fails to load.
   const img = p.cover ? `<img class="cover" src="${esc(p.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : "";
-  const small = p.sub ? esc(p.sub) : `${esc(p.studio)}<br>${esc(p.partnerLabel)}: ${esc(p.partner)}${p.locked ? "<br>Details coming soon" : ""}`;
+  const small = p.sub ? esc(p.sub) : `${esc(p.studio)}<br>${esc(p.partnerLabel)}: ${esc(p.partner)}${p.locked ? (p.external ? "<br>View on Steam ↗" : "<br>Details coming soon") : ""}`;
   const label = `<div class="name"><span>${p.titled ? "" : esc(p.title)}<small>${small}</small></span></div>`;
   const bg = `background:linear-gradient(160deg, ${p.color}, #0b0b0d)`;
   const cls = "card" + (p.cover ? "" : " nocover");
+  if (p.external) return `<a class="${cls}" href="${esc(p.external)}" target="_blank" rel="noopener" aria-label="${esc(p.title)} (opens the Steam page)" style="${bg}">${img}${label}</a>`;
   return p.locked
     ? `<div class="${cls} locked" role="img" aria-label="${esc(p.title)} (details coming soon)" style="${bg}">${img}${label}</div>`
     : `<a class="${cls}" href="#/${p.slug}" aria-label="${esc(p.title)}" style="${bg}">${img}${label}</a>`;
@@ -1017,8 +1030,9 @@ function projectButton(p){
   // One button per project: partner/publisher logo on the left, project name and relationship on the right.
   const pt = PARTNERS.find(x => x.project === p.slug) || {name:p.partner, logo:""};
   const chip = `<span class="chip"${pt.bg ? ` style="background:${esc(pt.bg)}"` : ""}><img src="${esc(pt.logo)}" alt="${esc(pt.name)}" loading="lazy" onerror="this.replaceWith(document.createTextNode(this.alt))"></span>`;
-  const text = `<span class="ptext"><span class="pname">${esc(p.title)}</span><span class="prole">${esc(p.partnerLabel)}: ${esc(p.partner)}${p.locked ? " · Details coming soon" : ""}</span></span>`;
+  const text = `<span class="ptext"><span class="pname">${esc(p.title)}</span><span class="prole">${esc(p.partnerLabel)}: ${esc(p.partner)}${p.locked ? (p.external ? " · View on Steam" : " · Details coming soon") : ""}</span></span>`;
   const arrow = `<svg class="go" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  if (p.external) return `<li><a class="pbtn" href="${esc(p.external)}" target="_blank" rel="noopener" aria-label="${esc(p.title)} (opens the Steam page)">${chip}${text}${arrow}</a></li>`;
   return p.locked
     ? `<li><div class="pbtn locked" aria-label="${esc(p.title)} (details coming soon)">${chip}${text}</div></li>`
     : `<li><a class="pbtn" href="#/${esc(p.slug)}" aria-label="${esc(p.title)}">${chip}${text}${arrow}</a></li>`;
@@ -1936,15 +1950,15 @@ function videoCardHTML(v){
     <span class="play">${PLAY_ICON}</span>
     <div class="name"><span>${esc(v.title)}</span></div></button>`;
 }
-function openVideo(id, title, trigger){
+function openVideo(id, title, trigger, vertical){
   closeArticle();
   artReturn = trigger || document.activeElement;
   artEl = document.createElement("div");
   artEl.className = "artmodal"; artEl.setAttribute("role","dialog"); artEl.setAttribute("aria-modal","true"); artEl.setAttribute("aria-label", title);
-  artEl.innerHTML = `<div class="artpanel vpanel" tabindex="-1">
+  artEl.innerHTML = `<div class="artpanel vpanel${vertical ? " vshort" : ""}" tabindex="-1">
     <div class="artbar"><span class="vt">${esc(title)}</span><button type="button" class="lb-btn" data-artclose>✕ Close</button></div>
-    <div class="vidframe"><iframe src="https://www.youtube.com/embed/${esc(id)}?autoplay=1&rel=0" title="${esc(title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
-    <p class="vlink"><a href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
+    <div class="vidframe${vertical ? " vertical" : ""}"><iframe src="https://www.youtube.com/embed/${esc(id)}?autoplay=1&rel=0" title="${esc(title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <p class="vlink"><a href="https://www.youtube.com/${vertical ? "shorts/" : "watch?v="}${esc(id)}" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
   </div>`;
   artEl.addEventListener("click", e => { if (e.target === artEl || e.target.closest("[data-artclose]")) closeArticle(); });
   document.body.appendChild(artEl); document.body.style.overflow = "hidden";
@@ -1966,9 +1980,9 @@ function youtubeHTML(c){
     <h2 class="ytsec">Videos</h2>
     <p class="ytnote">${esc(y.videosNote)}</p>
     ${railHTML(y.videos, "Videos", "wide", videoCardHTML)}
-    <h2 class="ytsec">Shorts <span class="pill soonpill">Coming soon</span></h2>
+    <h2 class="ytsec">Shorts <span class="pill soonpill">More coming soon</span></h2>
     <p class="ytnote">${esc(y.shortsNote)}</p>
-    <ul class="shorts" aria-hidden="true">${[1,2,3,4].map(() => `<li><span>Coming soon</span></li>`).join("")}</ul>
+    <ul class="shorts">${(y.shorts || []).map(v => `<li><button type="button" class="short" data-yt="${esc(v.id)}" data-vertical="1" data-title="${esc(v.title)}" aria-label="Play the Short: ${esc(v.title)}"><img src="https://i.ytimg.com/vi/${encodeURIComponent(v.id)}/hqdefault.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="play">${PLAY_ICON}</span><span class="stitle">${esc(v.title)}</span></button></li>`).join("")}${Array.from({length: Math.max(0, 4 - (y.shorts || []).length)}, () => `<li aria-hidden="true"><span class="slot">Coming soon</span></li>`).join("")}</ul>
   </section>`;
 }
 function category(c){
@@ -1983,7 +1997,7 @@ function category(c){
   bindArticleButtons();
   const sl = app.querySelector("#secretlogo"); if (sl) sl.addEventListener("click", () => openGate(sl));
   if (c.articles) loadRemoteArticles().then(ok => { if (ok && location.hash === "#/articles-and-analysis") refreshArticleGrid(); });
-  app.querySelectorAll("[data-yt]").forEach(b => b.addEventListener("click", () => openVideo(b.dataset.yt, b.dataset.title, b)));
+  app.querySelectorAll("[data-yt]").forEach(b => b.addEventListener("click", () => openVideo(b.dataset.yt, b.dataset.title, b, b.dataset.vertical === "1")));
   markRailDuplicates(); initRail();
 }
 
